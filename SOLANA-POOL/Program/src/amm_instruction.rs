@@ -5,78 +5,94 @@
 use crate::curve::{base::SwapCurve, fees::Fees};
 use crate::error::AmmError;
 use solana_program::{
-	instruction::{AccountMeta, Instruction},
-	program_error::ProgramError,
-	program_pack::Pack,
-	pubkey::Pubkey,
-}
+    instruction::{AccountMeta, Instruction},
+    program_error::ProgramError,
+    program_pack::Pack,
+    pubkey::Pubkey,
+};
 use std::convert::TryInto;
 use std::mem::size_of;
 
 #[cfg(feature = "fuzz")]
 use arbitrary::Arbitrary;
 
-/// Initialize instruction destination_a_amount
+/// Initialize instruction data
 #[repr(C)]
 #[derive(Debug, PartialEq)]
-pub struct InitializeInstruction{
-	pub nonce:u8,
-	pub fees:Fees,
-	pub swap_curve:SwapCurve
+pub struct InitializeInstruction {
+    /// nonce used to create valid program address
+    pub nonce: u8,
+    /// all swap fees
+    pub fees: Fees,
+    /// swap curve info for pool, including CurveType and anything
+    /// else that may be required
+    pub swap_curve: SwapCurve,
 }
 
+/// Swap instruction data
 #[cfg_attr(feature = "fuzz", derive(Arbitrary))]
 #[repr(C)]
 #[derive(Clone, Debug, PartialEq)]
-pub struct SwapInstruction{
-	pub amount_in:u64,
-	pub min_amount_out:u64
+pub struct SwapInstruction {
+    /// SOURCE amount to transfer, output to DESTINATION is based on the exchange rate
+    pub amount_in: u64,
+    /// Minimum amount of DESTINATION token to output, prevents excessive slippage
+    pub minimum_amount_out: u64,
 }
 
+/// Instruction instruction data
 #[cfg_attr(feature = "fuzz", derive(Arbitrary))]
 #[repr(C)]
 #[derive(Clone, Debug, PartialEq)]
-pub struct DepositInstruction{
-	pub pool_token_amount:u64,
-	pub maximum_token_a_amount:u64,
-	pub maximum_token_b_amount:u64,	
+pub struct DepositInstruction {
+    /// Pool token amount to transfer. token_a and token_b amount are set by
+    /// the current exchange rate and size of the pool
+    pub pool_token_amount: u64,
+    /// Maximum token A amount to deposit, prevents excessive slippage
+    pub maximum_token_a_amount: u64,
+    /// Maximum token B amount to deposit, prevents excessive slippage
+    pub maximum_token_b_amount: u64,
 }
 
+/// WithdrawInstruction instruction data
 #[cfg_attr(feature = "fuzz", derive(Arbitrary))]
 #[repr(C)]
 #[derive(Clone, Debug, PartialEq)]
-pub struct WithdrawInstruction{
-	pub pool_token_amount:u64,
-	pub maximum_token_a_amount:u64,
-	pub maximum_token_b_amount:u64,	
+pub struct WithdrawInstruction {
+    /// Amount of pool tokens to burn. User receives an output of token a
+    /// and b based on the percentage of the pool tokens that are returned.
+    pub pool_token_amount: u64,
+    /// Minimum amount of token A to receive, prevents excessive slippage
+    pub minimum_token_a_amount: u64,
+    /// Minimum amount of token B to receive, prevents excessive slippage
+    pub minimum_token_b_amount: u64,
 }
 
+/// Deposit one token type, exact amount in instruction data
 #[cfg_attr(feature = "fuzz", derive(Arbitrary))]
 #[repr(C)]
 #[derive(Clone, Debug, PartialEq)]
-pub struct DepositSingleTokenTypeExactAmountIn{
-	pub pool_token_amount:u64,
-	pub maximum_token_a_amount:u64,
-	pub maximum_token_b_amount:u64,	
+pub struct DepositSingleTokenTypeExactAmountIn {
+    /// Token amount to deposit
+    pub source_token_amount: u64,
+    /// Pool token amount to receive in exchange. The amount is set by
+    /// the current exchange rate and size of the pool
+    pub minimum_pool_token_amount: u64,
 }
 
-#[cfg_attr(feature = "fuzz", derive(Arbitrary))]
-#[repr(C)]
-#[derive(Clone, Debug, PartialEq)]
-pub struct DepositSingleTokenTypeExactAmountIn{
-	pub pool_token_amount:u64,
-	pub maximum_token_a_amount:u64,
-	pub maximum_token_b_amount:u64,	
-}
-
+/// WithdrawAllTokenTypes instruction data
 #[cfg_attr(feature = "fuzz", derive(Arbitrary))]
 #[repr(C)]
 #[derive(Clone, Debug, PartialEq)]
 pub struct WithdrawSingleTokenTypeExactAmountOut {
+    /// Amount of token A or B to receive
     pub destination_token_amount: u64,
+    /// Maximum amount of pool tokens to burn. User receives an output of token A
+    /// or B based on the percentage of the pool tokens that are returned.
     pub maximum_pool_token_amount: u64,
 }
 
+/// Instructions supported by the token swap program.
 #[repr(C)]
 #[derive(Debug, PartialEq)]
 pub enum AmmInstruction {
@@ -177,7 +193,6 @@ pub enum AmmInstruction {
     ///   9. '[]` Token program id
     WithdrawSingleTokenTypeExactAmountOut(WithdrawSingleTokenTypeExactAmountOut),
 }
-
 
 impl AmmInstruction {
     /// Unpacks a byte buffer into a [AmmInstruction](enum.AmmInstruction.html).
@@ -329,7 +344,6 @@ impl AmmInstruction {
         buf
     }
 }
-
 
 /// Creates an 'initialize' instruction.
 pub fn initialize(
@@ -569,7 +583,6 @@ pub fn unpack<T>(input: &[u8]) -> Result<&T, ProgramError> {
     let val: &T = unsafe { &*(&input[1] as *const u8 as *const T) };
     Ok(val)
 }
-
 
 #[cfg(test)]
 mod tests {
