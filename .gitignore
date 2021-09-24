@@ -1,3 +1,4 @@
 /SOLANA-POOL/js/node_modules
-/SOLANA-POOL/Program/target/rls/debug
-/Frontend-UI-Pool/node_modules
+/SOLANA-POOL/liquiditypool/program/target
+node_modules
+target
