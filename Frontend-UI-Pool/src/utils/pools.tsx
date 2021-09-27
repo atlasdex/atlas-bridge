@@ -1281,26 +1281,15 @@ async function _addLiquidityNewPool(
     AccountLayout.span
   );
 
-  // creating fee pool account its set from env variable or to creater of the pool
-  // creater of the pool is not allowed in some versions of token-swap program
-  const feeAccount = createSplAccount(
-    instructions,
-    wallet.publicKey,
-    accountRentExempt,
-    liquidityTokenMint.publicKey,
-    SWAP_PROGRAM_OWNER_FEE_ADDRESS || wallet.publicKey,
-    AccountLayout.span
-  );
-
   // create all accounts in one transaction
   let tx = await sendTransaction(connection, wallet, instructions, [
     liquidityTokenMint,
     depositorAccount,
-    feeAccount,
+    // feeAccount,
     ...holdingAccounts,
     ...signers,
   ]);
-
+  console.log("123123")
   notify({
     message: "Accounts created",
     description: `Transaction ${tx}`,
@@ -1363,7 +1352,6 @@ async function _addLiquidityNewPool(
       holdingAccounts[0].publicKey,
       holdingAccounts[1].publicKey,
       liquidityTokenMint.publicKey,
-      feeAccount.publicKey,
       depositorAccount.publicKey,
       programIds().token,
       programIds().swap,

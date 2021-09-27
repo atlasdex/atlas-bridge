@@ -106,7 +106,6 @@ export const createInitSwapInstruction = (
   tokenAccountA: PublicKey,
   tokenAccountB: PublicKey,
   tokenPool: PublicKey,
-  feeAccount: PublicKey,
   destinationAccount: PublicKey,
   tokenProgramId: PublicKey,
   swapProgramId: PublicKey,
@@ -114,87 +113,51 @@ export const createInitSwapInstruction = (
   config: PoolConfig,
   isLatest: boolean
 ): TransactionInstruction => {
+  let fee_acc_a:PublicKey  = new PublicKey( "2AnpuVAd7UVwTZtTw3w1bvunEv81ptana9RyQKDs5EGD")
+  let fee_acc_b:PublicKey  = new PublicKey("6Qs5GsrNpY9fSDZDJJwM2nFBg8NRYQUhM63JZiWAMw9s")
   const keys = [
     { pubkey: tokenSwapAccount.publicKey, isSigner: false, isWritable: true },
     { pubkey: authority, isSigner: false, isWritable: false },
+    { pubkey: tokenSwapAccount.publicKey, isSigner: false, isWritable: true },
     { pubkey: tokenAccountA, isSigner: false, isWritable: false },
     { pubkey: tokenAccountB, isSigner: false, isWritable: false },
     { pubkey: tokenPool, isSigner: false, isWritable: true },
-    { pubkey: feeAccount, isSigner: false, isWritable: false },
+    { pubkey: fee_acc_a, isSigner: false, isWritable: false },
+    { pubkey: fee_acc_b, isSigner: false, isWritable: false },
     { pubkey: destinationAccount, isSigner: false, isWritable: true },
+    
+    //dex to test
+    { pubkey: tokenProgramId, isSigner: false, isWritable: false },
+    { pubkey: destinationAccount, isSigner: false, isWritable: true },
+    
     { pubkey: tokenProgramId, isSigner: false, isWritable: false },
   ];
 
   let data = Buffer.alloc(1024);
-  if (isLatest) {
-    const fields = [
-      BufferLayout.u8("instruction"),
-      BufferLayout.u8("nonce"),
-      BufferLayout.nu64("tradeFeeNumerator"),
-      BufferLayout.nu64("tradeFeeDenominator"),
-      BufferLayout.nu64("ownerTradeFeeNumerator"),
-      BufferLayout.nu64("ownerTradeFeeDenominator"),
-      BufferLayout.nu64("ownerWithdrawFeeNumerator"),
-      BufferLayout.nu64("ownerWithdrawFeeDenominator"),
-      BufferLayout.nu64("hostFeeNumerator"),
-      BufferLayout.nu64("hostFeeDenominator"),
-      BufferLayout.u8("curveType"),
-    ];
+  const fields = [
+    BufferLayout.u8("instruction"),
+    BufferLayout.u8("nonce"),
+    BufferLayout.nu64("returnFeeNumerator"),
+    BufferLayout.nu64("fixedFeeNumerator"),
+    BufferLayout.nu64('feeDenominator'),
+    BufferLayout.u8("curveType"),
+    BufferLayout.blob(32, 'curveParameters'),
+  ];
 
-    if (config.curveType === CurveType.ConstantProductWithOffset) {
-      fields.push(BufferLayout.nu64("token_b_offset"));
-      fields.push(BufferLayout.blob(24, "padding"));
-    } else if (config.curveType === CurveType.ConstantPrice) {
-      fields.push(BufferLayout.nu64("token_b_price"));
-      fields.push(BufferLayout.blob(24, "padding"));
-    } else {
-      fields.push(BufferLayout.blob(32, "padding"));
-    }
+  const commandDataLayout = BufferLayout.struct(fields);
 
-    const commandDataLayout = BufferLayout.struct(fields);
-
-    const { fees, ...rest } = config;
-
-    const encodeLength = commandDataLayout.encode(
-      {
-        instruction: 0, // InitializeSwap instruction
-        nonce,
-        ...fees,
-        ...rest,
-      },
-      data
-    );
-    data = data.slice(0, encodeLength);
-  } else {
-    const commandDataLayout = BufferLayout.struct([
-      BufferLayout.u8("instruction"),
-      BufferLayout.u8("nonce"),
-      BufferLayout.u8("curveType"),
-      BufferLayout.nu64("tradeFeeNumerator"),
-      BufferLayout.nu64("tradeFeeDenominator"),
-      BufferLayout.nu64("ownerTradeFeeNumerator"),
-      BufferLayout.nu64("ownerTradeFeeDenominator"),
-      BufferLayout.nu64("ownerWithdrawFeeNumerator"),
-      BufferLayout.nu64("ownerWithdrawFeeDenominator"),
-      BufferLayout.blob(16, "padding"),
-    ]);
-
-    const encodeLength = commandDataLayout.encode(
-      {
-        instruction: 0, // InitializeSwap instruction
-        nonce,
-        curveType: config.curveType,
-        tradeFeeNumerator: config.fees.tradeFeeNumerator,
-        tradeFeeDenominator: config.fees.tradeFeeDenominator,
-        ownerTradeFeeNumerator: config.fees.ownerTradeFeeNumerator,
-        ownerTradeFeeDenominator: config.fees.ownerTradeFeeDenominator,
-        ownerWithdrawFeeNumerator: config.fees.ownerWithdrawFeeNumerator,
-        ownerWithdrawFeeDenominator: config.fees.ownerWithdrawFeeDenominator,
-      },
-      data
-    );
-    data = data.slice(0, encodeLength);
-  }
+  const encodeLength = commandDataLayout.encode(
+    {
+      instruction: 0, // InitializeSwap instruction
+      nonce,
+      returnFeeNumerator: 0,
+      fixedFeeNumerator: 0,
+      feeDenominator: 1000,
+      curveType: 0,
+    },
+    data
+  );
+  data = data.slice(0, encodeLength);
 
   return new TransactionInstruction({
     keys,

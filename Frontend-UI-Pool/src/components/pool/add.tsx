@@ -191,18 +191,18 @@ export const AddToLiquidity = () => {
       className="add-button"
       onClick={() => executeAction(pool)}
       trigger={["click"]}
-      // disabled={
-      //   connected &&
-      //   (depositType === "both"
-      //     ? pendingTx ||
-      //       !A.account ||
-      //       !B.account ||
-      //       A.account === B.account ||
-      //       !hasSufficientBalance
-      //     : !getDepositToken()?.account ||
-      //       !getDepositToken()?.sufficientBalance())
-      // }
-      disabled={true}
+      disabled={
+        connected &&
+        (depositType === "both"
+          ? pendingTx ||
+            !A.account ||
+            !B.account ||
+            A.account === B.account ||
+            !hasSufficientBalance
+          : !getDepositToken()?.account ||
+            !getDepositToken()?.sufficientBalance())
+      }
+      // disabled={true}
       type="primary"
       size="large"
       overlay={
