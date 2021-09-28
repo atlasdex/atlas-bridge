@@ -3,44 +3,24 @@ import {
   Account,
   clusterApiUrl,
   Connection,
-  PublicKey,
   Transaction,
   TransactionInstruction,
 } from "@solana/web3.js";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { setProgramIds } from "./ids";
 import { notify } from "./notifications";
-import { ExplorerLink } from "../components/explorerLink";
-import {
-  TokenListProvider,
-  ENV as ChainID,
-  TokenInfo,
-} from "@solana/spl-token-registry";
-import { cache, getMultipleAccounts } from "./accounts";
 
 export type ENV = "mainnet-beta" | "testnet" | "devnet" | "localnet";
 
 export const ENDPOINTS = [
+  { name: "devnet" as ENV, endpoint: "https://api.devnet.solana.com" },
   {
     name: "mainnet-beta" as ENV,
     endpoint: "https://solana-api.projectserum.com/",
-    chainID: ChainID.MainnetBeta,
   },
-  {
-    name: "testnet" as ENV,
-    endpoint: clusterApiUrl("testnet"),
-    chainID: ChainID.Testnet,
-  },
-  {
-    name: "devnet" as ENV,
-    endpoint: 'https://api.devnet.solana.com', //clusterApiUrl("devnet"),
-    chainID: ChainID.Devnet,
-  },
-  {
-    name: "localnet" as ENV,
-    endpoint: "http://127.0.0.1:8899",
-    chainID: ChainID.Devnet,
-  },
+  { name: "testnet" as ENV, endpoint: clusterApiUrl("testnet") },
+  
+  { name: "localnet" as ENV, endpoint: "http://127.0.0.1:8899" },
 ];
 
 const DEFAULT = ENDPOINTS[0].endpoint;
@@ -54,8 +34,6 @@ interface ConnectionConfig {
   setSlippage: (val: number) => void;
   env: ENV;
   setEndpoint: (val: string) => void;
-  tokens: TokenInfo[];
-  tokenMap: Map<string, TokenInfo>;
 }
 
 const ConnectionContext = React.createContext<ConnectionConfig>({
@@ -66,8 +44,6 @@ const ConnectionContext = React.createContext<ConnectionConfig>({
   connection: new Connection(DEFAULT, "recent"),
   sendConnection: new Connection(DEFAULT, "recent"),
   env: ENDPOINTS[0].name,
-  tokens: [],
-  tokenMap: new Map<string, TokenInfo>(),
 });
 
 export function ConnectionProvider({ children = undefined as any }) {
@@ -88,44 +64,9 @@ export function ConnectionProvider({ children = undefined as any }) {
     endpoint,
   ]);
 
-  const chain =
-    ENDPOINTS.find((end) => end.endpoint === endpoint) || ENDPOINTS[0];
-
-  const env = chain.name;
-
-  const [tokens, setTokens] = useState<TokenInfo[]>([]);
-  const [tokenMap, setTokenMap] = useState<Map<string, TokenInfo>>(new Map());
-  useEffect(() => {
-    (async () => {
-      const res = await new TokenListProvider().resolve();
-      const list = res
-        .filterByChainId(chain.chainID)
-        .excludeByTag("nft")
-        .getList();
-      const knownMints = list.reduce((map, item) => {
-        map.set(item.address, item);
-        return map;
-      }, new Map<string, TokenInfo>());
-
-      const accounts = await getMultipleAccounts(connection, [...knownMints.keys()], 'single');
-      accounts.keys.forEach((key, index) => {
-        const account = accounts.array[index];
-        if(!account) {
-          knownMints.delete(accounts.keys[index]);
-          return;
-        }
-
-        try {
-          cache.addMint(new PublicKey(key), account);
-        } catch {
-          // ignore
-        }
-      });
-
-      setTokenMap(knownMints);
-      setTokens([...knownMints.values()]);
-    })();
-  }, [chain, connection]);
+  const env =
+    ENDPOINTS.find((end) => end.endpoint === endpoint)?.name ||
+    ENDPOINTS[0].name;
 
   setProgramIds(env);
 
@@ -172,8 +113,6 @@ export function ConnectionProvider({ children = undefined as any }) {
         setSlippage: (val) => setSlippage(val.toString()),
         connection,
         sendConnection,
-        tokens,
-        tokenMap,
         env,
       }}
     >
@@ -196,8 +135,6 @@ export function useConnectionConfig() {
     endpoint: context.endpoint,
     setEndpoint: context.setEndpoint,
     env: context.env,
-    tokens: context.tokens,
-    tokenMap: context.tokenMap,
   };
 }
 
@@ -206,35 +143,8 @@ export function useSlippageConfig() {
   return { slippage, setSlippage };
 }
 
-const getErrorForTransaction = async (connection: Connection, txid: string) => {
-  // wait for all confirmation before geting transaction
-  await connection.confirmTransaction(txid, "max");
-
-  const tx = await connection.getParsedConfirmedTransaction(txid);
-
-  const errors: string[] = [];
-  if (tx?.meta && tx.meta.logMessages) {
-    tx.meta.logMessages.forEach((log) => {
-      const regex = /Error: (.*)/gm;
-      let m;
-      while ((m = regex.exec(log)) !== null) {
-        // This is necessary to avoid infinite loops with zero-width matches
-        if (m.index === regex.lastIndex) {
-          regex.lastIndex++;
-        }
-
-        if (m.length > 1) {
-          errors.push(m[1]);
-        }
-      }
-    });
-  }
-
-  return errors;
-};
-
 export const sendTransaction = async (
-  connection: Connection,
+  connection: any,
   wallet: any,
   instructions: TransactionInstruction[],
   signers: Account[],
@@ -264,24 +174,14 @@ export const sendTransaction = async (
 
   if (awaitConfirmation) {
     const status = (
-      await connection.confirmTransaction(
-        txid,
-        options && (options.commitment as any)
-      )
+      await connection.confirmTransaction(txid, options && options.commitment)
     ).value;
 
-    if (status?.err) {
-      const errors = await getErrorForTransaction(connection, txid);
+    if (status.err) {
+      // TODO: notify
       notify({
         message: "Transaction failed...",
-        description: (
-          <>
-            {errors.map((err) => (
-              <div>{err}</div>
-            ))}
-            <ExplorerLink address={txid} type="transaction" />
-          </>
-        ),
+        description: `${txid}`,
         type: "error",
       });
 

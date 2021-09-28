@@ -1,19 +1,13 @@
 import { HashRouter, Route } from "react-router-dom";
 import React from "react";
-import { ChartsView } from "./components/charts";
-
-import { WalletProvider } from "./context/wallet";
-import { ConnectionProvider } from "./utils/connection";
-import { AccountsProvider } from "./utils/accounts";
-import { CurrencyPairProvider } from "./utils/currencyPair";
-import { MarketProvider } from "./context/market";
-import { PoolOverview } from "./components/pool/view";
 import { ExchangeView } from "./components/exchange";
 
 export function Routes() {
+  // TODO: add simple view for sharing ...
   return (
     <>
       <HashRouter basename={"/"}>
+<<<<<<< HEAD
         <ConnectionProvider>
           <WalletProvider>
             <AccountsProvider>
@@ -33,6 +27,9 @@ export function Routes() {
             </AccountsProvider>
           </WalletProvider>
         </ConnectionProvider>
+=======
+        <Route exact path="/" component={ExchangeView} />
+>>>>>>> c148b1ea1aef1f9160d4d65c7c67fe2abecc2001
       </HashRouter>
     </>
   );

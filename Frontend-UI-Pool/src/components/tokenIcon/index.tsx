@@ -1,24 +1,20 @@
 import { Identicon } from "./../identicon";
-import React, { useState } from "react";
+import React from "react";
 import { getTokenIcon } from "../../utils/utils";
 import { useConnectionConfig } from "../../utils/connection";
 
 export const TokenIcon = (props: {
   mintAddress: string;
   style?: React.CSSProperties;
-  className?: string;
 }) => {
-  const { tokenMap } = useConnectionConfig();
-  const [failed, setFailed] = useState(false);
-  const icon = getTokenIcon(tokenMap, props.mintAddress);
+  const { env } = useConnectionConfig();
+  const icon = getTokenIcon(env, props.mintAddress);
 
-  if (icon && !failed) {
+  if (icon) {
     return (
       <img
         alt="Token icon"
-        className={props.className}
         key={props.mintAddress}
-        onError={() => setFailed(true)}
         width="20"
         height="20"
         src={icon}
@@ -37,15 +33,7 @@ export const TokenIcon = (props: {
   return (
     <Identicon
       address={props.mintAddress}
-      style={{
-        marginRight: "0.5rem",
-        display: "flex",
-        alignSelf: "center",
-        width: 20,
-        height: 20,
-        marginTop: 2,
-        ...props.style,
-      }}
+      style={{ marginRight: "0.5rem", ...props.style }}
     />
   );
 };
@@ -54,10 +42,9 @@ export const PoolIcon = (props: {
   mintA: string;
   mintB: string;
   style?: React.CSSProperties;
-  className?: string;
 }) => {
   return (
-    <div className={props.className} style={{ display: "flex" }}>
+    <div style={{ display: "flex" }}>
       <TokenIcon
         mintAddress={props.mintA}
         style={{ marginRight: "-0.5rem", ...props.style }}

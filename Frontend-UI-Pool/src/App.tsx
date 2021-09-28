@@ -6,18 +6,8 @@ import { Routes } from "./routes";
 function App() {
   return (
     <div className="App">
-      {/* <div className="Banner">
-        <div
-          className="Banner-description"
-          style={{
-            textAlign: 'left',
-            paddingLeft: '30px',
-            paddingTop: '5px'
-          }}
-        >
-        </div>
-      </div> */}
       <Routes />
+<<<<<<< HEAD
 {/*
       <div className="social-buttons">
         <GitHubButton
@@ -39,6 +29,8 @@ function App() {
           Fork
         </GitHubButton>
       </div> */}
+=======
+>>>>>>> c148b1ea1aef1f9160d4d65c7c67fe2abecc2001
     </div>
   );
 }
