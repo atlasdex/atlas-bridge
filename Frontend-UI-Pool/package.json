@@ -5,14 +5,12 @@
   "dependencies": {
     "@certusone/wormhole-sdk": "file:..\\sdk\\js",
     "@craco/craco": "^5.7.0",
-<<<<<<< HEAD
     "@ledgerhq/hw-transport": "^5.45.0",
     "@ledgerhq/hw-transport-webusb": "^5.45.0",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@metamask/detect-provider": "^1.2.0",
-    "@project-serum/serum": "^0.13.33",
     "@project-serum/sol-wallet-adapter": "^0.1.1",
     "@reduxjs/toolkit": "^1.6.1",
     "@solana/spl-token": "^0.1.6",
@@ -33,13 +31,7 @@
     "@solana/web3.js": "1.24.1",
     "@solana/web3.js-1.2.5": "npm:@solana/web3.js@^1.2.5",
     "@terra-money/wallet-provider": "^1.4.0-alpha.1",
-=======
     "@project-serum/serum": "^0.13.7",
-    "@project-serum/sol-wallet-adapter": "^0.1.1",
-    "@solana/spl-token": "0.0.11",
-    "@solana/spl-token-swap": "0.0.2",
-    "@solana/web3.js": "^0.78.2",
->>>>>>> c148b1ea1aef1f9160d4d65c7c67fe2abecc2001
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -53,12 +45,9 @@
     "buffer-layout": "^1.2.0",
     "clsx": "^1.1.1",
     "craco-less": "^1.17.0",
-<<<<<<< HEAD
     "echarts": "^4.9.0",
     "ethers": "^5.4.1",
     "eventemitter3": "^4.0.7",
-=======
->>>>>>> c148b1ea1aef1f9160d4d65c7c67fe2abecc2001
     "identicon.js": "^2.3.3",
     "jazzicon": "^1.5.0",
     "js-base64": "^3.6.1",
@@ -68,16 +57,11 @@
     "react-github-btn": "^1.2.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-<<<<<<< HEAD
     "react-scripts": "4.0.3",
     "redux": "^3.7.2",
     "typescript": "^4.0.0",
-    "use-debounce": "^7.0.0"
-=======
-    "react-scripts": "3.4.3",
-    "recharts": "^1.8.5",
-    "typescript": "^4.0.0"
->>>>>>> c148b1ea1aef1f9160d4d65c7c67fe2abecc2001
+    "use-debounce": "^7.0.0",
+    "recharts": "^1.8.5"
   },
   "scripts": {
     "start-win": "set PORT=80 && craco start",
