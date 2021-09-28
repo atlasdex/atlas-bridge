@@ -21,6 +21,7 @@ export function Routes() {
                 <CurrencyPairProvider>
                   <Route exact path="/" component={ExchangeView} />
                   <Route exact path="/add" component={ExchangeView} />
+                  <Route exact path="/bridge" component={ExchangeView} />
                   <Route exact path="/info" component={() => <ChartsView />} />
                   <Route
                     exact
@@ -36,3 +37,4 @@ export function Routes() {
     </>
   );
 }
+

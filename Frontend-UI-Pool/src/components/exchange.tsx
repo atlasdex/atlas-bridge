@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Card, Popover } from "antd";
 import { TradeEntry } from "./trade";
 import { AddToLiquidity } from "./pool/add";
+import { Transfer } from "./Transfer";
 import { Settings } from "./settings";
 import { SettingOutlined } from "@ant-design/icons";
 import { AppBar } from "./appBar";
@@ -24,18 +25,39 @@ export const ExchangeView = (props: {}) => {
         return <AddToLiquidity />;
       },
     },
+    {
+        key: "bridge",
+        tab: <div style={tabStyle}>Bridge</div>,
+        render: () => {
+          return <Transfer />;
+        },
+    },
   ];
 
   const location = useLocation();
   const history = useHistory();
-  const activeTab = location.pathname.indexOf("add") < 0 ? "trade" : "pool";
+
+
+  const getActiveTab = () => {
+    if(location.pathname.indexOf("add") >= 0)
+      return "pool";
+    else if (location.pathname.indexOf("bridge") >= 0)
+      return "bridge";
+    else
+      return "trade";
+  }
+  const activeTab = getActiveTab();
+
+  //const activeTab = location.pathname.indexOf("add") < 0 ? "trade" : "pool";
 
   const handleTabChange = (key: any) => {
     if (activeTab !== key) {
       if (key === "trade") {
         history.push("/");
-      } else {
+      } else if(key === "pool") {
         history.push("/add");
+      } else {
+        history.push("/bridge")
       }
     }
   };

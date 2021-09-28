@@ -1,0 +1,1037 @@
+{
+  "contractName": "PythState",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/atlas-bridge/ethereum/contracts/pyth/PythState.sol\":\"PythState\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/atlas-bridge/ethereum/contracts/libraries/external/BytesLib.sol\":{\"keccak256\":\"0xf75784dfc94ea43668eb195d5690a1dde1b6eda62017e73a3899721583821d29\",\"license\":\"Unlicense\",\"urls\":[\"bzz-raw://ca16cef8b94f3ac75d376489a668618f6c4595a906b939d674a883f4bf426014\",\"dweb:/ipfs/QmceGU7qhyFLSejaj6i4dEtMzXDCSF3aYDtW1UeKjXQaRn\"]},\"/home/atlas-bridge/ethereum/contracts/pyth/PythState.sol\":{\"keccak256\":\"0x683bc6c10c6697d2a4a572911106985e8922a888b615e622e6f181299e68f85e\",\"license\":\"Apache 2\",\"urls\":[\"bzz-raw://58fa9291f5b5f241e2458794c311f75aae862cf41277d0c8d6631bad1e0322b5\",\"dweb:/ipfs/QmVPNoPcV7x2PW6pYYzShkjLyJ2ru53B9w2oPkpyKyyEKV\"]},\"/home/atlas-bridge/ethereum/contracts/pyth/PythStructs.sol\":{\"keccak256\":\"0x96a84f516e7fa91cbeac32843549cf93b6a0c58308f27023710589107779016f\",\"license\":\"Apache 2\",\"urls\":[\"bzz-raw://37d621a6202dc99a5b85d59e0c6ea4d4b34250e745aeb9a359cfd2a668331a63\",\"dweb:/ipfs/QmXqBgXhbHuHzBF2pdVmznsadpCfDDFtytUKnXJQvBPPJU\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212203824093dd013ceda61013eaf17c45dbf789805223e9fd571bc120b48e4822bcc64736f6c63430008040033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212203824093dd013ceda61013eaf17c45dbf789805223e9fd571bc120b48e4822bcc64736f6c63430008040033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "850:52:50:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "850:52:50:-:0;;;;;",
+  "source": "// contracts/State.sol\n// SPDX-License-Identifier: Apache 2\n\npragma solidity ^0.8.0;\n\nimport \"./PythStructs.sol\";\n\ncontract PythStorage {\n    struct Provider {\n        uint16 chainId;\n\n        uint16 governanceChainId;\n        bytes32 governanceContract;\n\n        uint16 pyth2WormholeChainId;\n        bytes32 pyth2WormholeContract;\n    }\n\n    struct State {\n        address payable wormhole;\n\n        Provider provider;\n\n        // Mapping of consumed governance actions\n        mapping(bytes32 => bool) consumedGovernanceActions;\n\n        // Mapping of initialized implementations\n        mapping(address => bool) initializedImplementations;\n\n        // Mapping of cached price attestations\n        // productId => priceType => PriceAttestation\n        mapping(bytes32 => mapping(uint8 => PythStructs.PriceAttestation)) latestAttestations;\n    }\n}\n\ncontract PythState {\n    PythStorage.State _state;\n}",
+  "sourcePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythState.sol",
+  "ast": {
+    "absolutePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythState.sol",
+    "exportedSymbols": {
+      "BytesLib": [
+        6076
+      ],
+      "PythState": [
+        10068
+      ],
+      "PythStorage": [
+        10064
+      ],
+      "PythStructs": [
+        10122
+      ]
+    },
+    "id": 10069,
+    "license": "Apache 2",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10030,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "61:23:50"
+      },
+      {
+        "absolutePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythStructs.sol",
+        "file": "./PythStructs.sol",
+        "id": 10031,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 10069,
+        "sourceUnit": 10123,
+        "src": "86:27:50",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 10064,
+        "linearizedBaseContracts": [
+          10064
+        ],
+        "name": "PythStorage",
+        "nameLocation": "124:11:50",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "PythStorage.Provider",
+            "id": 10042,
+            "members": [
+              {
+                "constant": false,
+                "id": 10033,
+                "mutability": "mutable",
+                "name": "chainId",
+                "nameLocation": "175:7:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "168:14:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 10032,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "168:6:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10035,
+                "mutability": "mutable",
+                "name": "governanceChainId",
+                "nameLocation": "200:17:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "193:24:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 10034,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "193:6:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10037,
+                "mutability": "mutable",
+                "name": "governanceContract",
+                "nameLocation": "235:18:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "227:26:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 10036,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "227:7:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10039,
+                "mutability": "mutable",
+                "name": "pyth2WormholeChainId",
+                "nameLocation": "271:20:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "264:27:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 10038,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "264:6:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10041,
+                "mutability": "mutable",
+                "name": "pyth2WormholeContract",
+                "nameLocation": "309:21:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "301:29:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 10040,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "301:7:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Provider",
+            "nameLocation": "149:8:50",
+            "nodeType": "StructDefinition",
+            "scope": 10064,
+            "src": "142:195:50",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "PythStorage.State",
+            "id": 10063,
+            "members": [
+              {
+                "constant": false,
+                "id": 10044,
+                "mutability": "mutable",
+                "name": "wormhole",
+                "nameLocation": "382:8:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "366:24:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 10043,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "366:15:50",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10047,
+                "mutability": "mutable",
+                "name": "provider",
+                "nameLocation": "410:8:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "401:17:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Provider_$10042_storage_ptr",
+                  "typeString": "struct PythStorage.Provider"
+                },
+                "typeName": {
+                  "id": 10046,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 10045,
+                    "name": "Provider",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 10042,
+                    "src": "401:8:50"
+                  },
+                  "referencedDeclaration": 10042,
+                  "src": "401:8:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Provider_$10042_storage_ptr",
+                    "typeString": "struct PythStorage.Provider"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10051,
+                "mutability": "mutable",
+                "name": "consumedGovernanceActions",
+                "nameLocation": "504:25:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "479:50:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                  "typeString": "mapping(bytes32 => bool)"
+                },
+                "typeName": {
+                  "id": 10050,
+                  "keyType": {
+                    "id": 10048,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "487:7:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "479:24:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                    "typeString": "mapping(bytes32 => bool)"
+                  },
+                  "valueType": {
+                    "id": 10049,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:4:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10055,
+                "mutability": "mutable",
+                "name": "initializedImplementations",
+                "nameLocation": "615:26:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "590:51:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                  "typeString": "mapping(address => bool)"
+                },
+                "typeName": {
+                  "id": 10054,
+                  "keyType": {
+                    "id": 10052,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "598:7:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "590:24:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                    "typeString": "mapping(address => bool)"
+                  },
+                  "valueType": {
+                    "id": 10053,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "609:4:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10062,
+                "mutability": "mutable",
+                "name": "latestAttestations",
+                "nameLocation": "821:18:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "754:85:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$_$",
+                  "typeString": "mapping(bytes32 => mapping(uint8 => struct PythStructs.PriceAttestation))"
+                },
+                "typeName": {
+                  "id": 10061,
+                  "keyType": {
+                    "id": 10056,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "762:7:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "754:66:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$_$",
+                    "typeString": "mapping(bytes32 => mapping(uint8 => struct PythStructs.PriceAttestation))"
+                  },
+                  "valueType": {
+                    "id": 10060,
+                    "keyType": {
+                      "id": 10057,
+                      "name": "uint8",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "781:5:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint8",
+                        "typeString": "uint8"
+                      }
+                    },
+                    "nodeType": "Mapping",
+                    "src": "773:46:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$",
+                      "typeString": "mapping(uint8 => struct PythStructs.PriceAttestation)"
+                    },
+                    "valueType": {
+                      "id": 10059,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 10058,
+                        "name": "PythStructs.PriceAttestation",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 10112,
+                        "src": "790:28:50"
+                      },
+                      "referencedDeclaration": 10112,
+                      "src": "790:28:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_PriceAttestation_$10112_storage_ptr",
+                        "typeString": "struct PythStructs.PriceAttestation"
+                      }
+                    }
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "State",
+            "nameLocation": "350:5:50",
+            "nodeType": "StructDefinition",
+            "scope": 10064,
+            "src": "343:503:50",
+            "visibility": "public"
+          }
+        ],
+        "scope": 10069,
+        "src": "115:733:50",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 10068,
+        "linearizedBaseContracts": [
+          10068
+        ],
+        "name": "PythState",
+        "nameLocation": "859:9:50",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 10067,
+            "mutability": "mutable",
+            "name": "_state",
+            "nameLocation": "893:6:50",
+            "nodeType": "VariableDeclaration",
+            "scope": 10068,
+            "src": "875:24:50",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_State_$10063_storage",
+              "typeString": "struct PythStorage.State"
+            },
+            "typeName": {
+              "id": 10066,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 10065,
+                "name": "PythStorage.State",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 10063,
+                "src": "875:17:50"
+              },
+              "referencedDeclaration": 10063,
+              "src": "875:17:50",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_State_$10063_storage_ptr",
+                "typeString": "struct PythStorage.State"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 10069,
+        "src": "850:52:50",
+        "usedErrors": []
+      }
+    ],
+    "src": "61:841:50"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythState.sol",
+    "exportedSymbols": {
+      "BytesLib": [
+        6076
+      ],
+      "PythState": [
+        10068
+      ],
+      "PythStorage": [
+        10064
+      ],
+      "PythStructs": [
+        10122
+      ]
+    },
+    "id": 10069,
+    "license": "Apache 2",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10030,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "61:23:50"
+      },
+      {
+        "absolutePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythStructs.sol",
+        "file": "./PythStructs.sol",
+        "id": 10031,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 10069,
+        "sourceUnit": 10123,
+        "src": "86:27:50",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 10064,
+        "linearizedBaseContracts": [
+          10064
+        ],
+        "name": "PythStorage",
+        "nameLocation": "124:11:50",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "PythStorage.Provider",
+            "id": 10042,
+            "members": [
+              {
+                "constant": false,
+                "id": 10033,
+                "mutability": "mutable",
+                "name": "chainId",
+                "nameLocation": "175:7:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "168:14:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 10032,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "168:6:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10035,
+                "mutability": "mutable",
+                "name": "governanceChainId",
+                "nameLocation": "200:17:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "193:24:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 10034,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "193:6:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10037,
+                "mutability": "mutable",
+                "name": "governanceContract",
+                "nameLocation": "235:18:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "227:26:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 10036,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "227:7:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10039,
+                "mutability": "mutable",
+                "name": "pyth2WormholeChainId",
+                "nameLocation": "271:20:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "264:27:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 10038,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "264:6:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10041,
+                "mutability": "mutable",
+                "name": "pyth2WormholeContract",
+                "nameLocation": "309:21:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10042,
+                "src": "301:29:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 10040,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "301:7:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Provider",
+            "nameLocation": "149:8:50",
+            "nodeType": "StructDefinition",
+            "scope": 10064,
+            "src": "142:195:50",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "PythStorage.State",
+            "id": 10063,
+            "members": [
+              {
+                "constant": false,
+                "id": 10044,
+                "mutability": "mutable",
+                "name": "wormhole",
+                "nameLocation": "382:8:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "366:24:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 10043,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "366:15:50",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10047,
+                "mutability": "mutable",
+                "name": "provider",
+                "nameLocation": "410:8:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "401:17:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Provider_$10042_storage_ptr",
+                  "typeString": "struct PythStorage.Provider"
+                },
+                "typeName": {
+                  "id": 10046,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 10045,
+                    "name": "Provider",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 10042,
+                    "src": "401:8:50"
+                  },
+                  "referencedDeclaration": 10042,
+                  "src": "401:8:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Provider_$10042_storage_ptr",
+                    "typeString": "struct PythStorage.Provider"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10051,
+                "mutability": "mutable",
+                "name": "consumedGovernanceActions",
+                "nameLocation": "504:25:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "479:50:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                  "typeString": "mapping(bytes32 => bool)"
+                },
+                "typeName": {
+                  "id": 10050,
+                  "keyType": {
+                    "id": 10048,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "487:7:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "479:24:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                    "typeString": "mapping(bytes32 => bool)"
+                  },
+                  "valueType": {
+                    "id": 10049,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "498:4:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10055,
+                "mutability": "mutable",
+                "name": "initializedImplementations",
+                "nameLocation": "615:26:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "590:51:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                  "typeString": "mapping(address => bool)"
+                },
+                "typeName": {
+                  "id": 10054,
+                  "keyType": {
+                    "id": 10052,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "598:7:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "590:24:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                    "typeString": "mapping(address => bool)"
+                  },
+                  "valueType": {
+                    "id": 10053,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "609:4:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 10062,
+                "mutability": "mutable",
+                "name": "latestAttestations",
+                "nameLocation": "821:18:50",
+                "nodeType": "VariableDeclaration",
+                "scope": 10063,
+                "src": "754:85:50",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$_$",
+                  "typeString": "mapping(bytes32 => mapping(uint8 => struct PythStructs.PriceAttestation))"
+                },
+                "typeName": {
+                  "id": 10061,
+                  "keyType": {
+                    "id": 10056,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "762:7:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "754:66:50",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$_$",
+                    "typeString": "mapping(bytes32 => mapping(uint8 => struct PythStructs.PriceAttestation))"
+                  },
+                  "valueType": {
+                    "id": 10060,
+                    "keyType": {
+                      "id": 10057,
+                      "name": "uint8",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "781:5:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint8",
+                        "typeString": "uint8"
+                      }
+                    },
+                    "nodeType": "Mapping",
+                    "src": "773:46:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$",
+                      "typeString": "mapping(uint8 => struct PythStructs.PriceAttestation)"
+                    },
+                    "valueType": {
+                      "id": 10059,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 10058,
+                        "name": "PythStructs.PriceAttestation",
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 10112,
+                        "src": "790:28:50"
+                      },
+                      "referencedDeclaration": 10112,
+                      "src": "790:28:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_PriceAttestation_$10112_storage_ptr",
+                        "typeString": "struct PythStructs.PriceAttestation"
+                      }
+                    }
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "State",
+            "nameLocation": "350:5:50",
+            "nodeType": "StructDefinition",
+            "scope": 10064,
+            "src": "343:503:50",
+            "visibility": "public"
+          }
+        ],
+        "scope": 10069,
+        "src": "115:733:50",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 10068,
+        "linearizedBaseContracts": [
+          10068
+        ],
+        "name": "PythState",
+        "nameLocation": "859:9:50",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 10067,
+            "mutability": "mutable",
+            "name": "_state",
+            "nameLocation": "893:6:50",
+            "nodeType": "VariableDeclaration",
+            "scope": 10068,
+            "src": "875:24:50",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_State_$10063_storage",
+              "typeString": "struct PythStorage.State"
+            },
+            "typeName": {
+              "id": 10066,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 10065,
+                "name": "PythStorage.State",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 10063,
+                "src": "875:17:50"
+              },
+              "referencedDeclaration": 10063,
+              "src": "875:17:50",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_State_$10063_storage_ptr",
+                "typeString": "struct PythStorage.State"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 10069,
+        "src": "850:52:50",
+        "usedErrors": []
+      }
+    ],
+    "src": "61:841:50"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-09-27T21:46:19.478Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

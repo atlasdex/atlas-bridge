@@ -1,0 +1,1613 @@
+{
+  "contractName": "NFTBridgeState",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/atlas-bridge/ethereum/contracts/nft/NFTBridgeState.sol\":\"NFTBridgeState\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/atlas-bridge/ethereum/contracts/nft/NFTBridgeState.sol\":{\"keccak256\":\"0x606b04fb4427043fb1b05a50c2ddd097336107e45ce9e8a7db2dabba376f0255\",\"license\":\"Apache 2\",\"urls\":[\"bzz-raw://0669bb01c9aa5b3e586d4460148586179ccd6b73c393748c3d36b7994e4c4cca\",\"dweb:/ipfs/QmPtKPDhjLd7ytf4dFP6NvRN4UMkMf1bdeuNFdtgvo2XTe\"]},\"/home/atlas-bridge/ethereum/contracts/nft/NFTBridgeStructs.sol\":{\"keccak256\":\"0x23e6463efbbdd5a119d641bd3f7f83c39b2b231f1529e6e9611d40b24633106e\",\"license\":\"Apache 2\",\"urls\":[\"bzz-raw://adac362c25223b4932c3b7580bbeefbe3bc60bbe151eb464f0485b2f5a1eea04\",\"dweb:/ipfs/QmZvF3pPZMgT2Zb3MyneA8zhmoTKStEZx9pNwfAwxoiJ91\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122044dbcf9657954d2bc452f6c093581896625cd8f6b346026550f9acb4cde6814964736f6c63430008040033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122044dbcf9657954d2bc452f6c093581896625cd8f6b346026550f9acb4cde6814964736f6c63430008040033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "1378:62:36:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "1378:62:36:-:0;;;;;",
+  "source": "// contracts/State.sol\n// SPDX-License-Identifier: Apache 2\n\npragma solidity ^0.8.0;\n\nimport \"./NFTBridgeStructs.sol\";\n\ncontract NFTBridgeStorage {\n    struct Provider {\n        uint16 chainId;\n        uint16 governanceChainId;\n        bytes32 governanceContract;\n    }\n\n    struct Asset {\n        uint16 chainId;\n        bytes32 assetAddress;\n    }\n\n    struct SPLCache {\n        bytes32 name;\n        bytes32 symbol;\n    }\n\n    struct State {\n        address payable wormhole;\n        address tokenImplementation;\n\n        Provider provider;\n\n        // Mapping of consumed governance actions\n        mapping(bytes32 => bool) consumedGovernanceActions;\n\n        // Mapping of consumed token transfers\n        mapping(bytes32 => bool) completedTransfers;\n\n        // Mapping of initialized implementations\n        mapping(address => bool) initializedImplementations;\n\n        // Mapping of wrapped assets (chainID => nativeAddress => wrappedAddress)\n        mapping(uint16 => mapping(bytes32 => address)) wrappedAssets;\n\n        // Mapping to safely identify wrapped assets\n        mapping(address => bool) isWrappedAsset;\n\n        // Mapping of bridge contracts on other chains\n        mapping(uint16 => bytes32) bridgeImplementations;\n\n        // Mapping of spl token info caches (chainID => nativeAddress => SPLCache)\n        mapping(uint256 => SPLCache) splCache;\n    }\n}\n\ncontract NFTBridgeState {\n    NFTBridgeStorage.State _state;\n}",
+  "sourcePath": "/home/atlas-bridge/ethereum/contracts/nft/NFTBridgeState.sol",
+  "ast": {
+    "absolutePath": "/home/atlas-bridge/ethereum/contracts/nft/NFTBridgeState.sol",
+    "exportedSymbols": {
+      "NFTBridgeState": [
+        7991
+      ],
+      "NFTBridgeStorage": [
+        7987
+      ],
+      "NFTBridgeStructs": [
+        8031
+      ]
+    },
+    "id": 7992,
+    "license": "Apache 2",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7929,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "61:23:36"
+      },
+      {
+        "absolutePath": "/home/atlas-bridge/ethereum/contracts/nft/NFTBridgeStructs.sol",
+        "file": "./NFTBridgeStructs.sol",
+        "id": 7930,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 7992,
+        "sourceUnit": 8032,
+        "src": "86:32:36",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 7987,
+        "linearizedBaseContracts": [
+          7987
+        ],
+        "name": "NFTBridgeStorage",
+        "nameLocation": "129:16:36",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "NFTBridgeStorage.Provider",
+            "id": 7937,
+            "members": [
+              {
+                "constant": false,
+                "id": 7932,
+                "mutability": "mutable",
+                "name": "chainId",
+                "nameLocation": "185:7:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7937,
+                "src": "178:14:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 7931,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "178:6:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7934,
+                "mutability": "mutable",
+                "name": "governanceChainId",
+                "nameLocation": "209:17:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7937,
+                "src": "202:24:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 7933,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "202:6:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7936,
+                "mutability": "mutable",
+                "name": "governanceContract",
+                "nameLocation": "244:18:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7937,
+                "src": "236:26:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 7935,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "236:7:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Provider",
+            "nameLocation": "159:8:36",
+            "nodeType": "StructDefinition",
+            "scope": 7987,
+            "src": "152:117:36",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "NFTBridgeStorage.Asset",
+            "id": 7942,
+            "members": [
+              {
+                "constant": false,
+                "id": 7939,
+                "mutability": "mutable",
+                "name": "chainId",
+                "nameLocation": "305:7:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7942,
+                "src": "298:14:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 7938,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "298:6:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7941,
+                "mutability": "mutable",
+                "name": "assetAddress",
+                "nameLocation": "330:12:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7942,
+                "src": "322:20:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 7940,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "322:7:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Asset",
+            "nameLocation": "282:5:36",
+            "nodeType": "StructDefinition",
+            "scope": 7987,
+            "src": "275:74:36",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "NFTBridgeStorage.SPLCache",
+            "id": 7947,
+            "members": [
+              {
+                "constant": false,
+                "id": 7944,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "389:4:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7947,
+                "src": "381:12:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 7943,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "381:7:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7946,
+                "mutability": "mutable",
+                "name": "symbol",
+                "nameLocation": "411:6:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7947,
+                "src": "403:14:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 7945,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "403:7:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "SPLCache",
+            "nameLocation": "362:8:36",
+            "nodeType": "StructDefinition",
+            "scope": 7987,
+            "src": "355:69:36",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "NFTBridgeStorage.State",
+            "id": 7986,
+            "members": [
+              {
+                "constant": false,
+                "id": 7949,
+                "mutability": "mutable",
+                "name": "wormhole",
+                "nameLocation": "469:8:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "453:24:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 7948,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "453:15:36",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7951,
+                "mutability": "mutable",
+                "name": "tokenImplementation",
+                "nameLocation": "495:19:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "487:27:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7950,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "487:7:36",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7954,
+                "mutability": "mutable",
+                "name": "provider",
+                "nameLocation": "534:8:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "525:17:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Provider_$7937_storage_ptr",
+                  "typeString": "struct NFTBridgeStorage.Provider"
+                },
+                "typeName": {
+                  "id": 7953,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 7952,
+                    "name": "Provider",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 7937,
+                    "src": "525:8:36"
+                  },
+                  "referencedDeclaration": 7937,
+                  "src": "525:8:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Provider_$7937_storage_ptr",
+                    "typeString": "struct NFTBridgeStorage.Provider"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7958,
+                "mutability": "mutable",
+                "name": "consumedGovernanceActions",
+                "nameLocation": "628:25:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "603:50:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                  "typeString": "mapping(bytes32 => bool)"
+                },
+                "typeName": {
+                  "id": 7957,
+                  "keyType": {
+                    "id": 7955,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "611:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "603:24:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                    "typeString": "mapping(bytes32 => bool)"
+                  },
+                  "valueType": {
+                    "id": 7956,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "622:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7962,
+                "mutability": "mutable",
+                "name": "completedTransfers",
+                "nameLocation": "736:18:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "711:43:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                  "typeString": "mapping(bytes32 => bool)"
+                },
+                "typeName": {
+                  "id": 7961,
+                  "keyType": {
+                    "id": 7959,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "719:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "711:24:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                    "typeString": "mapping(bytes32 => bool)"
+                  },
+                  "valueType": {
+                    "id": 7960,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "730:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7966,
+                "mutability": "mutable",
+                "name": "initializedImplementations",
+                "nameLocation": "840:26:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "815:51:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                  "typeString": "mapping(address => bool)"
+                },
+                "typeName": {
+                  "id": 7965,
+                  "keyType": {
+                    "id": 7963,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "823:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "815:24:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                    "typeString": "mapping(address => bool)"
+                  },
+                  "valueType": {
+                    "id": 7964,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "834:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7972,
+                "mutability": "mutable",
+                "name": "wrappedAssets",
+                "nameLocation": "1006:13:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "959:60:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint16_$_t_mapping$_t_bytes32_$_t_address_$_$",
+                  "typeString": "mapping(uint16 => mapping(bytes32 => address))"
+                },
+                "typeName": {
+                  "id": 7971,
+                  "keyType": {
+                    "id": 7967,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "967:6:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "959:46:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint16_$_t_mapping$_t_bytes32_$_t_address_$_$",
+                    "typeString": "mapping(uint16 => mapping(bytes32 => address))"
+                  },
+                  "valueType": {
+                    "id": 7970,
+                    "keyType": {
+                      "id": 7968,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "985:7:36",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "nodeType": "Mapping",
+                    "src": "977:27:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                      "typeString": "mapping(bytes32 => address)"
+                    },
+                    "valueType": {
+                      "id": 7969,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "996:7:36",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7976,
+                "mutability": "mutable",
+                "name": "isWrappedAsset",
+                "nameLocation": "1108:14:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "1083:39:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                  "typeString": "mapping(address => bool)"
+                },
+                "typeName": {
+                  "id": 7975,
+                  "keyType": {
+                    "id": 7973,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1091:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "1083:24:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                    "typeString": "mapping(address => bool)"
+                  },
+                  "valueType": {
+                    "id": 7974,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1102:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7980,
+                "mutability": "mutable",
+                "name": "bridgeImplementations",
+                "nameLocation": "1215:21:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "1188:48:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint16_$_t_bytes32_$",
+                  "typeString": "mapping(uint16 => bytes32)"
+                },
+                "typeName": {
+                  "id": 7979,
+                  "keyType": {
+                    "id": 7977,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1196:6:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "1188:26:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint16_$_t_bytes32_$",
+                    "typeString": "mapping(uint16 => bytes32)"
+                  },
+                  "valueType": {
+                    "id": 7978,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1206:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7985,
+                "mutability": "mutable",
+                "name": "splCache",
+                "nameLocation": "1359:8:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "1330:37:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_SPLCache_$7947_storage_$",
+                  "typeString": "mapping(uint256 => struct NFTBridgeStorage.SPLCache)"
+                },
+                "typeName": {
+                  "id": 7984,
+                  "keyType": {
+                    "id": 7981,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1338:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "1330:28:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_SPLCache_$7947_storage_$",
+                    "typeString": "mapping(uint256 => struct NFTBridgeStorage.SPLCache)"
+                  },
+                  "valueType": {
+                    "id": 7983,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7982,
+                      "name": "SPLCache",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7947,
+                      "src": "1349:8:36"
+                    },
+                    "referencedDeclaration": 7947,
+                    "src": "1349:8:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SPLCache_$7947_storage_ptr",
+                      "typeString": "struct NFTBridgeStorage.SPLCache"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "State",
+            "nameLocation": "437:5:36",
+            "nodeType": "StructDefinition",
+            "scope": 7987,
+            "src": "430:944:36",
+            "visibility": "public"
+          }
+        ],
+        "scope": 7992,
+        "src": "120:1256:36",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 7991,
+        "linearizedBaseContracts": [
+          7991
+        ],
+        "name": "NFTBridgeState",
+        "nameLocation": "1387:14:36",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 7990,
+            "mutability": "mutable",
+            "name": "_state",
+            "nameLocation": "1431:6:36",
+            "nodeType": "VariableDeclaration",
+            "scope": 7991,
+            "src": "1408:29:36",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_State_$7986_storage",
+              "typeString": "struct NFTBridgeStorage.State"
+            },
+            "typeName": {
+              "id": 7989,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 7988,
+                "name": "NFTBridgeStorage.State",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 7986,
+                "src": "1408:22:36"
+              },
+              "referencedDeclaration": 7986,
+              "src": "1408:22:36",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_State_$7986_storage_ptr",
+                "typeString": "struct NFTBridgeStorage.State"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 7992,
+        "src": "1378:62:36",
+        "usedErrors": []
+      }
+    ],
+    "src": "61:1379:36"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/atlas-bridge/ethereum/contracts/nft/NFTBridgeState.sol",
+    "exportedSymbols": {
+      "NFTBridgeState": [
+        7991
+      ],
+      "NFTBridgeStorage": [
+        7987
+      ],
+      "NFTBridgeStructs": [
+        8031
+      ]
+    },
+    "id": 7992,
+    "license": "Apache 2",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7929,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "61:23:36"
+      },
+      {
+        "absolutePath": "/home/atlas-bridge/ethereum/contracts/nft/NFTBridgeStructs.sol",
+        "file": "./NFTBridgeStructs.sol",
+        "id": 7930,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 7992,
+        "sourceUnit": 8032,
+        "src": "86:32:36",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 7987,
+        "linearizedBaseContracts": [
+          7987
+        ],
+        "name": "NFTBridgeStorage",
+        "nameLocation": "129:16:36",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "NFTBridgeStorage.Provider",
+            "id": 7937,
+            "members": [
+              {
+                "constant": false,
+                "id": 7932,
+                "mutability": "mutable",
+                "name": "chainId",
+                "nameLocation": "185:7:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7937,
+                "src": "178:14:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 7931,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "178:6:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7934,
+                "mutability": "mutable",
+                "name": "governanceChainId",
+                "nameLocation": "209:17:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7937,
+                "src": "202:24:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 7933,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "202:6:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7936,
+                "mutability": "mutable",
+                "name": "governanceContract",
+                "nameLocation": "244:18:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7937,
+                "src": "236:26:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 7935,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "236:7:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Provider",
+            "nameLocation": "159:8:36",
+            "nodeType": "StructDefinition",
+            "scope": 7987,
+            "src": "152:117:36",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "NFTBridgeStorage.Asset",
+            "id": 7942,
+            "members": [
+              {
+                "constant": false,
+                "id": 7939,
+                "mutability": "mutable",
+                "name": "chainId",
+                "nameLocation": "305:7:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7942,
+                "src": "298:14:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 7938,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "298:6:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7941,
+                "mutability": "mutable",
+                "name": "assetAddress",
+                "nameLocation": "330:12:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7942,
+                "src": "322:20:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 7940,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "322:7:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Asset",
+            "nameLocation": "282:5:36",
+            "nodeType": "StructDefinition",
+            "scope": 7987,
+            "src": "275:74:36",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "NFTBridgeStorage.SPLCache",
+            "id": 7947,
+            "members": [
+              {
+                "constant": false,
+                "id": 7944,
+                "mutability": "mutable",
+                "name": "name",
+                "nameLocation": "389:4:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7947,
+                "src": "381:12:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 7943,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "381:7:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7946,
+                "mutability": "mutable",
+                "name": "symbol",
+                "nameLocation": "411:6:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7947,
+                "src": "403:14:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 7945,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "403:7:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "SPLCache",
+            "nameLocation": "362:8:36",
+            "nodeType": "StructDefinition",
+            "scope": 7987,
+            "src": "355:69:36",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "NFTBridgeStorage.State",
+            "id": 7986,
+            "members": [
+              {
+                "constant": false,
+                "id": 7949,
+                "mutability": "mutable",
+                "name": "wormhole",
+                "nameLocation": "469:8:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "453:24:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address_payable",
+                  "typeString": "address payable"
+                },
+                "typeName": {
+                  "id": 7948,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "453:15:36",
+                  "stateMutability": "payable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address_payable",
+                    "typeString": "address payable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7951,
+                "mutability": "mutable",
+                "name": "tokenImplementation",
+                "nameLocation": "495:19:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "487:27:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7950,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "487:7:36",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7954,
+                "mutability": "mutable",
+                "name": "provider",
+                "nameLocation": "534:8:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "525:17:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Provider_$7937_storage_ptr",
+                  "typeString": "struct NFTBridgeStorage.Provider"
+                },
+                "typeName": {
+                  "id": 7953,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 7952,
+                    "name": "Provider",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 7937,
+                    "src": "525:8:36"
+                  },
+                  "referencedDeclaration": 7937,
+                  "src": "525:8:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Provider_$7937_storage_ptr",
+                    "typeString": "struct NFTBridgeStorage.Provider"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7958,
+                "mutability": "mutable",
+                "name": "consumedGovernanceActions",
+                "nameLocation": "628:25:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "603:50:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                  "typeString": "mapping(bytes32 => bool)"
+                },
+                "typeName": {
+                  "id": 7957,
+                  "keyType": {
+                    "id": 7955,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "611:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "603:24:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                    "typeString": "mapping(bytes32 => bool)"
+                  },
+                  "valueType": {
+                    "id": 7956,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "622:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7962,
+                "mutability": "mutable",
+                "name": "completedTransfers",
+                "nameLocation": "736:18:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "711:43:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                  "typeString": "mapping(bytes32 => bool)"
+                },
+                "typeName": {
+                  "id": 7961,
+                  "keyType": {
+                    "id": 7959,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "719:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "711:24:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                    "typeString": "mapping(bytes32 => bool)"
+                  },
+                  "valueType": {
+                    "id": 7960,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "730:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7966,
+                "mutability": "mutable",
+                "name": "initializedImplementations",
+                "nameLocation": "840:26:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "815:51:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                  "typeString": "mapping(address => bool)"
+                },
+                "typeName": {
+                  "id": 7965,
+                  "keyType": {
+                    "id": 7963,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "823:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "815:24:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                    "typeString": "mapping(address => bool)"
+                  },
+                  "valueType": {
+                    "id": 7964,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "834:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7972,
+                "mutability": "mutable",
+                "name": "wrappedAssets",
+                "nameLocation": "1006:13:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "959:60:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint16_$_t_mapping$_t_bytes32_$_t_address_$_$",
+                  "typeString": "mapping(uint16 => mapping(bytes32 => address))"
+                },
+                "typeName": {
+                  "id": 7971,
+                  "keyType": {
+                    "id": 7967,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "967:6:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "959:46:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint16_$_t_mapping$_t_bytes32_$_t_address_$_$",
+                    "typeString": "mapping(uint16 => mapping(bytes32 => address))"
+                  },
+                  "valueType": {
+                    "id": 7970,
+                    "keyType": {
+                      "id": 7968,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "985:7:36",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "nodeType": "Mapping",
+                    "src": "977:27:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                      "typeString": "mapping(bytes32 => address)"
+                    },
+                    "valueType": {
+                      "id": 7969,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "996:7:36",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7976,
+                "mutability": "mutable",
+                "name": "isWrappedAsset",
+                "nameLocation": "1108:14:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "1083:39:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                  "typeString": "mapping(address => bool)"
+                },
+                "typeName": {
+                  "id": 7975,
+                  "keyType": {
+                    "id": 7973,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1091:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "1083:24:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                    "typeString": "mapping(address => bool)"
+                  },
+                  "valueType": {
+                    "id": 7974,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1102:4:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7980,
+                "mutability": "mutable",
+                "name": "bridgeImplementations",
+                "nameLocation": "1215:21:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "1188:48:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint16_$_t_bytes32_$",
+                  "typeString": "mapping(uint16 => bytes32)"
+                },
+                "typeName": {
+                  "id": 7979,
+                  "keyType": {
+                    "id": 7977,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1196:6:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "1188:26:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint16_$_t_bytes32_$",
+                    "typeString": "mapping(uint16 => bytes32)"
+                  },
+                  "valueType": {
+                    "id": 7978,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1206:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7985,
+                "mutability": "mutable",
+                "name": "splCache",
+                "nameLocation": "1359:8:36",
+                "nodeType": "VariableDeclaration",
+                "scope": 7986,
+                "src": "1330:37:36",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_SPLCache_$7947_storage_$",
+                  "typeString": "mapping(uint256 => struct NFTBridgeStorage.SPLCache)"
+                },
+                "typeName": {
+                  "id": 7984,
+                  "keyType": {
+                    "id": 7981,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1338:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "1330:28:36",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_SPLCache_$7947_storage_$",
+                    "typeString": "mapping(uint256 => struct NFTBridgeStorage.SPLCache)"
+                  },
+                  "valueType": {
+                    "id": 7983,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7982,
+                      "name": "SPLCache",
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7947,
+                      "src": "1349:8:36"
+                    },
+                    "referencedDeclaration": 7947,
+                    "src": "1349:8:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SPLCache_$7947_storage_ptr",
+                      "typeString": "struct NFTBridgeStorage.SPLCache"
+                    }
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "State",
+            "nameLocation": "437:5:36",
+            "nodeType": "StructDefinition",
+            "scope": 7987,
+            "src": "430:944:36",
+            "visibility": "public"
+          }
+        ],
+        "scope": 7992,
+        "src": "120:1256:36",
+        "usedErrors": []
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 7991,
+        "linearizedBaseContracts": [
+          7991
+        ],
+        "name": "NFTBridgeState",
+        "nameLocation": "1387:14:36",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 7990,
+            "mutability": "mutable",
+            "name": "_state",
+            "nameLocation": "1431:6:36",
+            "nodeType": "VariableDeclaration",
+            "scope": 7991,
+            "src": "1408:29:36",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_State_$7986_storage",
+              "typeString": "struct NFTBridgeStorage.State"
+            },
+            "typeName": {
+              "id": 7989,
+              "nodeType": "UserDefinedTypeName",
+              "pathNode": {
+                "id": 7988,
+                "name": "NFTBridgeStorage.State",
+                "nodeType": "IdentifierPath",
+                "referencedDeclaration": 7986,
+                "src": "1408:22:36"
+              },
+              "referencedDeclaration": 7986,
+              "src": "1408:22:36",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_State_$7986_storage_ptr",
+                "typeString": "struct NFTBridgeStorage.State"
+              }
+            },
+            "visibility": "internal"
+          }
+        ],
+        "scope": 7992,
+        "src": "1378:62:36",
+        "usedErrors": []
+      }
+    ],
+    "src": "61:1379:36"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.4+commit.c7e474f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-09-27T21:46:19.341Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

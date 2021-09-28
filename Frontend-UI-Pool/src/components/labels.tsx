@@ -1,3 +1,4 @@
+import React from "react";
 import { CurrencyContextState } from "../utils/currencyPair";
 import { getTokenName, KnownTokenMap, getPoolName } from "../utils/utils";
 import { PoolInfo } from "../models";
