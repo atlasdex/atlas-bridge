@@ -14,7 +14,7 @@ export const ExchangeView = (props: {}) => {
   const tabList = [
     {
       key: "trade",
-      tab: <div style={tabStyle}>Trade</div>,
+      tab: <div style={tabStyle}>Swap</div>,
       render: () => {
         return <TradeEntry />;
       },
@@ -42,7 +42,7 @@ export const ExchangeView = (props: {}) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Trade
+            Swap
           </a>
         </Button>
         <AccountInfo />
