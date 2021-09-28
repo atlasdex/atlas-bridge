@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { Button, Card, Popover } from "antd";
 import { TradeEntry } from "./trade";
 import { AddToLiquidity } from "./pool/add";
-<<<<<<< HEAD
-import { Transfer } from "./Transfer";
-=======
 import { PoolAccounts } from "./pool/view";
 import { useWallet } from "../utils/wallet";
 import { AccountInfo } from "./accountInfo";
->>>>>>> c148b1ea1aef1f9160d4d65c7c67fe2abecc2001
 import { Settings } from "./settings";
 import { SettingOutlined } from "@ant-design/icons";
+import { Bridge } from "./bridge";
 
 export const ExchangeView = (props: {}) => {
   const { connected, wallet } = useWallet();
@@ -34,45 +31,11 @@ export const ExchangeView = (props: {}) => {
         key: "bridge",
         tab: <div style={tabStyle}>Bridge</div>,
         render: () => {
-          return <Transfer />;
+          return <Bridge />;
         },
     },
   ];
 
-<<<<<<< HEAD
-  const location = useLocation();
-  const history = useHistory();
-
-
-  const getActiveTab = () => {
-    if(location.pathname.indexOf("add") >= 0)
-      return "pool";
-    else if (location.pathname.indexOf("bridge") >= 0)
-      return "bridge";
-    else
-      return "trade";
-  }
-  const activeTab = getActiveTab();
-
-  //const activeTab = location.pathname.indexOf("add") < 0 ? "trade" : "pool";
-
-  const handleTabChange = (key: any) => {
-    if (activeTab !== key) {
-      if (key === "trade") {
-        history.push("/");
-      } else if(key === "pool") {
-        history.push("/add");
-      } else {
-        history.push("/bridge")
-      }
-    }
-  };
-
-  return (
-    <>
-      <AppBar
-        right={
-=======
   const [activeTab, setActiveTab] = useState(tabList[0].key);
 
   const TopBar = (
@@ -120,7 +83,6 @@ export const ExchangeView = (props: {}) => {
           )}
         </div>
         {
->>>>>>> c148b1ea1aef1f9160d4d65c7c67fe2abecc2001
           <Popover
             placement="topRight"
             title="Settings"

@@ -146,6 +146,7 @@ function wrapNativeAccount(
       isNative: true,
       rentExemptReserve: null,
       closeAuthority: null,
+      address:pubkey
     },
   };
 }

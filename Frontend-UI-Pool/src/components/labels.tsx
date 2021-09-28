@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
-=======
 import { ENV } from "../utils/connection";
->>>>>>> c148b1ea1aef1f9160d4d65c7c67fe2abecc2001
 import { CurrencyContextState } from "../utils/currencyPair";
 import { getTokenName } from "../utils/utils";
 

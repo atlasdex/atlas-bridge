@@ -20,7 +20,7 @@
     "typeRoots": [
       "./types"
     ],
-    "jsx": "react-jsx",
+    "jsx": "react",
     "isolatedModules": true,
     "noFallthroughCasesInSwitch": true
   },
