@@ -6,19 +6,12 @@ import { Routes } from "./routes";
 function App() {
   return (
     <div className="App">
-      {/* <div className="Banner">
-        <div
-          className="Banner-description"
-          style={{
-            textAlign: 'left',
-            paddingLeft: '30px',
-            paddingTop: '5px'
-          }}
-        >
+      <div className="Banner">
+        <div className="Banner-description">
+          Swap is unaudited software. Use at your own risk.
         </div>
-      </div> */}
+      </div>
       <Routes />
-{/*       
       <div className="social-buttons">
         <GitHubButton
           href="https://github.com/project-serum/oyster-swap"
@@ -38,7 +31,7 @@ function App() {
         >
           Fork
         </GitHubButton>
-      </div> */}
+      </div>
     </div>
   );
 }

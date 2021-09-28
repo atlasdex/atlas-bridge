@@ -1,7 +1,5 @@
-import { AccountInfo, PublicKey } from "@solana/web3.js";
+import { PublicKey } from "@solana/web3.js";
 import { TokenAccount } from "./account";
-
-export const DEFAULT_DENOMINATOR = 10_000;
 
 export interface PoolInfo {
   pubkeys: {
@@ -13,11 +11,7 @@ export interface PoolInfo {
     feeAccount?: PublicKey;
   };
   legacy: boolean;
-  raw: {
-    pubkey: PublicKey;
-    data: any;
-    account: AccountInfo<Buffer>;
-  };
+  raw: any;
 }
 
 export interface LiquidityComponent {
@@ -26,26 +20,14 @@ export interface LiquidityComponent {
   mintAddress: string;
 }
 
-export enum CurveType {
-  ConstantProduct = 0,
-  ConstantPrice = 1,
-  Stable = 2,
-  ConstantProductWithOffset = 3,
-}
-
 export interface PoolConfig {
-  curveType: CurveType;
-  fees: {
-    tradeFeeNumerator: number;
-    tradeFeeDenominator: number;
-    ownerTradeFeeNumerator: number;
-    ownerTradeFeeDenominator: number;
-    ownerWithdrawFeeNumerator: number;
-    ownerWithdrawFeeDenominator: number;
-    hostFeeNumerator: number;
-    hostFeeDenominator: number;
-  };
-
-  token_b_offset?: number;
-  token_b_price?: number;
+  curveType: 0 | 1;
+  tradeFeeNumerator: number;
+  tradeFeeDenominator: number;
+  ownerTradeFeeNumerator: number;
+  ownerTradeFeeDenominator: number;
+  ownerWithdrawFeeNumerator: number;
+  ownerWithdrawFeeDenominator: number;
+  hostFeeNumerator: number;
+  hostFeeDenominator: number;
 }
