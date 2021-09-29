@@ -7,7 +7,7 @@ import { useWallet } from "../utils/wallet";
 import { AccountInfo } from "./accountInfo";
 import { Settings } from "./settings";
 import { SettingOutlined } from "@ant-design/icons";
-import { Bridge } from "./bridge";
+import { Transfer } from "./Transfer";
 
 export const ExchangeView = (props: {}) => {
   const { connected, wallet } = useWallet();
@@ -31,7 +31,7 @@ export const ExchangeView = (props: {}) => {
         key: "bridge",
         tab: <div style={tabStyle}>Bridge</div>,
         render: () => {
-          return <Bridge />;
+          return <Transfer />;
         },
     },
   ];
