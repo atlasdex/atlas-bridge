@@ -710,48 +710,49 @@ export async function calculateDependentAmount(
   amount: number,
   pool: PoolInfo
 ): Promise<number | undefined> {
-  const poolMint = await cache.getMint(connection, pool.pubkeys.mint);
-  const accountA = await cache.getAccount(
-    connection,
-    pool.pubkeys.holdingAccounts[0]
-  );
-  const accountB = await cache.getAccount(
-    connection,
-    pool.pubkeys.holdingAccounts[1]
-  );
-  if (!poolMint.mintAuthority) {
-    throw new Error("Mint doesnt have authority");
-  }
+  // const poolMint = await cache.getMint(connection, pool.pubkeys.mint);
+  // const accountA = await cache.getAccount(
+  //   connection,
+  //   pool.pubkeys.holdingAccounts[0]
+  // );
+  // const accountB = await cache.getAccount(
+  //   connection,
+  //   pool.pubkeys.holdingAccounts[1]
+  // );
+  // if (!poolMint.mintAuthority) {
+  //   throw new Error("Mint doesnt have authority");
+  // }
 
-  if (poolMint.supply.eqn(0)) {
-    return;
-  }
+  // if (poolMint.supply.eqn(0)) {
+  //   return;
+  // }
 
-  const mintA = await cache.getMint(connection, accountA.info.mint);
-  const mintB = await cache.getMint(connection, accountB.info.mint);
+  // const mintA = await cache.getMint(connection, accountA.info.mint);
+  // const mintB = await cache.getMint(connection, accountB.info.mint);
 
-  if (!mintA || !mintB) {
-    return;
-  }
+  // if (!mintA || !mintB) {
+  //   return;
+  // }
 
-  const isFirstIndependent = accountA.info.mint.toBase58() === independent;
-  const depPrecision = Math.pow(
-    10,
-    isFirstIndependent ? mintB.decimals : mintA.decimals
-  );
-  const indPrecision = Math.pow(
-    10,
-    isFirstIndependent ? mintA.decimals : mintB.decimals
-  );
-  const adjAmount = amount * indPrecision;
+  // const isFirstIndependent = accountA.info.mint.toBase58() === independent;
+  // const depPrecision = Math.pow(
+  //   10,
+  //   isFirstIndependent ? mintB.decimals : mintA.decimals
+  // );
+  // const indPrecision = Math.pow(
+  //   10,
+  //   isFirstIndependent ? mintA.decimals : mintB.decimals
+  // );
+  // const adjAmount = amount * indPrecision;
 
-  const dependentTokenAmount = isFirstIndependent
-    ? (accountB.info.amount.toNumber() / accountA.info.amount.toNumber()) *
-      adjAmount
-    : (accountA.info.amount.toNumber() / accountB.info.amount.toNumber()) *
-      adjAmount;
+  // const dependentTokenAmount = isFirstIndependent
+  //   ? (accountB.info.amount.toNumber() / accountA.info.amount.toNumber()) *
+  //     adjAmount
+  //   : (accountA.info.amount.toNumber() / accountB.info.amount.toNumber()) *
+  //     adjAmount;
 
-  return dependentTokenAmount / depPrecision;
+  // return dependentTokenAmount / depPrecision;
+  return amount;
 }
 
 // TODO: add ui to customize curve type
