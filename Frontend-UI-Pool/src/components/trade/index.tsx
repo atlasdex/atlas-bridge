@@ -82,7 +82,10 @@ export const TradeEntry = () => {
             if (A.amount !== val) {
               setLastTypedAccount(A.mintAddress);
             }
-
+            if(val !== '')
+              B.setAmount(String(parseFloat(val)*0.996));
+            else
+              B.setAmount('');
             A.setAmount(val);
           }}
           amount={A.amount}
@@ -100,7 +103,10 @@ export const TradeEntry = () => {
             if (B.amount !== val) {
               setLastTypedAccount(B.mintAddress);
             }
-
+            if(val !== '')
+              A.setAmount(String(parseFloat(val)/0.996));
+            else
+              A.setAmount('');
             B.setAmount(val);
           }}
           amount={B.amount}

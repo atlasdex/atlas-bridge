@@ -67,12 +67,6 @@ export const createInitSwapInstruction = (
   curveType: number,
   tradeFeeNumerator: number,
   tradeFeeDenominator: number,
-  ownerTradeFeeNumerator: number,
-  ownerTradeFeeDenominator: number,
-  ownerWithdrawFeeNumerator: number,
-  ownerWithdrawFeeDenominator: number,
-  hostFeeNumerator: number,
-  hostFeeDenominator: number
 ): TransactionInstruction => {
   const keys = [
     { pubkey: tokenSwapAccount.publicKey, isSigner: false, isWritable: true },

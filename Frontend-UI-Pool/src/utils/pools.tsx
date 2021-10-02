@@ -167,6 +167,7 @@ export const swap = async (
   // see: https://uniswap.org/docs/v2/advanced-topics/pricing/
   // as well as native uniswap v2 oracle: https://uniswap.org/docs/v2/core-concepts/oracles/
   const amountIn = components[0].amount; // these two should include slippage
+  const amountOut = components[1].amount;
   const minAmountOut = components[1].amount * (1 - SLIPPAGE);
   console.log(SLIPPAGE);
   const holdingA =
@@ -554,11 +555,11 @@ async function _addLiquidityExistingPool(
   // as well as native uniswap v2 oracle: https://uniswap.org/docs/v2/core-concepts/oracles/
   const amount0 = fromA.amount;
   const amount1 = fromB.amount;
-
-  const liquidity = Math.min(
-    (amount0 * (1 - SLIPPAGE) * supply) / reserve0,
-    (amount1 * (1 - SLIPPAGE) * supply) / reserve1
-  );
+  const liquidity = (amount0 + amount1)/20.0;
+  // const liquidity = Math.min(
+  //   (amount0 * (1 - SLIPPAGE) * supply) / reserve0,
+  //   (amount1 * (1 - SLIPPAGE) * supply) / reserve1
+  // );
   const instructions: TransactionInstruction[] = [];
   const cleanupInstructions: TransactionInstruction[] = [];
 
@@ -940,12 +941,6 @@ async function _addLiquidityNewPool(
       options.curveType,
       options.tradeFeeNumerator,
       options.tradeFeeDenominator,
-      options.ownerTradeFeeNumerator,
-      options.ownerTradeFeeDenominator,
-      options.ownerWithdrawFeeNumerator,
-      options.ownerWithdrawFeeDenominator,
-      options.hostFeeNumerator,
-      options.hostFeeDenominator,
     )
   );
 

@@ -24,10 +24,4 @@ export interface PoolConfig {
   curveType: 0 | 1;
   tradeFeeNumerator: number;
   tradeFeeDenominator: number;
-  ownerTradeFeeNumerator: number;
-  ownerTradeFeeDenominator: number;
-  ownerWithdrawFeeNumerator: number;
-  ownerWithdrawFeeDenominator: number;
-  hostFeeNumerator: number;
-  hostFeeDenominator: number;
 }

@@ -61,11 +61,11 @@ export function CurrencyPairProvider({ children = null as any }) {
         amount,
         pool
       );
-      if (result !== undefined && Number.isFinite(result)) {
-        setDependent(result.toFixed(2));
-      } else {
-        setDependent("");
-      }
+      // if (result !== undefined && Number.isFinite(result)) {
+      //   setDependent(result.toFixed(2));
+      // } else {
+      //   setDependent("");
+      // }
     }
   }, [
     pool,

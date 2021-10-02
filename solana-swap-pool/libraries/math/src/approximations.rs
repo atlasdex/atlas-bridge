@@ -40,31 +40,3 @@ pub fn sqrt<T: PrimInt + CheckedShl + CheckedShr>(radicand: T) -> Option<T> {
     }
     Some(result)
 }
-
-#[cfg(test)]
-mod tests {
-    use {super::*, proptest::prelude::*};
-
-    fn check_square_root(radicand: u128) {
-        let root = sqrt(radicand).unwrap();
-        let lower_bound = root.saturating_sub(1).checked_pow(2).unwrap();
-        let upper_bound = root.checked_add(1).unwrap().checked_pow(2).unwrap();
-        assert!(radicand as u128 <= upper_bound);
-        assert!(radicand as u128 >= lower_bound);
-    }
-
-    #[test]
-    fn test_square_root_min_max() {
-        let test_roots = [0, u64::MAX];
-        for i in test_roots.iter() {
-            check_square_root(*i as u128);
-        }
-    }
-
-    proptest! {
-        #[test]
-        fn test_square_root(a in 0..u64::MAX) {
-            check_square_root(a as u128);
-        }
-    }
-}
