@@ -89,7 +89,7 @@ export const PoolConfigCard = (props: {
         </>
         <>
           <span>Withdraw Fee:</span>
-          <FeeInput
+          {/* <FeeInput
             numerator={ownerWithdrawFeeNumerator}
             denominator={ownerWithdrawFeeDenominator}
             set={(numerator, denominator) =>
@@ -99,7 +99,7 @@ export const PoolConfigCard = (props: {
                 ownerWithdrawFeeDenominator: denominator,
               })
             }
-          />
+          /> */}
         </>
         <>
           <span>Curve Type:</span>

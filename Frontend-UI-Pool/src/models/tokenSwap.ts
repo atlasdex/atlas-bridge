@@ -157,6 +157,7 @@ export const depositInstruction = (
   const keys = [
     { pubkey: tokenSwap, isSigner: false, isWritable: false },
     { pubkey: authority, isSigner: false, isWritable: false },
+    { pubkey: authority, isSigner: false, isWritable: false },
     { pubkey: userTransferAuthority, isSigner: true, isWritable: false },
     { pubkey: sourceA, isSigner: false, isWritable: true },
     { pubkey: sourceB, isSigner: false, isWritable: true },
