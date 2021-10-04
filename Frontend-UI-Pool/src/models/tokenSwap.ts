@@ -101,12 +101,6 @@ export const createInitSwapInstruction = (
         nonce,
         tradeFeeNumerator,
         tradeFeeDenominator,
-        ownerTradeFeeNumerator,
-        ownerTradeFeeDenominator,
-        ownerWithdrawFeeNumerator,
-        ownerWithdrawFeeDenominator,
-        hostFeeNumerator,
-        hostFeeDenominator,
         curveType,
       },
       data
