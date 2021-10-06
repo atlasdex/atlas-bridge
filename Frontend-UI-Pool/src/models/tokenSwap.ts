@@ -93,6 +93,12 @@ export const createInitSwapInstruction = (
     BufferLayout.u8("curveType"),
     BufferLayout.blob(32, 'curveParameters'),
   ]);
+  let zero:number = 0;
+  let zero1:number = 0;
+  let zero2:number = 0;
+  let zero3:number = 0;
+  let zero4:number = 0;
+  let zero5:number = 0;
   let data = Buffer.alloc(1024);
   {
     const encodeLength = commandDataLayout.encode(
@@ -101,6 +107,12 @@ export const createInitSwapInstruction = (
         nonce,
         tradeFeeNumerator,
         tradeFeeDenominator,
+        zero,
+        zero1,
+        zero2,
+        zero3,
+        zero4,
+        zero5,
         curveType,
       },
       data
