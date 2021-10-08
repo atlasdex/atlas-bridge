@@ -27,6 +27,7 @@ use solana_program::{
     pubkey::Pubkey,
 };
 use std::convert::TryInto;
+use std::convert::TryFrom;
 
 /// Program state handler.
 pub struct Processor {}
@@ -225,7 +226,7 @@ impl Processor {
         if SwapVersion::is_initialized(&swap_info.data.borrow()) {
             return Err(SwapError::AlreadyInUse.into());
         }
-
+        
         if *authority_info.key != Self::authority_id(program_id, swap_info.key, nonce)? {
             return Err(SwapError::InvalidProgramAddress.into());
         }
@@ -253,6 +254,7 @@ impl Processor {
         if token_a.mint == token_b.mint {
             return Err(SwapError::RepeatedMint.into());
         }
+        
         swap_curve
             .calculator
             .validate_supply(token_a.amount, token_b.amount)?;
@@ -292,7 +294,15 @@ impl Processor {
         }
         fees.validate()?;
         swap_curve.calculator.validate()?;
-
+                
+        // let token_a_amount_u128 = to_u128(token_a.amount)?;
+        // let token_b_amount_u128 = to_u128(token_a.amount)?;
+        // // let initial_supply = (token_a_amount_u128 + token_b_amount_u128)/2;
+        // let initial_supply = token_a_amount_u128.checked_add(token_b_amount_u128);
+        // initial_supply = initial_supply.checked_div(2)?;
+        // msg!("token_a_amount_u128 : {}, token_b_amount_u128 : {} , initial_supply : {}",
+        //     token_a_amount_u128, token_b_amount_u128, initial_supply);
+        
         let initial_amount = swap_curve.calculator.new_pool_supply();
 
         Self::token_mint_to(
@@ -469,7 +479,20 @@ impl Processor {
 
         Ok(())
     }
-
+    fn calculate_stable_lp_amount(
+        total_supply:u128,
+        token_a_amount: u128,
+        token_b_amount: u128,
+        input_a_amount: u128,
+        input_b_amount: u128,
+    )->Option<u128>{
+        let total_amount = token_a_amount.checked_add(token_b_amount)?;
+        let input_amount = input_a_amount.checked_add(input_b_amount)?;
+        let pool_amount = input_amount.checked_mul(total_supply)?.checked_div(total_amount)?;
+        
+        Some(pool_amount)
+        // u128::try_from(pool_amount).ok()
+    }
     /// Processes an [DepositAllTokenTypes](enum.Instruction.html).
     pub fn process_deposit_all_token_types(
         program_id: &Pubkey,
@@ -511,46 +534,25 @@ impl Processor {
         let token_a = Self::unpack_token_account(token_a_info, token_swap.token_program_id())?;
         let token_b = Self::unpack_token_account(token_b_info, token_swap.token_program_id())?;
         let pool_mint = Self::unpack_mint(pool_mint_info, token_swap.token_program_id())?;
-        let current_pool_mint_supply = to_u128(pool_mint.supply)?;
-        // let (pool_token_amount, pool_mint_supply) = if current_pool_mint_supply > 0 {
-        //     (to_u128(pool_token_amount)?, current_pool_mint_supply)
-        // } else {
-        //     (calculator.new_pool_supply(), calculator.new_pool_supply())
-        // };
+                
+        let pool_amount = Self::calculate_stable_lp_amount(
+            to_u128(pool_mint.supply)?,
+            to_u128(token_a.amount)?,
+            to_u128(token_b.amount)?,
+            to_u128(maximum_token_a_amount)?,
+            to_u128(maximum_token_b_amount)?
+        ).ok_or(SwapError::ZeroTradingTokens)?;
 
-        // let results = calculator
-        //     .pool_tokens_to_trading_tokens(
-        //         pool_token_amount,
-        //         pool_mint_supply,
-        //         to_u128(token_a.amount)?,
-        //         to_u128(token_b.amount)?,
-        //         RoundDirection::Ceiling,
-        //     )
-        //     .ok_or(SwapError::ZeroTradingTokens)?;
-        // let token_a_amount = to_u64(results.token_a_amount)?;
-        // if token_a_amount > maximum_token_a_amount {
-        //     return Err(SwapError::ExceededSlippage.into());
-        // }
-        // if token_a_amount == 0 {
-        //     return Err(SwapError::ZeroTradingTokens.into());
-        // }
-        // let token_b_amount = to_u64(results.token_b_amount)?;
-        // if token_b_amount > maximum_token_b_amount {
-        //     return Err(SwapError::ExceededSlippage.into());
-        // }
-        // if token_b_amount == 0 {
-        //     return Err(SwapError::ZeroTradingTokens.into());
-        // }
+        msg!("\n");
+        msg!("----  token_a lp amount : {:?} ----", token_a.amount);
+        msg!("----  token_b lp amount : {:?} ----", token_b.amount);
+        msg!("----  input a amount : {:?} ----", maximum_token_a_amount);
+        msg!("----  input b amount : {:?} ----", maximum_token_b_amount);
+        msg!("----  current supply : {:?} ----", pool_mint.supply);
+        msg!("----  temp supply amount : {:?} ----", pool_amount);
 
-        // msg!("\n");
-        // msg!("----  amount_a : {}, amount_b : {} ----", maximum_token_a_amount, maximum_token_b_amount);
-        // msg!("----  token_a_amount : {}, token_b_amount : {} ----", token_a_amount, token_b_amount);
-        // msg!("----  token_a.amount : {}, token_b.amount : {} ----", token_a.amount, token_b.amount);
-        // msg!("----  pool_token_amount : {} ----", pool_token_amount);
-        // msg!("\n");
-        
-        // let pool_token_amount:u64 = (maximum_token_a_amount + maximum_token_b_amount);
-        
+        msg!("\n");
+ 
         Self::token_transfer(
             swap_info.key,
             token_program_info.clone(),
@@ -576,36 +578,8 @@ impl Processor {
             dest_info.clone(),
             authority_info.clone(),
             token_swap.nonce(),
-            pool_token_amount,
+            to_u64(pool_amount)?,
         )?;
-
-        // Self::token_transfer(
-        //     swap_info.key,
-        //     token_program_info.clone(),
-        //     source_a_info.clone(),
-        //     token_a_info.clone(),
-        //     user_transfer_authority_info.clone(),
-        //     token_swap.nonce(),
-        //     token_a_amount,
-        // )?;
-        // Self::token_transfer(
-        //     swap_info.key,
-        //     token_program_info.clone(),
-        //     source_b_info.clone(),
-        //     token_b_info.clone(),
-        //     user_transfer_authority_info.clone(),
-        //     token_swap.nonce(),
-        //     token_b_amount,
-        // )?;
-        // Self::token_mint_to(
-        //     swap_info.key,
-        //     token_program_info.clone(),
-        //     pool_mint_info.clone(),
-        //     dest_info.clone(),
-        //     authority_info.clone(),
-        //     token_swap.nonce(),
-        //     pool_token_amount,
-        // )?;
 
         Ok(())
     }
@@ -1013,7 +987,9 @@ impl Processor {
         input: &[u8],
         swap_constraints: &Option<SwapConstraints>,
     ) -> ProgramResult {
+        msg!("unpack start");
         let instruction = SwapInstruction::unpack(input)?;
+        msg!("unpack end");
         match instruction {
             SwapInstruction::Initialize(Initialize {
                 nonce,
