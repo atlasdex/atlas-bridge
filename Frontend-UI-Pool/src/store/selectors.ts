@@ -255,15 +255,22 @@ export const selectTransferTargetError = (state: RootState) => {
   if (!state.transfer.targetChain) {
     return "Select a target chain";
   }
+
   if (!state.transfer.targetAsset) {
+    console.log('targetAsset', state.transfer.targetAsset)
     return UNREGISTERED_ERROR_MESSAGE;
   }
+
   if (
     state.transfer.targetChain === CHAIN_ID_ETH &&
     state.transfer.targetAsset === ethers.constants.AddressZero
   ) {
+    console.log('targetChain', state.transfer.targetChain)
+    console.log('CHAIN_ID_ETH', CHAIN_ID_ETH)
+    console.log('targetAsset', state.transfer.targetAsset)
     return UNREGISTERED_ERROR_MESSAGE;
   }
+
   if (!state.transfer.targetAddressHex) {
     return "Target account unavailable";
   }
