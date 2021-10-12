@@ -74,6 +74,8 @@ function Target() {
   const handleNextClick = useCallback(() => {
     dispatch(incrementStep());
   }, [dispatch]);
+  console.log('isTargetComplete', isTargetComplete)
+  console.log('associatedAccountExists', associatedAccountExists)
   return (
     <>
       <StepDescription>Select a recipient chain and address.</StepDescription>
