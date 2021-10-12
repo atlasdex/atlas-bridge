@@ -251,6 +251,7 @@ export function useHandleTransfer() {
   const isNative = sourceParsedTokenAccount?.isNativeAsset || false;
   const disabled = !isTargetComplete || isSending || isSendComplete;
   const handleTransferClick = useCallback(() => {
+    console.log('calling handleTransfer');
     // TODO: we should separate state for transaction vs fetching vaa
     if (
       sourceChain === CHAIN_ID_ETH &&
@@ -259,6 +260,16 @@ export function useHandleTransfer() {
       decimals !== undefined &&
       !!targetAddress
     ) {
+      console.log(
+        "sourceChain is ETH \n",
+        signer, "\n",
+        sourceAsset, "\n",
+        decimals, "\n",
+        amount, "\n",
+        targetChain, "\n",
+        targetAddress, "\n",
+        isNative
+      )
       eth(
         dispatch,
         enqueueSnackbar,
@@ -270,6 +281,7 @@ export function useHandleTransfer() {
         targetAddress,
         isNative
       );
+
     } else if (
       sourceChain === CHAIN_ID_SOLANA &&
       !!solanaWallet &&
@@ -279,6 +291,21 @@ export function useHandleTransfer() {
       !!targetAddress &&
       decimals !== undefined
     ) {
+
+      console.log(
+        "sourceChain is SOLANA \n",
+        solanaWallet, "\n",
+        solPK.toString(), "\n",
+        sourceTokenPublicKey, "\n",
+        sourceAsset, "\n",
+        amount, "\n",
+        decimals, "\n",
+        targetChain, "\n",
+        targetAddress, "\n",
+        originAsset, "\n",
+        originChain, "\n",
+      )
+
       solana(
         dispatch,
         enqueueSnackbar,
