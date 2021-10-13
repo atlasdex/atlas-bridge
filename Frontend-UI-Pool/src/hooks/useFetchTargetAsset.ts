@@ -60,15 +60,32 @@ function useFetchTargetAsset(nft?: boolean) {
   const targetChain = useSelector(
     nft ? selectNFTTargetChain : selectTransferTargetChain
   );
+
   const setTargetAsset = nft ? setNFTTargetAsset : setTransferTargetAsset;
   const { provider } = useEthereumProvider();
   useEffect(() => {
+    console.log('useEffect')
     if (isSourceAssetWormholeWrapped && originChain === targetChain) {
+      console.log('isSourceAssetWormholeWrapped', isSourceAssetWormholeWrapped)
+      console.log('originChain', originChain)
+      console.log('targetChain', targetChain)
+      console.log('originAsset', originAsset)
+      console.log('hexToNativeString(originAsset, originChain)', hexToNativeString(originAsset, originChain))
       dispatch(setTargetAsset(hexToNativeString(originAsset, originChain)));
       return;
     }
+    console.log('setting undefined')
     // TODO: loading state, error state
     dispatch(setTargetAsset(undefined));
+    console.log('set undefined')
+
+    console.log('CHAIN_ID_ETH', CHAIN_ID_ETH)
+    console.log('provider', provider)
+    console.log('originChain', originChain)
+    console.log('originAsset', originAsset)
+    console.log('targetChain', targetChain)
+    console.log('CHAIN_ID_SOLANA', CHAIN_ID_SOLANA)
+
     let cancelled = false;
     (async () => {
       if (
@@ -77,6 +94,7 @@ function useFetchTargetAsset(nft?: boolean) {
         originChain &&
         originAsset
       ) {
+        console.log('targetChain is CHAIN_ID_ETH')
         try {
           const asset = await (nft
             ? getForeignAssetEthNFT(
@@ -92,6 +110,7 @@ function useFetchTargetAsset(nft?: boolean) {
                 hexToUint8Array(originAsset)
               ));
           if (!cancelled) {
+            console.log('setting asset', asset)
             dispatch(setTargetAsset(asset));
           }
         } catch (e) {
@@ -102,8 +121,11 @@ function useFetchTargetAsset(nft?: boolean) {
         }
       }
       if (targetChain === CHAIN_ID_SOLANA && originChain && originAsset) {
+        console.log('targetChain is CHAIN_ID_SOLANA')
         try {
           const connection = new Connection(SOLANA_HOST, "confirmed");
+          console.log('SOLANA_HOST', SOLANA_HOST)
+          console.log("Getting origin asset", connection)
           const asset = await (nft
             ? getForeignAssetSolNFT(
                 SOL_NFT_BRIDGE_ADDRESS,
@@ -128,6 +150,7 @@ function useFetchTargetAsset(nft?: boolean) {
         }
       }
       if (targetChain === CHAIN_ID_TERRA && originChain && originAsset) {
+        console.log('targetChain = TERRA')
         try {
           const lcd = new LCDClient(TERRA_HOST);
           const asset = await getForeignAssetTerra(

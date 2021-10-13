@@ -73,6 +73,13 @@ function useCheckIfWormholeWrapped(nft?: boolean) {
   useEffect(() => {
     // TODO: loading state, error state
     dispatch(setSourceWormholeWrappedInfo(undefined));
+
+    console.log('useCheckIfWormhole sourceAsset', sourceAsset)
+    console.log('useCheckIfWormhole provider', provider)
+    console.log('useCheckIfWormhole sourceChain', sourceChain)
+    console.log('useCheckIfWormhole CHAIN_ID_ETH', CHAIN_ID_ETH)
+    console.log('useCheckIfWormhole CHAIN_ID_SOLANA', CHAIN_ID_SOLANA)
+
     let cancelled = false;
     (async () => {
       if (sourceChain === CHAIN_ID_ETH && provider && sourceAsset) {
@@ -96,7 +103,19 @@ function useCheckIfWormholeWrapped(nft?: boolean) {
       }
       if (sourceChain === CHAIN_ID_SOLANA && sourceAsset) {
         try {
+          console.log('targetChain is CHAIN_ID_SOLANA')
+
           const connection = new Connection(SOLANA_HOST, "confirmed");
+
+          console.log('SOLANA_HOST', SOLANA_HOST)
+          console.log("Getting origin asset", connection)
+
+          console.log("Origin Asset from SOL", getOriginalAssetSol(
+            connection,
+            SOL_TOKEN_BRIDGE_ADDRESS,
+            sourceAsset
+          ))
+
           const wrappedInfo = makeStateSafe(
             await (nft
               ? getOriginalAssetSolNFT(
@@ -110,7 +129,10 @@ function useCheckIfWormholeWrapped(nft?: boolean) {
                   sourceAsset
                 ))
           );
+          console.log('wrapped info = ', wrappedInfo)
+          console.log('cancelled', cancelled)
           if (!cancelled) {
+            console.log('calling setSourceWormholeWrappedInfo')
             dispatch(setSourceWormholeWrappedInfo(wrappedInfo));
           }
         } catch (e) {}

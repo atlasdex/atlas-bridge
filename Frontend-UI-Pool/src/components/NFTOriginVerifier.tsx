@@ -31,6 +31,7 @@ import { NFTParsedTokenAccount } from "../store/nftSlice";
 import { hexToNativeString, uint8ArrayToHex } from "../utils/array";
 import {
   CHAINS,
+  CHAINS_BY_ID,
   ETH_NFT_BRIDGE_ADDRESS,
   SOLANA_HOST,
   SOL_NFT_BRIDGE_ADDRESS,
@@ -294,6 +295,9 @@ export default function NFTOriginVerifier() {
                 className={classes.originHeader}
               >
                 Origin Info
+              </Typography>
+              <Typography variant="body2" gutterBottom>
+                Chain: {CHAINS_BY_ID[originInfo.chainId].name}
               </Typography>
               <Typography variant="body2" gutterBottom>
                 Address: {readableAddress}
