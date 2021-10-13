@@ -6,6 +6,8 @@ import {
   getEmitterAddressSolana,
   parseSequenceFromLogEth,
   parseSequenceFromLogSolana,
+  hexToUint8Array,
+  uint8ArrayToHex,
 } from "@certusone/wormhole-sdk";
 import {
   transferFromEth,
@@ -38,7 +40,6 @@ import {
   selectNFTSourceParsedTokenAccount,
   selectNFTTargetChain,
 } from "../store/selectors";
-import { hexToUint8Array, uint8ArrayToHex } from "../utils/array";
 import {
   ETH_BRIDGE_ADDRESS,
   ETH_NFT_BRIDGE_ADDRESS,

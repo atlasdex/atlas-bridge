@@ -3,6 +3,8 @@ import {
   CHAIN_ID_BSC,
   CHAIN_ID_ETH,
   CHAIN_ID_SOLANA,
+  hexToNativeString,
+  uint8ArrayToHex,
 } from "@certusone/wormhole-sdk";
 import {
   getOriginalAssetEth,
@@ -28,7 +30,6 @@ import useIsWalletReady from "../hooks/useIsWalletReady";
 import { getMetaplexData } from "../hooks/useMetaplexData";
 import { COLORS } from "../muiTheme";
 import { NFTParsedTokenAccount } from "../store/nftSlice";
-import { hexToNativeString, uint8ArrayToHex } from "../utils/array";
 import {
   CHAINS,
   CHAINS_BY_ID,

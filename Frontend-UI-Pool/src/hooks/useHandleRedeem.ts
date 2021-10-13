@@ -3,6 +3,7 @@ import {
   CHAIN_ID_SOLANA,
   CHAIN_ID_TERRA,
   postVaaSolana,
+  redeemAndUnwrapOnSolana,
   redeemOnEth,
   redeemOnEthNative,
   redeemOnSolana,
@@ -64,7 +65,8 @@ async function solana(
   enqueueSnackbar: any,
   wallet: WalletContextState,
   payerAddress: string, //TODO: we may not need this since we have wallet
-  signedVAA: Uint8Array
+  signedVAA: Uint8Array,
+  isNative: boolean
 ) {
   dispatch(setIsRedeeming(true));
   try {
@@ -80,13 +82,21 @@ async function solana(
       Buffer.from(signedVAA)
     );
     // TODO: how do we retry in between these steps
-    const transaction = await redeemOnSolana(
-      connection,
-      SOL_BRIDGE_ADDRESS,
-      SOL_TOKEN_BRIDGE_ADDRESS,
-      payerAddress,
-      signedVAA
-    );
+    const transaction = isNative
+      ? await redeemAndUnwrapOnSolana(
+          connection,
+          SOL_BRIDGE_ADDRESS,
+          SOL_TOKEN_BRIDGE_ADDRESS,
+          payerAddress,
+          signedVAA
+        )
+      : await redeemOnSolana(
+          connection,
+          SOL_BRIDGE_ADDRESS,
+          SOL_TOKEN_BRIDGE_ADDRESS,
+          payerAddress,
+          signedVAA
+        );
     const txid = await signSendAndConfirm(wallet, connection, transaction);
     // TODO: didn't want to make an info call we didn't need, can we get the block without it by modifying the above call?
     dispatch(setRedeemTx({ id: txid, block: 1 }));
@@ -148,7 +158,8 @@ export function useHandleRedeem() {
         enqueueSnackbar,
         solanaWallet,
         solPK.toString(),
-        signedVAA
+        signedVAA,
+        false
       );
     } else if (targetChain === CHAIN_ID_TERRA && !!terraWallet && signedVAA) {
       terra(dispatch, enqueueSnackbar, terraWallet, signedVAA);
@@ -182,7 +193,8 @@ export function useHandleRedeem() {
         enqueueSnackbar,
         solanaWallet,
         solPK.toString(),
-        signedVAA
+        signedVAA,
+        true
       );
     } else if (targetChain === CHAIN_ID_TERRA && !!terraWallet && signedVAA) {
       terra(dispatch, enqueueSnackbar, terraWallet, signedVAA); //TODO isNative = true

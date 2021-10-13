@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { CHAIN_ID_ETH, CHAIN_ID_SOLANA } from "@certusone/wormhole-sdk";
+import {
+  CHAIN_ID_SOLANA,
+  CHAIN_ID_ETH,
+  hexToNativeString,
+} from "@certusone/wormhole-sdk";
 import { makeStyles, MenuItem, TextField, Typography } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { useCallback, useMemo } from "react";
@@ -19,7 +23,6 @@ import {
   UNREGISTERED_ERROR_MESSAGE,
 } from "../../store/selectors";
 import { incrementStep, setTargetChain } from "../../store/transferSlice";
-import { hexToNativeString } from "../../utils/array";
 import { CHAINS, CHAINS_BY_ID } from "../../utils/consts";
 import ButtonWithLoader from "../ButtonWithLoader";
 import KeyAndBalance from "../KeyAndBalance";

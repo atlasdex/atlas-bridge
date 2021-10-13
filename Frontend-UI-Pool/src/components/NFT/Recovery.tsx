@@ -6,8 +6,12 @@ import {
   CHAIN_ID_SOLANA,
   getEmitterAddressEth,
   getEmitterAddressSolana,
+  hexToNativeString,
+  hexToUint8Array,
+  parseNFTPayload,
   parseSequenceFromLogEth,
   parseSequenceFromLogSolana,
+  uint8ArrayToHex,
 } from "@certusone/wormhole-sdk";
 import {
   Box,
@@ -28,7 +32,7 @@ import {
 import { Restore } from "@material-ui/icons";
 import { Alert } from "@material-ui/lab";
 import { Connection } from "@solana/web3.js";
-import { BigNumber, ethers } from "ethers";
+import { ethers } from "ethers";
 import { useSnackbar } from "notistack";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,11 +42,7 @@ import {
   selectNFTSignedVAAHex,
   selectNFTSourceChain,
 } from "../../store/selectors";
-import {
-  hexToNativeString,
-  hexToUint8Array,
-  uint8ArrayToHex,
-} from "../../utils/array";
+
 import {
   CHAINS,
   ETH_BRIDGE_ADDRESS,
@@ -52,7 +52,6 @@ import {
   WORMHOLE_RPC_HOSTS,
 } from "../../utils/consts";
 import { getSignedVAAWithRetry } from "../../utils/getSignedVAAWithRetry";
-import { METADATA_REPLACE } from "../../utils/metaplex";
 import parseError from "../../utils/parseError";
 import KeyAndBalance from "../KeyAndBalance";
 
@@ -122,38 +121,6 @@ async function solana(tx: string, enqueueSnackbar: any) {
 //     131 [u8;len] uri
 //     ?   [u8; 32] recipient
 //     ?   u16      recipient_chain
-
-// TODO: move to wasm / sdk, share with solana
-export const parsePayload = (arr: Buffer) => {
-  const originAddress = arr.slice(1, 1 + 32).toString("hex");
-  const originChain = arr.readUInt16BE(33) as ChainId;
-  const symbol = Buffer.from(arr.slice(35, 35 + 32))
-    .toString("utf8")
-    .replace(METADATA_REPLACE, "");
-  const name = Buffer.from(arr.slice(67, 67 + 32))
-    .toString("utf8")
-    .replace(METADATA_REPLACE, "");
-  const tokenId = BigNumber.from(arr.slice(99, 99 + 32));
-  const uri_len = arr.readUInt8(131);
-  const uri = Buffer.from(arr.slice(132, 132 + uri_len))
-    .toString("utf8")
-    .replace(METADATA_REPLACE, "");
-  const target_offset = 132 + uri_len;
-  const targetAddress = arr
-    .slice(target_offset, target_offset + 32)
-    .toString("hex");
-  const targetChain = arr.readUInt16BE(target_offset + 32) as ChainId;
-  return {
-    originAddress,
-    originChain,
-    symbol,
-    name,
-    tokenId,
-    uri,
-    targetAddress,
-    targetChain,
-  };
-};
 
 function RecoveryDialogContent({
   onClose,
@@ -267,7 +234,9 @@ function RecoveryDialogContent({
   const parsedPayload = useMemo(
     () =>
       recoveryParsedVAA?.payload
-        ? parsePayload(Buffer.from(new Uint8Array(recoveryParsedVAA.payload)))
+      ? parseNFTPayload(
+        Buffer.from(new Uint8Array(recoveryParsedVAA.payload))
+      )
         : null,
     [recoveryParsedVAA]
   );

@@ -11,6 +11,7 @@ import {
   parseSequenceFromLogEth,
   parseSequenceFromLogSolana,
   parseSequenceFromLogTerra,
+  uint8ArrayToHex,
 } from "@certusone/wormhole-sdk";
 import React from 'react'
 import { WalletContextState } from "@solana/wallet-adapter-react";
@@ -37,7 +38,6 @@ import {
   selectAttestSourceAsset,
   selectAttestSourceChain,
 } from "../store/selectors";
-import { uint8ArrayToHex } from "../utils/array";
 import {
   ETH_BRIDGE_ADDRESS,
   ETH_TOKEN_BRIDGE_ADDRESS,
