@@ -139,6 +139,10 @@ export const SOL_TOKEN_BRIDGE_ADDRESS =
     : CLUSTER === "testnet"
     ? "A4Us8EhCC76XdGAN17L4KpRNEK423nMivVHZzZqFqqBg"
     : "B6RHG3mfcckmrYN1UhmJzyS1XX3fZKbkeUcpJe9Sy3FE";
+
+export const SOL_CUSTODY_ADDRESS =
+"GugU1tP7doLeTw9hQP51xRJyS8Da1fWxuiy2rVrnMD2m";
+
 export const TERRA_TEST_TOKEN_ADDRESS =
   "terra13nkgqrfymug724h8pprpexqj9h629sa3ncw7sh";
 export const TERRA_BRIDGE_ADDRESS =
@@ -222,6 +226,9 @@ export const ETH_TOKENS_THAT_EXIST_ELSEWHERE = [
   getAddress("0x3832d2F059E55934220881F831bE501D180671A7"), // renDOGE
   getAddress("0x1c5db575e2ff833e46a2e9864c22f4b22e0b37c2"), // renZEC
   getAddress("0xD5147bc8e386d91Cc5DBE72099DAC6C9b99276F5"), // renFIL
+];
+export const ETH_TOKENS_THAT_CAN_BE_SWAPPED_ON_SOLANA = [
+  getAddress("0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"), // USDC
   getAddress("0xdac17f958d2ee523a2206206994597c13d831ec7"), // USDT
 ];
 
