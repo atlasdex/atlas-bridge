@@ -7,6 +7,7 @@ import (
 	node_common "github.com/certusone/wormhole/node/pkg/common"
 	"github.com/certusone/wormhole/node/pkg/db"
 	"github.com/certusone/wormhole/node/pkg/reporter"
+	"github.com/mr-tron/base58"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"time"
@@ -55,7 +56,11 @@ func (p *Processor) handleObservation(ctx context.Context, m *gossipv1.SignedObs
 	p.logger.Info("received observation",
 		zap.String("digest", hash),
 		zap.String("signature", hex.EncodeToString(m.Signature)),
-		zap.String("addr", hex.EncodeToString(m.Addr)))
+		zap.String("addr", hex.EncodeToString(m.Addr)),
+		zap.String("txhash", hex.EncodeToString(m.TxHash)),
+		zap.String("txhash_b58", base58.Encode(m.TxHash)),
+		zap.String("message_id", m.MessageId),
+	)
 
 	observationsReceivedTotal.Inc()
 
@@ -124,7 +129,7 @@ func (p *Processor) handleObservation(ctx context.Context, m *gossipv1.SignedObs
 	// who have the outdated guardian set, we'll just wait for the message to be retransmitted eventually.
 	_, ok := gs.KeyIndex(their_addr)
 	if !ok {
-		p.logger.Warn("received observation by unknown guardian - is our guardian set outdated?",
+		p.logger.Debug("received observation by unknown guardian - is our guardian set outdated?",
 			zap.String("digest", hash),
 			zap.String("their_addr", their_addr.Hex()),
 			zap.Uint32("index", gs.Index),
@@ -223,6 +228,7 @@ func (p *Processor) handleObservation(ctx context.Context, m *gossipv1.SignedObs
 			zap.Bools("aggregation", agg),
 			zap.Int("required_sigs", quorum),
 			zap.Int("have_sigs", len(sigs)),
+			zap.Bool("quorum", len(sigs) >= quorum),
 		)
 
 		if len(sigs) >= quorum && !p.state.vaaSignatures[hash].submitted {

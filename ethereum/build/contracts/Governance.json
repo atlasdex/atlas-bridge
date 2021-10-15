@@ -874,13 +874,13 @@
     "absolutePath": "/home/atlas-bridge/ethereum/contracts/Governance.sol",
     "exportedSymbols": {
       "Address": [
-        11552
+        12326
       ],
       "BytesLib": [
-        6076
+        6279
       ],
       "ERC1967Upgrade": [
-        10648
+        10851
       ],
       "Events": [
         1905
@@ -895,7 +895,7 @@
         1035
       ],
       "IBeacon": [
-        10792
+        10995
       ],
       "Messages": [
         1635
@@ -910,7 +910,7 @@
         1933
       ],
       "StorageSlot": [
-        11634
+        12408
       ],
       "Structs": [
         1987
@@ -986,7 +986,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 584,
-        "sourceUnit": 10649,
+        "sourceUnit": 10852,
         "src": "199:66:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1035,7 +1035,7 @@
               "id": 129,
               "name": "ERC1967Upgrade",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 10648,
+              "referencedDeclaration": 10851,
               "src": "337:14:1"
             },
             "id": 130,
@@ -1049,7 +1049,7 @@
         "id": 583,
         "linearizedBaseContracts": [
           583,
-          10648,
+          10851,
           1822,
           1635,
           115,
@@ -5547,7 +5547,7 @@
                       "name": "_getImplementation",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 10330,
+                      "referencedDeclaration": 10533,
                       "src": "3349:18:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
@@ -5599,7 +5599,7 @@
                       "name": "_upgradeTo",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 10369,
+                      "referencedDeclaration": 10572,
                       "src": "3380:10:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
@@ -7034,13 +7034,13 @@
     "absolutePath": "/home/atlas-bridge/ethereum/contracts/Governance.sol",
     "exportedSymbols": {
       "Address": [
-        11552
+        12326
       ],
       "BytesLib": [
-        6076
+        6279
       ],
       "ERC1967Upgrade": [
-        10648
+        10851
       ],
       "Events": [
         1905
@@ -7055,7 +7055,7 @@
         1035
       ],
       "IBeacon": [
-        10792
+        10995
       ],
       "Messages": [
         1635
@@ -7070,7 +7070,7 @@
         1933
       ],
       "StorageSlot": [
-        11634
+        12408
       ],
       "Structs": [
         1987
@@ -7146,7 +7146,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 584,
-        "sourceUnit": 10649,
+        "sourceUnit": 10852,
         "src": "199:66:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -7195,7 +7195,7 @@
               "id": 129,
               "name": "ERC1967Upgrade",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 10648,
+              "referencedDeclaration": 10851,
               "src": "337:14:1"
             },
             "id": 130,
@@ -7209,7 +7209,7 @@
         "id": 583,
         "linearizedBaseContracts": [
           583,
-          10648,
+          10851,
           1822,
           1635,
           115,
@@ -11707,7 +11707,7 @@
                       "name": "_getImplementation",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 10330,
+                      "referencedDeclaration": 10533,
                       "src": "3349:18:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
@@ -11759,7 +11759,7 @@
                       "name": "_upgradeTo",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 10369,
+                      "referencedDeclaration": 10572,
                       "src": "3380:10:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
@@ -13196,7 +13196,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-09-27T21:46:18.871Z",
+  "updatedAt": "2021-10-15T20:01:14.646Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -36,7 +36,6 @@ use solana_client::{
     rpc_config::RpcSendTransactionConfig,
 };
 use solana_program::account_info::AccountInfo;
-
 use solana_sdk::{
     commitment_config::{
         CommitmentConfig,
@@ -350,6 +349,7 @@ fn main() {
 
             Ok(None)
         }
+
         _ => unreachable!(),
     }
     .and_then(|transaction| {

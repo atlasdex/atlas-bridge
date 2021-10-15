@@ -1,15 +1,14 @@
+import React from 'react'
 import {
   ChainId,
-  CHAIN_ID_ETH,
   CHAIN_ID_SOLANA,
   CHAIN_ID_TERRA,
   getOriginalAssetEth,
   getOriginalAssetSol,
   getOriginalAssetTerra,
-  WormholeWrappedInfo,
   uint8ArrayToHex,
+  WormholeWrappedInfo,
 } from "@certusone/wormhole-sdk";
-import React from 'react'
 import {
   getOriginalAssetEth as getOriginalAssetEthNFT,
   getOriginalAssetSol as getOriginalAssetSolNFT,
@@ -19,6 +18,7 @@ import { LCDClient } from "@terra-money/terra.js";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEthereumProvider } from "../contexts/EthereumProviderContext";
+import { setSourceWormholeWrappedInfo as setNFTSourceWormholeWrappedInfo } from "../store/nftSlice";
 import {
   selectNFTSourceAsset,
   selectNFTSourceChain,
@@ -26,16 +26,16 @@ import {
   selectTransferSourceAsset,
   selectTransferSourceChain,
 } from "../store/selectors";
-import { setSourceWormholeWrappedInfo as setNFTSourceWormholeWrappedInfo } from "../store/nftSlice";
 import { setSourceWormholeWrappedInfo as setTransferSourceWormholeWrappedInfo } from "../store/transferSlice";
 import {
-  ETH_NFT_BRIDGE_ADDRESS,
-  ETH_TOKEN_BRIDGE_ADDRESS,
+  getNFTBridgeAddressForChain,
+  getTokenBridgeAddressForChain,
   SOLANA_HOST,
   SOL_NFT_BRIDGE_ADDRESS,
   SOL_TOKEN_BRIDGE_ADDRESS,
   TERRA_HOST,
 } from "../utils/consts";
+import { isEVMChain } from "../utils/ethereum";
 
 export interface StateSafeWormholeWrappedInfo {
   isWrapped: boolean;
@@ -73,28 +73,23 @@ function useCheckIfWormholeWrapped(nft?: boolean) {
   useEffect(() => {
     // TODO: loading state, error state
     dispatch(setSourceWormholeWrappedInfo(undefined));
-
-    console.log('useCheckIfWormhole sourceAsset', sourceAsset)
-    console.log('useCheckIfWormhole provider', provider)
-    console.log('useCheckIfWormhole sourceChain', sourceChain)
-    console.log('useCheckIfWormhole CHAIN_ID_ETH', CHAIN_ID_ETH)
-    console.log('useCheckIfWormhole CHAIN_ID_SOLANA', CHAIN_ID_SOLANA)
-
     let cancelled = false;
     (async () => {
-      if (sourceChain === CHAIN_ID_ETH && provider && sourceAsset) {
+      if (isEVMChain(sourceChain) && provider && sourceAsset) {
         const wrappedInfo = makeStateSafe(
           await (nft
             ? getOriginalAssetEthNFT(
-                ETH_NFT_BRIDGE_ADDRESS,
+                getNFTBridgeAddressForChain(sourceChain),
                 provider,
                 sourceAsset,
-                tokenId
+                tokenId,
+                sourceChain
               )
             : getOriginalAssetEth(
-                ETH_TOKEN_BRIDGE_ADDRESS,
+                getTokenBridgeAddressForChain(sourceChain),
                 provider,
-                sourceAsset
+                sourceAsset,
+                sourceChain
               ))
         );
         if (!cancelled) {
@@ -103,19 +98,7 @@ function useCheckIfWormholeWrapped(nft?: boolean) {
       }
       if (sourceChain === CHAIN_ID_SOLANA && sourceAsset) {
         try {
-          console.log('targetChain is CHAIN_ID_SOLANA')
-
           const connection = new Connection(SOLANA_HOST, "confirmed");
-
-          console.log('SOLANA_HOST', SOLANA_HOST)
-          console.log("Getting origin asset", connection)
-
-          console.log("Origin Asset from SOL", getOriginalAssetSol(
-            connection,
-            SOL_TOKEN_BRIDGE_ADDRESS,
-            sourceAsset
-          ))
-
           const wrappedInfo = makeStateSafe(
             await (nft
               ? getOriginalAssetSolNFT(
@@ -129,10 +112,7 @@ function useCheckIfWormholeWrapped(nft?: boolean) {
                   sourceAsset
                 ))
           );
-          console.log('wrapped info = ', wrappedInfo)
-          console.log('cancelled', cancelled)
           if (!cancelled) {
-            console.log('calling setSourceWormholeWrappedInfo')
             dispatch(setSourceWormholeWrappedInfo(wrappedInfo));
           }
         } catch (e) {}

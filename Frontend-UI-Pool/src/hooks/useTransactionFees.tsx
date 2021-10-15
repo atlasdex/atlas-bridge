@@ -1,10 +1,10 @@
+import React from 'react'
 import {
   ChainId,
   CHAIN_ID_ETH,
   CHAIN_ID_SOLANA,
   CHAIN_ID_TERRA,
 } from "@certusone/wormhole-sdk";
-import React from 'react'
 import { Provider } from "@certusone/wormhole-sdk/node_modules/@ethersproject/abstract-provider";
 import { formatUnits } from "@ethersproject/units";
 import { Typography } from "@material-ui/core";
@@ -12,7 +12,7 @@ import { LocalGasStation } from "@material-ui/icons";
 import { Connection, PublicKey } from "@solana/web3.js";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useEthereumProvider } from "../contexts/EthereumProviderContext";
-import { SOLANA_HOST } from "../utils/consts";
+import { getDefaultNativeCurrencySymbol, SOLANA_HOST } from "../utils/consts";
 import { getMultipleAccountsRPC } from "../utils/solana";
 import useIsWalletReady from "./useIsWalletReady";
 
@@ -143,9 +143,9 @@ export default function useTransactionFees(chainId: ChainId) {
   return results;
 }
 
-export function useEthereumGasPrice(contract: MethodType) {
+export function useEthereumGasPrice(contract: MethodType, chainId: ChainId) {
   const { provider } = useEthereumProvider();
-  const { isReady } = useIsWalletReady(CHAIN_ID_ETH);
+  const { isReady } = useIsWalletReady(chainId);
   const [estimateResults, setEstimateResults] = useState<GasEstimate | null>(
     null
   );
@@ -169,10 +169,12 @@ export function useEthereumGasPrice(contract: MethodType) {
 
 export function EthGasEstimateSummary({
   methodType,
+  chainId,
 }: {
   methodType: MethodType;
+  chainId: ChainId;
 }) {
-  const estimate = useEthereumGasPrice(methodType);
+  const estimate = useEthereumGasPrice(methodType, chainId);
   if (!estimate) {
     return null;
   }
@@ -193,7 +195,8 @@ export function EthGasEstimateSummary({
       </div>
       <div>&nbsp;&nbsp;&nbsp;</div>
       <div>
-        Est. Fees: {estimate.lowEstimate} - {estimate.highEstimate} ETH
+        Est. Fees: {estimate.lowEstimate} - {estimate.highEstimate}{" "}
+        {getDefaultNativeCurrencySymbol(chainId)}
       </div>
     </Typography>
   );

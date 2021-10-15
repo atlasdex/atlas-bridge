@@ -29,7 +29,7 @@
     "@solana/wallet-adapter-wallets": "^0.9.0",
     "@solana/wallet-base": "^0.0.1",
     "@solana/web3.js": "^1.24.1",
-    "@terra-money/wallet-provider": "^1.4.0-alpha.1",
+    "@terra-money/wallet-provider": "^2.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",

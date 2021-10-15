@@ -8,9 +8,8 @@ import (
 	"time"
 )
 
-var recoveryDate = time.Date(2021, time.October, 3, 11, 0, 0, 0, time.UTC)
+var recoveryDate = time.Date(2021, time.October, 5, 11, 0, 0, 0, time.UTC)
 
-// List of VAA accounts to manually re-observe on recoveryDate.
 const recoveryConfigUrl = `https://raw.githubusercontent.com/certusone/wormhole/dev.v2/node/pkg/solana/recovery.cfg`
 
 func fetchRecoveryConfig() ([]string, error) {

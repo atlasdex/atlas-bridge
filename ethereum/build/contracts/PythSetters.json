@@ -7,35 +7,35 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "115:1233:48:-:0;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "115:1233:48:-:0;;;;;",
+  "sourceMap": "115:1233:49:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "115:1233:49:-:0;;;;;",
   "source": "// contracts/Setters.sol\n// SPDX-License-Identifier: Apache 2\n\npragma solidity ^0.8.0;\n\nimport \"./PythState.sol\";\n\ncontract PythSetters is PythState {\n    function setInitialized(address implementatiom) internal {\n        _state.initializedImplementations[implementatiom] = true;\n    }\n\n    function setGovernanceActionConsumed(bytes32 hash) internal {\n        _state.consumedGovernanceActions[hash] = true;\n    }\n\n    function setChainId(uint16 chainId) internal {\n        _state.provider.chainId = chainId;\n    }\n\n    function setGovernanceChainId(uint16 chainId) internal {\n        _state.provider.governanceChainId = chainId;\n    }\n\n    function setGovernanceContract(bytes32 governanceContract) internal {\n        _state.provider.governanceContract = governanceContract;\n    }\n\n    function setPyth2WormholeChainId(uint16 chainId) internal {\n        _state.provider.pyth2WormholeChainId = chainId;\n    }\n\n    function setPyth2WormholeContract(bytes32 contractAddr) internal {\n        _state.provider.pyth2WormholeContract = contractAddr;\n    }\n\n    function setWormhole(address wh) internal {\n        _state.wormhole = payable(wh);\n    }\n\n    function setLatestAttestation(bytes32 product, uint8 priceType, PythStructs.PriceAttestation memory attestation) internal {\n        _state.latestAttestations[product][priceType] = attestation;\n    }\n}",
   "sourcePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythSetters.sol",
   "ast": {
     "absolutePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythSetters.sol",
     "exportedSymbols": {
       "BytesLib": [
-        6076
+        6279
       ],
       "PythSetters": [
-        9972
+        10175
       ],
       "PythState": [
-        10068
+        10271
       ],
       "PythStorage": [
-        10064
+        10267
       ],
       "PythStructs": [
-        10122
+        10325
       ]
     },
-    "id": 9973,
+    "id": 10176,
     "license": "Apache 2",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9834,
+        "id": 10037,
         "literals": [
           "solidity",
           "^",
@@ -43,17 +43,17 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "63:23:48"
+        "src": "63:23:49"
       },
       {
         "absolutePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythState.sol",
         "file": "./PythState.sol",
-        "id": 9835,
+        "id": 10038,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 9973,
-        "sourceUnit": 10069,
-        "src": "88:25:48",
+        "scope": 10176,
+        "sourceUnit": 10272,
+        "src": "88:25:49",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -62,38 +62,38 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 9836,
+              "id": 10039,
               "name": "PythState",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 10068,
-              "src": "139:9:48"
+              "referencedDeclaration": 10271,
+              "src": "139:9:49"
             },
-            "id": 9837,
+            "id": 10040,
             "nodeType": "InheritanceSpecifier",
-            "src": "139:9:48"
+            "src": "139:9:49"
           }
         ],
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 9972,
+        "id": 10175,
         "linearizedBaseContracts": [
-          9972,
-          10068
+          10175,
+          10271
         ],
         "name": "PythSetters",
-        "nameLocation": "124:11:48",
+        "nameLocation": "124:11:49",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 9850,
+              "id": 10053,
               "nodeType": "Block",
-              "src": "212:73:48",
+              "src": "212:73:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9848,
+                    "id": 10051,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -101,39 +101,39 @@
                     "leftHandSide": {
                       "baseExpression": {
                         "expression": {
-                          "id": 9842,
+                          "id": 10045,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "222:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "222:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9845,
+                        "id": 10048,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "initializedImplementations",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10055,
-                        "src": "222:33:48",
+                        "referencedDeclaration": 10258,
+                        "src": "222:33:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 9846,
+                      "id": 10049,
                       "indexExpression": {
-                        "id": 9844,
+                        "id": 10047,
                         "name": "implementatiom",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9839,
-                        "src": "256:14:48",
+                        "referencedDeclaration": 10042,
+                        "src": "256:14:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -144,7 +144,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "222:49:48",
+                      "src": "222:49:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -154,52 +154,52 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "74727565",
-                      "id": 9847,
+                      "id": 10050,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "274:4:48",
+                      "src": "274:4:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
                       "value": "true"
                     },
-                    "src": "222:56:48",
+                    "src": "222:56:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 9849,
+                  "id": 10052,
                   "nodeType": "ExpressionStatement",
-                  "src": "222:56:48"
+                  "src": "222:56:49"
                 }
               ]
             },
-            "id": 9851,
+            "id": 10054,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setInitialized",
-            "nameLocation": "164:14:48",
+            "nameLocation": "164:14:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9840,
+              "id": 10043,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9839,
+                  "id": 10042,
                   "mutability": "mutable",
                   "name": "implementatiom",
-                  "nameLocation": "187:14:48",
+                  "nameLocation": "187:14:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9851,
-                  "src": "179:22:48",
+                  "scope": 10054,
+                  "src": "179:22:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -207,10 +207,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9838,
+                    "id": 10041,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "179:7:48",
+                    "src": "179:7:49",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -220,29 +220,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "178:24:48"
+              "src": "178:24:49"
             },
             "returnParameters": {
-              "id": 9841,
+              "id": 10044,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "212:0:48"
+              "src": "212:0:49"
             },
-            "scope": 9972,
-            "src": "155:130:48",
+            "scope": 10175,
+            "src": "155:130:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9864,
+              "id": 10067,
               "nodeType": "Block",
-              "src": "351:62:48",
+              "src": "351:62:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9862,
+                    "id": 10065,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -250,39 +250,39 @@
                     "leftHandSide": {
                       "baseExpression": {
                         "expression": {
-                          "id": 9856,
+                          "id": 10059,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "361:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "361:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9859,
+                        "id": 10062,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "consumedGovernanceActions",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10051,
-                        "src": "361:32:48",
+                        "referencedDeclaration": 10254,
+                        "src": "361:32:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
                           "typeString": "mapping(bytes32 => bool)"
                         }
                       },
-                      "id": 9860,
+                      "id": 10063,
                       "indexExpression": {
-                        "id": 9858,
+                        "id": 10061,
                         "name": "hash",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9853,
-                        "src": "394:4:48",
+                        "referencedDeclaration": 10056,
+                        "src": "394:4:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -293,7 +293,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "361:38:48",
+                      "src": "361:38:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -303,52 +303,52 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "74727565",
-                      "id": 9861,
+                      "id": 10064,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "402:4:48",
+                      "src": "402:4:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
                       "value": "true"
                     },
-                    "src": "361:45:48",
+                    "src": "361:45:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 9863,
+                  "id": 10066,
                   "nodeType": "ExpressionStatement",
-                  "src": "361:45:48"
+                  "src": "361:45:49"
                 }
               ]
             },
-            "id": 9865,
+            "id": 10068,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setGovernanceActionConsumed",
-            "nameLocation": "300:27:48",
+            "nameLocation": "300:27:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9854,
+              "id": 10057,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9853,
+                  "id": 10056,
                   "mutability": "mutable",
                   "name": "hash",
-                  "nameLocation": "336:4:48",
+                  "nameLocation": "336:4:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9865,
-                  "src": "328:12:48",
+                  "scope": 10068,
+                  "src": "328:12:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -356,10 +356,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9852,
+                    "id": 10055,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "328:7:48",
+                    "src": "328:7:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -368,29 +368,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "327:14:48"
+              "src": "327:14:49"
             },
             "returnParameters": {
-              "id": 9855,
+              "id": 10058,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "351:0:48"
+              "src": "351:0:49"
             },
-            "scope": 9972,
-            "src": "291:122:48",
+            "scope": 10175,
+            "src": "291:122:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9878,
+              "id": 10081,
               "nodeType": "Block",
-              "src": "464:50:48",
+              "src": "464:50:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9876,
+                    "id": 10079,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -398,40 +398,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9870,
+                          "id": 10073,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "474:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "474:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9873,
+                        "id": 10076,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "474:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "474:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9874,
+                      "id": 10077,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "chainId",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10033,
-                      "src": "474:23:48",
+                      "referencedDeclaration": 10236,
+                      "src": "474:23:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
@@ -440,49 +440,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9875,
+                      "id": 10078,
                       "name": "chainId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9867,
-                      "src": "500:7:48",
+                      "referencedDeclaration": 10070,
+                      "src": "500:7:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
                       }
                     },
-                    "src": "474:33:48",
+                    "src": "474:33:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "id": 9877,
+                  "id": 10080,
                   "nodeType": "ExpressionStatement",
-                  "src": "474:33:48"
+                  "src": "474:33:49"
                 }
               ]
             },
-            "id": 9879,
+            "id": 10082,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setChainId",
-            "nameLocation": "428:10:48",
+            "nameLocation": "428:10:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9868,
+              "id": 10071,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9867,
+                  "id": 10070,
                   "mutability": "mutable",
                   "name": "chainId",
-                  "nameLocation": "446:7:48",
+                  "nameLocation": "446:7:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9879,
-                  "src": "439:14:48",
+                  "scope": 10082,
+                  "src": "439:14:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -490,10 +490,10 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 9866,
+                    "id": 10069,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
-                    "src": "439:6:48",
+                    "src": "439:6:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
@@ -502,29 +502,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "438:16:48"
+              "src": "438:16:49"
             },
             "returnParameters": {
-              "id": 9869,
+              "id": 10072,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "464:0:48"
+              "src": "464:0:49"
             },
-            "scope": 9972,
-            "src": "419:95:48",
+            "scope": 10175,
+            "src": "419:95:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9892,
+              "id": 10095,
               "nodeType": "Block",
-              "src": "575:60:48",
+              "src": "575:60:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9890,
+                    "id": 10093,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -532,40 +532,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9884,
+                          "id": 10087,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "585:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "585:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9887,
+                        "id": 10090,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "585:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "585:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9888,
+                      "id": 10091,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "governanceChainId",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10035,
-                      "src": "585:33:48",
+                      "referencedDeclaration": 10238,
+                      "src": "585:33:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
@@ -574,49 +574,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9889,
+                      "id": 10092,
                       "name": "chainId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9881,
-                      "src": "621:7:48",
+                      "referencedDeclaration": 10084,
+                      "src": "621:7:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
                       }
                     },
-                    "src": "585:43:48",
+                    "src": "585:43:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "id": 9891,
+                  "id": 10094,
                   "nodeType": "ExpressionStatement",
-                  "src": "585:43:48"
+                  "src": "585:43:49"
                 }
               ]
             },
-            "id": 9893,
+            "id": 10096,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setGovernanceChainId",
-            "nameLocation": "529:20:48",
+            "nameLocation": "529:20:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9882,
+              "id": 10085,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9881,
+                  "id": 10084,
                   "mutability": "mutable",
                   "name": "chainId",
-                  "nameLocation": "557:7:48",
+                  "nameLocation": "557:7:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9893,
-                  "src": "550:14:48",
+                  "scope": 10096,
+                  "src": "550:14:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -624,10 +624,10 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 9880,
+                    "id": 10083,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
-                    "src": "550:6:48",
+                    "src": "550:6:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
@@ -636,29 +636,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "549:16:48"
+              "src": "549:16:49"
             },
             "returnParameters": {
-              "id": 9883,
+              "id": 10086,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "575:0:48"
+              "src": "575:0:49"
             },
-            "scope": 9972,
-            "src": "520:115:48",
+            "scope": 10175,
+            "src": "520:115:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9906,
+              "id": 10109,
               "nodeType": "Block",
-              "src": "709:72:48",
+              "src": "709:72:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9904,
+                    "id": 10107,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -666,40 +666,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9898,
+                          "id": 10101,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "719:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "719:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9901,
+                        "id": 10104,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "719:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "719:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9902,
+                      "id": 10105,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "governanceContract",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10037,
-                      "src": "719:34:48",
+                      "referencedDeclaration": 10240,
+                      "src": "719:34:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
@@ -708,49 +708,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9903,
+                      "id": 10106,
                       "name": "governanceContract",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9895,
-                      "src": "756:18:48",
+                      "referencedDeclaration": 10098,
+                      "src": "756:18:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "src": "719:55:48",
+                    "src": "719:55:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "id": 9905,
+                  "id": 10108,
                   "nodeType": "ExpressionStatement",
-                  "src": "719:55:48"
+                  "src": "719:55:49"
                 }
               ]
             },
-            "id": 9907,
+            "id": 10110,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setGovernanceContract",
-            "nameLocation": "650:21:48",
+            "nameLocation": "650:21:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9896,
+              "id": 10099,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9895,
+                  "id": 10098,
                   "mutability": "mutable",
                   "name": "governanceContract",
-                  "nameLocation": "680:18:48",
+                  "nameLocation": "680:18:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9907,
-                  "src": "672:26:48",
+                  "scope": 10110,
+                  "src": "672:26:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -758,10 +758,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9894,
+                    "id": 10097,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "672:7:48",
+                    "src": "672:7:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -770,29 +770,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "671:28:48"
+              "src": "671:28:49"
             },
             "returnParameters": {
-              "id": 9897,
+              "id": 10100,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "709:0:48"
+              "src": "709:0:49"
             },
-            "scope": 9972,
-            "src": "641:140:48",
+            "scope": 10175,
+            "src": "641:140:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9920,
+              "id": 10123,
               "nodeType": "Block",
-              "src": "845:63:48",
+              "src": "845:63:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9918,
+                    "id": 10121,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -800,40 +800,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9912,
+                          "id": 10115,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "855:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "855:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9915,
+                        "id": 10118,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "855:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "855:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9916,
+                      "id": 10119,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "pyth2WormholeChainId",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10039,
-                      "src": "855:36:48",
+                      "referencedDeclaration": 10242,
+                      "src": "855:36:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
@@ -842,49 +842,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9917,
+                      "id": 10120,
                       "name": "chainId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9909,
-                      "src": "894:7:48",
+                      "referencedDeclaration": 10112,
+                      "src": "894:7:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
                       }
                     },
-                    "src": "855:46:48",
+                    "src": "855:46:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "id": 9919,
+                  "id": 10122,
                   "nodeType": "ExpressionStatement",
-                  "src": "855:46:48"
+                  "src": "855:46:49"
                 }
               ]
             },
-            "id": 9921,
+            "id": 10124,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setPyth2WormholeChainId",
-            "nameLocation": "796:23:48",
+            "nameLocation": "796:23:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9910,
+              "id": 10113,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9909,
+                  "id": 10112,
                   "mutability": "mutable",
                   "name": "chainId",
-                  "nameLocation": "827:7:48",
+                  "nameLocation": "827:7:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9921,
-                  "src": "820:14:48",
+                  "scope": 10124,
+                  "src": "820:14:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -892,10 +892,10 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 9908,
+                    "id": 10111,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
-                    "src": "820:6:48",
+                    "src": "820:6:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
@@ -904,29 +904,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "819:16:48"
+              "src": "819:16:49"
             },
             "returnParameters": {
-              "id": 9911,
+              "id": 10114,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "845:0:48"
+              "src": "845:0:49"
             },
-            "scope": 9972,
-            "src": "787:121:48",
+            "scope": 10175,
+            "src": "787:121:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9934,
+              "id": 10137,
               "nodeType": "Block",
-              "src": "979:69:48",
+              "src": "979:69:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9932,
+                    "id": 10135,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -934,40 +934,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9926,
+                          "id": 10129,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "989:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "989:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9929,
+                        "id": 10132,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "989:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "989:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9930,
+                      "id": 10133,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "pyth2WormholeContract",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10041,
-                      "src": "989:37:48",
+                      "referencedDeclaration": 10244,
+                      "src": "989:37:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
@@ -976,49 +976,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9931,
+                      "id": 10134,
                       "name": "contractAddr",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9923,
-                      "src": "1029:12:48",
+                      "referencedDeclaration": 10126,
+                      "src": "1029:12:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "src": "989:52:48",
+                    "src": "989:52:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "id": 9933,
+                  "id": 10136,
                   "nodeType": "ExpressionStatement",
-                  "src": "989:52:48"
+                  "src": "989:52:49"
                 }
               ]
             },
-            "id": 9935,
+            "id": 10138,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setPyth2WormholeContract",
-            "nameLocation": "923:24:48",
+            "nameLocation": "923:24:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9924,
+              "id": 10127,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9923,
+                  "id": 10126,
                   "mutability": "mutable",
                   "name": "contractAddr",
-                  "nameLocation": "956:12:48",
+                  "nameLocation": "956:12:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9935,
-                  "src": "948:20:48",
+                  "scope": 10138,
+                  "src": "948:20:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1026,10 +1026,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9922,
+                    "id": 10125,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "948:7:48",
+                    "src": "948:7:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -1038,55 +1038,55 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "947:22:48"
+              "src": "947:22:49"
             },
             "returnParameters": {
-              "id": 9925,
+              "id": 10128,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "979:0:48"
+              "src": "979:0:49"
             },
-            "scope": 9972,
-            "src": "914:134:48",
+            "scope": 10175,
+            "src": "914:134:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9949,
+              "id": 10152,
               "nodeType": "Block",
-              "src": "1096:46:48",
+              "src": "1096:46:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9947,
+                    "id": 10150,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 9940,
+                        "id": 10143,
                         "name": "_state",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 10067,
-                        "src": "1106:6:48",
+                        "referencedDeclaration": 10270,
+                        "src": "1106:6:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_State_$10063_storage",
+                          "typeIdentifier": "t_struct$_State_$10266_storage",
                           "typeString": "struct PythStorage.State storage ref"
                         }
                       },
-                      "id": 9942,
+                      "id": 10145,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "wormhole",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10044,
-                      "src": "1106:15:48",
+                      "referencedDeclaration": 10247,
+                      "src": "1106:15:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
@@ -1097,12 +1097,12 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 9945,
+                          "id": 10148,
                           "name": "wh",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9937,
-                          "src": "1132:2:48",
+                          "referencedDeclaration": 10140,
+                          "src": "1132:2:49",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -1116,27 +1116,27 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 9944,
+                        "id": 10147,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "lValueRequested": false,
                         "nodeType": "ElementaryTypeNameExpression",
-                        "src": "1124:8:48",
+                        "src": "1124:8:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_type$_t_address_payable_$",
                           "typeString": "type(address payable)"
                         },
                         "typeName": {
-                          "id": 9943,
+                          "id": 10146,
                           "name": "address",
                           "nodeType": "ElementaryTypeName",
-                          "src": "1124:8:48",
+                          "src": "1124:8:49",
                           "stateMutability": "payable",
                           "typeDescriptions": {}
                         }
                       },
-                      "id": 9946,
+                      "id": 10149,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1144,45 +1144,45 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1124:11:48",
+                      "src": "1124:11:49",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
                       }
                     },
-                    "src": "1106:29:48",
+                    "src": "1106:29:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     }
                   },
-                  "id": 9948,
+                  "id": 10151,
                   "nodeType": "ExpressionStatement",
-                  "src": "1106:29:48"
+                  "src": "1106:29:49"
                 }
               ]
             },
-            "id": 9950,
+            "id": 10153,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setWormhole",
-            "nameLocation": "1063:11:48",
+            "nameLocation": "1063:11:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9938,
+              "id": 10141,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9937,
+                  "id": 10140,
                   "mutability": "mutable",
                   "name": "wh",
-                  "nameLocation": "1083:2:48",
+                  "nameLocation": "1083:2:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9950,
-                  "src": "1075:10:48",
+                  "scope": 10153,
+                  "src": "1075:10:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1190,10 +1190,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9936,
+                    "id": 10139,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1075:7:48",
+                    "src": "1075:7:49",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1203,29 +1203,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1074:12:48"
+              "src": "1074:12:49"
             },
             "returnParameters": {
-              "id": 9939,
+              "id": 10142,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1096:0:48"
+              "src": "1096:0:49"
             },
-            "scope": 9972,
-            "src": "1054:88:48",
+            "scope": 10175,
+            "src": "1054:88:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9970,
+              "id": 10173,
               "nodeType": "Block",
-              "src": "1270:76:48",
+              "src": "1270:76:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9968,
+                    "id": 10171,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1234,39 +1234,39 @@
                       "baseExpression": {
                         "baseExpression": {
                           "expression": {
-                            "id": 9960,
+                            "id": 10163,
                             "name": "_state",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 10067,
-                            "src": "1280:6:48",
+                            "referencedDeclaration": 10270,
+                            "src": "1280:6:49",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_State_$10063_storage",
+                              "typeIdentifier": "t_struct$_State_$10266_storage",
                               "typeString": "struct PythStorage.State storage ref"
                             }
                           },
-                          "id": 9964,
+                          "id": 10167,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "latestAttestations",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 10062,
-                          "src": "1280:25:48",
+                          "referencedDeclaration": 10265,
+                          "src": "1280:25:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$_$",
+                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10315_storage_$_$",
                             "typeString": "mapping(bytes32 => mapping(uint8 => struct PythStructs.PriceAttestation storage ref))"
                           }
                         },
-                        "id": 9965,
+                        "id": 10168,
                         "indexExpression": {
-                          "id": 9962,
+                          "id": 10165,
                           "name": "product",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9952,
-                          "src": "1306:7:48",
+                          "referencedDeclaration": 10155,
+                          "src": "1306:7:49",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bytes32",
                             "typeString": "bytes32"
@@ -1277,20 +1277,20 @@
                         "isPure": false,
                         "lValueRequested": false,
                         "nodeType": "IndexAccess",
-                        "src": "1280:34:48",
+                        "src": "1280:34:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10315_storage_$",
                           "typeString": "mapping(uint8 => struct PythStructs.PriceAttestation storage ref)"
                         }
                       },
-                      "id": 9966,
+                      "id": 10169,
                       "indexExpression": {
-                        "id": 9963,
+                        "id": 10166,
                         "name": "priceType",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9954,
-                        "src": "1315:9:48",
+                        "referencedDeclaration": 10157,
+                        "src": "1315:9:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint8",
                           "typeString": "uint8"
@@ -1301,58 +1301,58 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1280:45:48",
+                      "src": "1280:45:49",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_PriceAttestation_$10112_storage",
+                        "typeIdentifier": "t_struct$_PriceAttestation_$10315_storage",
                         "typeString": "struct PythStructs.PriceAttestation storage ref"
                       }
                     },
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9967,
+                      "id": 10170,
                       "name": "attestation",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9957,
-                      "src": "1328:11:48",
+                      "referencedDeclaration": 10160,
+                      "src": "1328:11:49",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_PriceAttestation_$10112_memory_ptr",
+                        "typeIdentifier": "t_struct$_PriceAttestation_$10315_memory_ptr",
                         "typeString": "struct PythStructs.PriceAttestation memory"
                       }
                     },
-                    "src": "1280:59:48",
+                    "src": "1280:59:49",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PriceAttestation_$10112_storage",
+                      "typeIdentifier": "t_struct$_PriceAttestation_$10315_storage",
                       "typeString": "struct PythStructs.PriceAttestation storage ref"
                     }
                   },
-                  "id": 9969,
+                  "id": 10172,
                   "nodeType": "ExpressionStatement",
-                  "src": "1280:59:48"
+                  "src": "1280:59:49"
                 }
               ]
             },
-            "id": 9971,
+            "id": 10174,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setLatestAttestation",
-            "nameLocation": "1157:20:48",
+            "nameLocation": "1157:20:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9958,
+              "id": 10161,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9952,
+                  "id": 10155,
                   "mutability": "mutable",
                   "name": "product",
-                  "nameLocation": "1186:7:48",
+                  "nameLocation": "1186:7:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9971,
-                  "src": "1178:15:48",
+                  "scope": 10174,
+                  "src": "1178:15:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1360,10 +1360,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9951,
+                    "id": 10154,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1178:7:48",
+                    "src": "1178:7:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -1373,13 +1373,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9954,
+                  "id": 10157,
                   "mutability": "mutable",
                   "name": "priceType",
-                  "nameLocation": "1201:9:48",
+                  "nameLocation": "1201:9:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9971,
-                  "src": "1195:15:48",
+                  "scope": 10174,
+                  "src": "1195:15:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1387,10 +1387,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 9953,
+                    "id": 10156,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1195:5:48",
+                    "src": "1195:5:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1400,86 +1400,86 @@
                 },
                 {
                   "constant": false,
-                  "id": 9957,
+                  "id": 10160,
                   "mutability": "mutable",
                   "name": "attestation",
-                  "nameLocation": "1248:11:48",
+                  "nameLocation": "1248:11:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9971,
-                  "src": "1212:47:48",
+                  "scope": 10174,
+                  "src": "1212:47:49",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_PriceAttestation_$10112_memory_ptr",
+                    "typeIdentifier": "t_struct$_PriceAttestation_$10315_memory_ptr",
                     "typeString": "struct PythStructs.PriceAttestation"
                   },
                   "typeName": {
-                    "id": 9956,
+                    "id": 10159,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 9955,
+                      "id": 10158,
                       "name": "PythStructs.PriceAttestation",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 10112,
-                      "src": "1212:28:48"
+                      "referencedDeclaration": 10315,
+                      "src": "1212:28:49"
                     },
-                    "referencedDeclaration": 10112,
-                    "src": "1212:28:48",
+                    "referencedDeclaration": 10315,
+                    "src": "1212:28:49",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PriceAttestation_$10112_storage_ptr",
+                      "typeIdentifier": "t_struct$_PriceAttestation_$10315_storage_ptr",
                       "typeString": "struct PythStructs.PriceAttestation"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1177:83:48"
+              "src": "1177:83:49"
             },
             "returnParameters": {
-              "id": 9959,
+              "id": 10162,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1270:0:48"
+              "src": "1270:0:49"
             },
-            "scope": 9972,
-            "src": "1148:198:48",
+            "scope": 10175,
+            "src": "1148:198:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 9973,
-        "src": "115:1233:48",
+        "scope": 10176,
+        "src": "115:1233:49",
         "usedErrors": []
       }
     ],
-    "src": "63:1285:48"
+    "src": "63:1285:49"
   },
   "legacyAST": {
     "absolutePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythSetters.sol",
     "exportedSymbols": {
       "BytesLib": [
-        6076
+        6279
       ],
       "PythSetters": [
-        9972
+        10175
       ],
       "PythState": [
-        10068
+        10271
       ],
       "PythStorage": [
-        10064
+        10267
       ],
       "PythStructs": [
-        10122
+        10325
       ]
     },
-    "id": 9973,
+    "id": 10176,
     "license": "Apache 2",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9834,
+        "id": 10037,
         "literals": [
           "solidity",
           "^",
@@ -1487,17 +1487,17 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "63:23:48"
+        "src": "63:23:49"
       },
       {
         "absolutePath": "/home/atlas-bridge/ethereum/contracts/pyth/PythState.sol",
         "file": "./PythState.sol",
-        "id": 9835,
+        "id": 10038,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 9973,
-        "sourceUnit": 10069,
-        "src": "88:25:48",
+        "scope": 10176,
+        "sourceUnit": 10272,
+        "src": "88:25:49",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -1506,38 +1506,38 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 9836,
+              "id": 10039,
               "name": "PythState",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 10068,
-              "src": "139:9:48"
+              "referencedDeclaration": 10271,
+              "src": "139:9:49"
             },
-            "id": 9837,
+            "id": 10040,
             "nodeType": "InheritanceSpecifier",
-            "src": "139:9:48"
+            "src": "139:9:49"
           }
         ],
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 9972,
+        "id": 10175,
         "linearizedBaseContracts": [
-          9972,
-          10068
+          10175,
+          10271
         ],
         "name": "PythSetters",
-        "nameLocation": "124:11:48",
+        "nameLocation": "124:11:49",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 9850,
+              "id": 10053,
               "nodeType": "Block",
-              "src": "212:73:48",
+              "src": "212:73:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9848,
+                    "id": 10051,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1545,39 +1545,39 @@
                     "leftHandSide": {
                       "baseExpression": {
                         "expression": {
-                          "id": 9842,
+                          "id": 10045,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "222:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "222:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9845,
+                        "id": 10048,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "initializedImplementations",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10055,
-                        "src": "222:33:48",
+                        "referencedDeclaration": 10258,
+                        "src": "222:33:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 9846,
+                      "id": 10049,
                       "indexExpression": {
-                        "id": 9844,
+                        "id": 10047,
                         "name": "implementatiom",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9839,
-                        "src": "256:14:48",
+                        "referencedDeclaration": 10042,
+                        "src": "256:14:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1588,7 +1588,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "222:49:48",
+                      "src": "222:49:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -1598,52 +1598,52 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "74727565",
-                      "id": 9847,
+                      "id": 10050,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "274:4:48",
+                      "src": "274:4:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
                       "value": "true"
                     },
-                    "src": "222:56:48",
+                    "src": "222:56:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 9849,
+                  "id": 10052,
                   "nodeType": "ExpressionStatement",
-                  "src": "222:56:48"
+                  "src": "222:56:49"
                 }
               ]
             },
-            "id": 9851,
+            "id": 10054,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setInitialized",
-            "nameLocation": "164:14:48",
+            "nameLocation": "164:14:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9840,
+              "id": 10043,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9839,
+                  "id": 10042,
                   "mutability": "mutable",
                   "name": "implementatiom",
-                  "nameLocation": "187:14:48",
+                  "nameLocation": "187:14:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9851,
-                  "src": "179:22:48",
+                  "scope": 10054,
+                  "src": "179:22:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1651,10 +1651,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9838,
+                    "id": 10041,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "179:7:48",
+                    "src": "179:7:49",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -1664,29 +1664,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "178:24:48"
+              "src": "178:24:49"
             },
             "returnParameters": {
-              "id": 9841,
+              "id": 10044,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "212:0:48"
+              "src": "212:0:49"
             },
-            "scope": 9972,
-            "src": "155:130:48",
+            "scope": 10175,
+            "src": "155:130:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9864,
+              "id": 10067,
               "nodeType": "Block",
-              "src": "351:62:48",
+              "src": "351:62:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9862,
+                    "id": 10065,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1694,39 +1694,39 @@
                     "leftHandSide": {
                       "baseExpression": {
                         "expression": {
-                          "id": 9856,
+                          "id": 10059,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "361:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "361:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9859,
+                        "id": 10062,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "consumedGovernanceActions",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10051,
-                        "src": "361:32:48",
+                        "referencedDeclaration": 10254,
+                        "src": "361:32:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
                           "typeString": "mapping(bytes32 => bool)"
                         }
                       },
-                      "id": 9860,
+                      "id": 10063,
                       "indexExpression": {
-                        "id": 9858,
+                        "id": 10061,
                         "name": "hash",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9853,
-                        "src": "394:4:48",
+                        "referencedDeclaration": 10056,
+                        "src": "394:4:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bytes32",
                           "typeString": "bytes32"
@@ -1737,7 +1737,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "361:38:48",
+                      "src": "361:38:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -1747,52 +1747,52 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "74727565",
-                      "id": 9861,
+                      "id": 10064,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "bool",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "402:4:48",
+                      "src": "402:4:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
                       },
                       "value": "true"
                     },
-                    "src": "361:45:48",
+                    "src": "361:45:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
-                  "id": 9863,
+                  "id": 10066,
                   "nodeType": "ExpressionStatement",
-                  "src": "361:45:48"
+                  "src": "361:45:49"
                 }
               ]
             },
-            "id": 9865,
+            "id": 10068,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setGovernanceActionConsumed",
-            "nameLocation": "300:27:48",
+            "nameLocation": "300:27:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9854,
+              "id": 10057,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9853,
+                  "id": 10056,
                   "mutability": "mutable",
                   "name": "hash",
-                  "nameLocation": "336:4:48",
+                  "nameLocation": "336:4:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9865,
-                  "src": "328:12:48",
+                  "scope": 10068,
+                  "src": "328:12:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1800,10 +1800,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9852,
+                    "id": 10055,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "328:7:48",
+                    "src": "328:7:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -1812,29 +1812,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "327:14:48"
+              "src": "327:14:49"
             },
             "returnParameters": {
-              "id": 9855,
+              "id": 10058,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "351:0:48"
+              "src": "351:0:49"
             },
-            "scope": 9972,
-            "src": "291:122:48",
+            "scope": 10175,
+            "src": "291:122:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9878,
+              "id": 10081,
               "nodeType": "Block",
-              "src": "464:50:48",
+              "src": "464:50:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9876,
+                    "id": 10079,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1842,40 +1842,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9870,
+                          "id": 10073,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "474:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "474:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9873,
+                        "id": 10076,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "474:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "474:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9874,
+                      "id": 10077,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "chainId",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10033,
-                      "src": "474:23:48",
+                      "referencedDeclaration": 10236,
+                      "src": "474:23:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
@@ -1884,49 +1884,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9875,
+                      "id": 10078,
                       "name": "chainId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9867,
-                      "src": "500:7:48",
+                      "referencedDeclaration": 10070,
+                      "src": "500:7:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
                       }
                     },
-                    "src": "474:33:48",
+                    "src": "474:33:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "id": 9877,
+                  "id": 10080,
                   "nodeType": "ExpressionStatement",
-                  "src": "474:33:48"
+                  "src": "474:33:49"
                 }
               ]
             },
-            "id": 9879,
+            "id": 10082,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setChainId",
-            "nameLocation": "428:10:48",
+            "nameLocation": "428:10:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9868,
+              "id": 10071,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9867,
+                  "id": 10070,
                   "mutability": "mutable",
                   "name": "chainId",
-                  "nameLocation": "446:7:48",
+                  "nameLocation": "446:7:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9879,
-                  "src": "439:14:48",
+                  "scope": 10082,
+                  "src": "439:14:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1934,10 +1934,10 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 9866,
+                    "id": 10069,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
-                    "src": "439:6:48",
+                    "src": "439:6:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
@@ -1946,29 +1946,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "438:16:48"
+              "src": "438:16:49"
             },
             "returnParameters": {
-              "id": 9869,
+              "id": 10072,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "464:0:48"
+              "src": "464:0:49"
             },
-            "scope": 9972,
-            "src": "419:95:48",
+            "scope": 10175,
+            "src": "419:95:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9892,
+              "id": 10095,
               "nodeType": "Block",
-              "src": "575:60:48",
+              "src": "575:60:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9890,
+                    "id": 10093,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1976,40 +1976,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9884,
+                          "id": 10087,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "585:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "585:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9887,
+                        "id": 10090,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "585:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "585:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9888,
+                      "id": 10091,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "governanceChainId",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10035,
-                      "src": "585:33:48",
+                      "referencedDeclaration": 10238,
+                      "src": "585:33:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
@@ -2018,49 +2018,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9889,
+                      "id": 10092,
                       "name": "chainId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9881,
-                      "src": "621:7:48",
+                      "referencedDeclaration": 10084,
+                      "src": "621:7:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
                       }
                     },
-                    "src": "585:43:48",
+                    "src": "585:43:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "id": 9891,
+                  "id": 10094,
                   "nodeType": "ExpressionStatement",
-                  "src": "585:43:48"
+                  "src": "585:43:49"
                 }
               ]
             },
-            "id": 9893,
+            "id": 10096,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setGovernanceChainId",
-            "nameLocation": "529:20:48",
+            "nameLocation": "529:20:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9882,
+              "id": 10085,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9881,
+                  "id": 10084,
                   "mutability": "mutable",
                   "name": "chainId",
-                  "nameLocation": "557:7:48",
+                  "nameLocation": "557:7:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9893,
-                  "src": "550:14:48",
+                  "scope": 10096,
+                  "src": "550:14:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2068,10 +2068,10 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 9880,
+                    "id": 10083,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
-                    "src": "550:6:48",
+                    "src": "550:6:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
@@ -2080,29 +2080,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "549:16:48"
+              "src": "549:16:49"
             },
             "returnParameters": {
-              "id": 9883,
+              "id": 10086,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "575:0:48"
+              "src": "575:0:49"
             },
-            "scope": 9972,
-            "src": "520:115:48",
+            "scope": 10175,
+            "src": "520:115:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9906,
+              "id": 10109,
               "nodeType": "Block",
-              "src": "709:72:48",
+              "src": "709:72:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9904,
+                    "id": 10107,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2110,40 +2110,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9898,
+                          "id": 10101,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "719:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "719:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9901,
+                        "id": 10104,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "719:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "719:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9902,
+                      "id": 10105,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "governanceContract",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10037,
-                      "src": "719:34:48",
+                      "referencedDeclaration": 10240,
+                      "src": "719:34:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
@@ -2152,49 +2152,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9903,
+                      "id": 10106,
                       "name": "governanceContract",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9895,
-                      "src": "756:18:48",
+                      "referencedDeclaration": 10098,
+                      "src": "756:18:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "src": "719:55:48",
+                    "src": "719:55:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "id": 9905,
+                  "id": 10108,
                   "nodeType": "ExpressionStatement",
-                  "src": "719:55:48"
+                  "src": "719:55:49"
                 }
               ]
             },
-            "id": 9907,
+            "id": 10110,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setGovernanceContract",
-            "nameLocation": "650:21:48",
+            "nameLocation": "650:21:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9896,
+              "id": 10099,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9895,
+                  "id": 10098,
                   "mutability": "mutable",
                   "name": "governanceContract",
-                  "nameLocation": "680:18:48",
+                  "nameLocation": "680:18:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9907,
-                  "src": "672:26:48",
+                  "scope": 10110,
+                  "src": "672:26:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2202,10 +2202,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9894,
+                    "id": 10097,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "672:7:48",
+                    "src": "672:7:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -2214,29 +2214,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "671:28:48"
+              "src": "671:28:49"
             },
             "returnParameters": {
-              "id": 9897,
+              "id": 10100,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "709:0:48"
+              "src": "709:0:49"
             },
-            "scope": 9972,
-            "src": "641:140:48",
+            "scope": 10175,
+            "src": "641:140:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9920,
+              "id": 10123,
               "nodeType": "Block",
-              "src": "845:63:48",
+              "src": "845:63:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9918,
+                    "id": 10121,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2244,40 +2244,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9912,
+                          "id": 10115,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "855:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "855:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9915,
+                        "id": 10118,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "855:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "855:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9916,
+                      "id": 10119,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "pyth2WormholeChainId",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10039,
-                      "src": "855:36:48",
+                      "referencedDeclaration": 10242,
+                      "src": "855:36:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
@@ -2286,49 +2286,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9917,
+                      "id": 10120,
                       "name": "chainId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9909,
-                      "src": "894:7:48",
+                      "referencedDeclaration": 10112,
+                      "src": "894:7:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
                         "typeString": "uint16"
                       }
                     },
-                    "src": "855:46:48",
+                    "src": "855:46:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
                     }
                   },
-                  "id": 9919,
+                  "id": 10122,
                   "nodeType": "ExpressionStatement",
-                  "src": "855:46:48"
+                  "src": "855:46:49"
                 }
               ]
             },
-            "id": 9921,
+            "id": 10124,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setPyth2WormholeChainId",
-            "nameLocation": "796:23:48",
+            "nameLocation": "796:23:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9910,
+              "id": 10113,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9909,
+                  "id": 10112,
                   "mutability": "mutable",
                   "name": "chainId",
-                  "nameLocation": "827:7:48",
+                  "nameLocation": "827:7:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9921,
-                  "src": "820:14:48",
+                  "scope": 10124,
+                  "src": "820:14:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2336,10 +2336,10 @@
                     "typeString": "uint16"
                   },
                   "typeName": {
-                    "id": 9908,
+                    "id": 10111,
                     "name": "uint16",
                     "nodeType": "ElementaryTypeName",
-                    "src": "820:6:48",
+                    "src": "820:6:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint16",
                       "typeString": "uint16"
@@ -2348,29 +2348,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "819:16:48"
+              "src": "819:16:49"
             },
             "returnParameters": {
-              "id": 9911,
+              "id": 10114,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "845:0:48"
+              "src": "845:0:49"
             },
-            "scope": 9972,
-            "src": "787:121:48",
+            "scope": 10175,
+            "src": "787:121:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9934,
+              "id": 10137,
               "nodeType": "Block",
-              "src": "979:69:48",
+              "src": "979:69:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9932,
+                    "id": 10135,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2378,40 +2378,40 @@
                     "leftHandSide": {
                       "expression": {
                         "expression": {
-                          "id": 9926,
+                          "id": 10129,
                           "name": "_state",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 10067,
-                          "src": "989:6:48",
+                          "referencedDeclaration": 10270,
+                          "src": "989:6:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_State_$10063_storage",
+                            "typeIdentifier": "t_struct$_State_$10266_storage",
                             "typeString": "struct PythStorage.State storage ref"
                           }
                         },
-                        "id": 9929,
+                        "id": 10132,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "provider",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 10047,
-                        "src": "989:15:48",
+                        "referencedDeclaration": 10250,
+                        "src": "989:15:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Provider_$10042_storage",
+                          "typeIdentifier": "t_struct$_Provider_$10245_storage",
                           "typeString": "struct PythStorage.Provider storage ref"
                         }
                       },
-                      "id": 9930,
+                      "id": 10133,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "pyth2WormholeContract",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10041,
-                      "src": "989:37:48",
+                      "referencedDeclaration": 10244,
+                      "src": "989:37:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
@@ -2420,49 +2420,49 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9931,
+                      "id": 10134,
                       "name": "contractAddr",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9923,
-                      "src": "1029:12:48",
+                      "referencedDeclaration": 10126,
+                      "src": "1029:12:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "src": "989:52:48",
+                    "src": "989:52:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
                     }
                   },
-                  "id": 9933,
+                  "id": 10136,
                   "nodeType": "ExpressionStatement",
-                  "src": "989:52:48"
+                  "src": "989:52:49"
                 }
               ]
             },
-            "id": 9935,
+            "id": 10138,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setPyth2WormholeContract",
-            "nameLocation": "923:24:48",
+            "nameLocation": "923:24:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9924,
+              "id": 10127,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9923,
+                  "id": 10126,
                   "mutability": "mutable",
                   "name": "contractAddr",
-                  "nameLocation": "956:12:48",
+                  "nameLocation": "956:12:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9935,
-                  "src": "948:20:48",
+                  "scope": 10138,
+                  "src": "948:20:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2470,10 +2470,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9922,
+                    "id": 10125,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "948:7:48",
+                    "src": "948:7:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -2482,55 +2482,55 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "947:22:48"
+              "src": "947:22:49"
             },
             "returnParameters": {
-              "id": 9925,
+              "id": 10128,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "979:0:48"
+              "src": "979:0:49"
             },
-            "scope": 9972,
-            "src": "914:134:48",
+            "scope": 10175,
+            "src": "914:134:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9949,
+              "id": 10152,
               "nodeType": "Block",
-              "src": "1096:46:48",
+              "src": "1096:46:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9947,
+                    "id": 10150,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 9940,
+                        "id": 10143,
                         "name": "_state",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 10067,
-                        "src": "1106:6:48",
+                        "referencedDeclaration": 10270,
+                        "src": "1106:6:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_State_$10063_storage",
+                          "typeIdentifier": "t_struct$_State_$10266_storage",
                           "typeString": "struct PythStorage.State storage ref"
                         }
                       },
-                      "id": 9942,
+                      "id": 10145,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "wormhole",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10044,
-                      "src": "1106:15:48",
+                      "referencedDeclaration": 10247,
+                      "src": "1106:15:49",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
@@ -2541,12 +2541,12 @@
                     "rightHandSide": {
                       "arguments": [
                         {
-                          "id": 9945,
+                          "id": 10148,
                           "name": "wh",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9937,
-                          "src": "1132:2:48",
+                          "referencedDeclaration": 10140,
+                          "src": "1132:2:49",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -2560,27 +2560,27 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 9944,
+                        "id": 10147,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "lValueRequested": false,
                         "nodeType": "ElementaryTypeNameExpression",
-                        "src": "1124:8:48",
+                        "src": "1124:8:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_type$_t_address_payable_$",
                           "typeString": "type(address payable)"
                         },
                         "typeName": {
-                          "id": 9943,
+                          "id": 10146,
                           "name": "address",
                           "nodeType": "ElementaryTypeName",
-                          "src": "1124:8:48",
+                          "src": "1124:8:49",
                           "stateMutability": "payable",
                           "typeDescriptions": {}
                         }
                       },
-                      "id": 9946,
+                      "id": 10149,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2588,45 +2588,45 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "1124:11:48",
+                      "src": "1124:11:49",
                       "tryCall": false,
                       "typeDescriptions": {
                         "typeIdentifier": "t_address_payable",
                         "typeString": "address payable"
                       }
                     },
-                    "src": "1106:29:48",
+                    "src": "1106:29:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address_payable",
                       "typeString": "address payable"
                     }
                   },
-                  "id": 9948,
+                  "id": 10151,
                   "nodeType": "ExpressionStatement",
-                  "src": "1106:29:48"
+                  "src": "1106:29:49"
                 }
               ]
             },
-            "id": 9950,
+            "id": 10153,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setWormhole",
-            "nameLocation": "1063:11:48",
+            "nameLocation": "1063:11:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9938,
+              "id": 10141,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9937,
+                  "id": 10140,
                   "mutability": "mutable",
                   "name": "wh",
-                  "nameLocation": "1083:2:48",
+                  "nameLocation": "1083:2:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9950,
-                  "src": "1075:10:48",
+                  "scope": 10153,
+                  "src": "1075:10:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2634,10 +2634,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9936,
+                    "id": 10139,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1075:7:48",
+                    "src": "1075:7:49",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -2647,29 +2647,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1074:12:48"
+              "src": "1074:12:49"
             },
             "returnParameters": {
-              "id": 9939,
+              "id": 10142,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1096:0:48"
+              "src": "1096:0:49"
             },
-            "scope": 9972,
-            "src": "1054:88:48",
+            "scope": 10175,
+            "src": "1054:88:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           },
           {
             "body": {
-              "id": 9970,
+              "id": 10173,
               "nodeType": "Block",
-              "src": "1270:76:48",
+              "src": "1270:76:49",
               "statements": [
                 {
                   "expression": {
-                    "id": 9968,
+                    "id": 10171,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2678,39 +2678,39 @@
                       "baseExpression": {
                         "baseExpression": {
                           "expression": {
-                            "id": 9960,
+                            "id": 10163,
                             "name": "_state",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 10067,
-                            "src": "1280:6:48",
+                            "referencedDeclaration": 10270,
+                            "src": "1280:6:49",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_State_$10063_storage",
+                              "typeIdentifier": "t_struct$_State_$10266_storage",
                               "typeString": "struct PythStorage.State storage ref"
                             }
                           },
-                          "id": 9964,
+                          "id": 10167,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "latestAttestations",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 10062,
-                          "src": "1280:25:48",
+                          "referencedDeclaration": 10265,
+                          "src": "1280:25:49",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$_$",
+                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10315_storage_$_$",
                             "typeString": "mapping(bytes32 => mapping(uint8 => struct PythStructs.PriceAttestation storage ref))"
                           }
                         },
-                        "id": 9965,
+                        "id": 10168,
                         "indexExpression": {
-                          "id": 9962,
+                          "id": 10165,
                           "name": "product",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 9952,
-                          "src": "1306:7:48",
+                          "referencedDeclaration": 10155,
+                          "src": "1306:7:49",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bytes32",
                             "typeString": "bytes32"
@@ -2721,20 +2721,20 @@
                         "isPure": false,
                         "lValueRequested": false,
                         "nodeType": "IndexAccess",
-                        "src": "1280:34:48",
+                        "src": "1280:34:49",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10112_storage_$",
+                          "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_PriceAttestation_$10315_storage_$",
                           "typeString": "mapping(uint8 => struct PythStructs.PriceAttestation storage ref)"
                         }
                       },
-                      "id": 9966,
+                      "id": 10169,
                       "indexExpression": {
-                        "id": 9963,
+                        "id": 10166,
                         "name": "priceType",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9954,
-                        "src": "1315:9:48",
+                        "referencedDeclaration": 10157,
+                        "src": "1315:9:49",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint8",
                           "typeString": "uint8"
@@ -2745,58 +2745,58 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "1280:45:48",
+                      "src": "1280:45:49",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_PriceAttestation_$10112_storage",
+                        "typeIdentifier": "t_struct$_PriceAttestation_$10315_storage",
                         "typeString": "struct PythStructs.PriceAttestation storage ref"
                       }
                     },
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 9967,
+                      "id": 10170,
                       "name": "attestation",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 9957,
-                      "src": "1328:11:48",
+                      "referencedDeclaration": 10160,
+                      "src": "1328:11:49",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_PriceAttestation_$10112_memory_ptr",
+                        "typeIdentifier": "t_struct$_PriceAttestation_$10315_memory_ptr",
                         "typeString": "struct PythStructs.PriceAttestation memory"
                       }
                     },
-                    "src": "1280:59:48",
+                    "src": "1280:59:49",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PriceAttestation_$10112_storage",
+                      "typeIdentifier": "t_struct$_PriceAttestation_$10315_storage",
                       "typeString": "struct PythStructs.PriceAttestation storage ref"
                     }
                   },
-                  "id": 9969,
+                  "id": 10172,
                   "nodeType": "ExpressionStatement",
-                  "src": "1280:59:48"
+                  "src": "1280:59:49"
                 }
               ]
             },
-            "id": 9971,
+            "id": 10174,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "setLatestAttestation",
-            "nameLocation": "1157:20:48",
+            "nameLocation": "1157:20:49",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9958,
+              "id": 10161,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9952,
+                  "id": 10155,
                   "mutability": "mutable",
                   "name": "product",
-                  "nameLocation": "1186:7:48",
+                  "nameLocation": "1186:7:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9971,
-                  "src": "1178:15:48",
+                  "scope": 10174,
+                  "src": "1178:15:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2804,10 +2804,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9951,
+                    "id": 10154,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1178:7:48",
+                    "src": "1178:7:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -2817,13 +2817,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 9954,
+                  "id": 10157,
                   "mutability": "mutable",
                   "name": "priceType",
-                  "nameLocation": "1201:9:48",
+                  "nameLocation": "1201:9:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9971,
-                  "src": "1195:15:48",
+                  "scope": 10174,
+                  "src": "1195:15:49",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2831,10 +2831,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 9953,
+                    "id": 10156,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1195:5:48",
+                    "src": "1195:5:49",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -2844,60 +2844,60 @@
                 },
                 {
                   "constant": false,
-                  "id": 9957,
+                  "id": 10160,
                   "mutability": "mutable",
                   "name": "attestation",
-                  "nameLocation": "1248:11:48",
+                  "nameLocation": "1248:11:49",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9971,
-                  "src": "1212:47:48",
+                  "scope": 10174,
+                  "src": "1212:47:49",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_PriceAttestation_$10112_memory_ptr",
+                    "typeIdentifier": "t_struct$_PriceAttestation_$10315_memory_ptr",
                     "typeString": "struct PythStructs.PriceAttestation"
                   },
                   "typeName": {
-                    "id": 9956,
+                    "id": 10159,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 9955,
+                      "id": 10158,
                       "name": "PythStructs.PriceAttestation",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 10112,
-                      "src": "1212:28:48"
+                      "referencedDeclaration": 10315,
+                      "src": "1212:28:49"
                     },
-                    "referencedDeclaration": 10112,
-                    "src": "1212:28:48",
+                    "referencedDeclaration": 10315,
+                    "src": "1212:28:49",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_PriceAttestation_$10112_storage_ptr",
+                      "typeIdentifier": "t_struct$_PriceAttestation_$10315_storage_ptr",
                       "typeString": "struct PythStructs.PriceAttestation"
                     }
                   },
                   "visibility": "internal"
                 }
               ],
-              "src": "1177:83:48"
+              "src": "1177:83:49"
             },
             "returnParameters": {
-              "id": 9959,
+              "id": 10162,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1270:0:48"
+              "src": "1270:0:49"
             },
-            "scope": 9972,
-            "src": "1148:198:48",
+            "scope": 10175,
+            "src": "1148:198:49",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 9973,
-        "src": "115:1233:48",
+        "scope": 10176,
+        "src": "115:1233:49",
         "usedErrors": []
       }
     ],
-    "src": "63:1285:48"
+    "src": "63:1285:49"
   },
   "compiler": {
     "name": "solc",
@@ -2905,7 +2905,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-09-27T21:46:19.472Z",
+  "updatedAt": "2021-10-15T20:01:15.103Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

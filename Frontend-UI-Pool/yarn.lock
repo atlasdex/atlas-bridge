@@ -2595,84 +2595,75 @@
     "@svgr/plugin-svgo" "^5.5.0"
     "loader-utils" "^2.0.0"
 
-"@terra-dev/browser-check@^1.4.0-alpha.3":
-  "integrity" "sha512-gVYME/XsQnOTjN4B3CuCek+o2S1JTEPnjHljtzdsf5pMXJc8cPRW1JdCtNiwqQrhMxdFQ7GEo6NB01E6cjS+mg=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/browser-check/-/browser-check-1.4.0-alpha.3.tgz"
-  "version" "1.4.0-alpha.3"
+"@terra-dev/browser-check@^2.2.0":
+  "integrity" "sha512-g90XUSLfSDgXoLhnCrvS/ceHcGfwATC8qViZRvXh2+4jEClScJsefSzASTM/DMRrZfmEHohvIN4MEPclfe/OfA=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/browser-check/-/browser-check-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
     "bowser" "^2.11.0"
     "mobile-detect" "^1.4.5"
 
-"@terra-dev/chrome-extension@^1.4.0-alpha.3":
-  "integrity" "sha512-DgRWF+R9AGDiXqEFLjbT/snG2X3736LEyvb8e+QniF+xqLdT40G6sxHQPLZVb+5VwWccVwXwTMjnTNM6O6QRng=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/chrome-extension/-/chrome-extension-1.4.0-alpha.3.tgz"
-  "version" "1.4.0-alpha.3"
+"@terra-dev/chrome-extension@^2.2.0":
+  "integrity" "sha512-4MOSljfpi9DLPHjR2SOnqagm4KnvjuNlnMxKPmDiZ40j0lF5Bi9MTZ1jlNJ2cQhqSDRidRjVi8k0zUEG7LUX8w=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/chrome-extension/-/chrome-extension-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
-    "@terra-dev/browser-check" "^1.4.0-alpha.3"
-    "@terra-dev/wallet-types" "^1.4.0-alpha.3"
-    "@terra-money/terra.js" "^1.8.0"
+    "@terra-dev/browser-check" "^2.2.0"
+    "@terra-dev/wallet-types" "^2.2.0"
+    "@terra-money/terra.js" "^2.0.0"
     "rxjs" "^7.3.0"
 
-"@terra-dev/readonly-wallet-modal@^1.4.0-alpha.3":
-  "integrity" "sha512-WyFVMgLfEXbzG0oSGtdm0m/RQp1+avMAinua51AGTxLjAjfvVE8BHKK1oV7afUyeV9PJrheMCwew2dNH9mpHjw=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/readonly-wallet-modal/-/readonly-wallet-modal-1.4.0-alpha.3.tgz"
-  "version" "1.4.0-alpha.3"
+"@terra-dev/readonly-wallet-modal@^2.2.0":
+  "integrity" "sha512-w5k/+YXOt3htrsZ0zRPLgM+wtMBhOXd6GspI7yS1epJ1nS8GMfbznlnG0HN56qYkaV2DEJIEOtYkDJgRkChkRQ=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/readonly-wallet-modal/-/readonly-wallet-modal-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
-    "@terra-dev/readonly-wallet" "^1.4.0-alpha.3"
-    "@terra-dev/wallet-types" "^1.4.0-alpha.3"
-    "@terra-money/terra.js" "^1.8.0"
+    "@terra-dev/readonly-wallet" "^2.2.0"
+    "@terra-dev/wallet-types" "^2.2.0"
+    "@terra-money/terra.js" "^2.0.0"
     "styled-components" "^5.0.0"
 
-"@terra-dev/readonly-wallet@^1.4.0-alpha.3":
-  "integrity" "sha512-72RKmk8sG4hk119NZn5gwE+mr6EEWc1yn9cMKhumEoiSjhnGhAdooY1qQAODVtrw7BsU4/BUwkHRYF9zCtJKEw=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/readonly-wallet/-/readonly-wallet-1.4.0-alpha.3.tgz"
-  "version" "1.4.0-alpha.3"
+"@terra-dev/readonly-wallet@^2.2.0":
+  "integrity" "sha512-XfV/Nr+3qH7ZN1GmjbiHql4GDO2JgFBxyJKAwMN4YIQG3JE5sdqmiy83bUEmio6gaSxKnUOhDd1huazyPbrjuQ=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/readonly-wallet/-/readonly-wallet-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
-    "@terra-dev/wallet-types" "^1.4.0-alpha.3"
-    "@terra-money/terra.js" "^1.8.0"
+    "@terra-dev/wallet-types" "^2.2.0"
+    "@terra-money/terra.js" "^2.0.0"
 
-"@terra-dev/safari-webextension-storage-change-listener@^0.4.0":
-  "integrity" "sha512-9UA4V66b9LNAK8s9SySI4luUOOxD2E+RL8Oy9yFuu8fSTvUtMJxBYO7dMKcQe06iuReXyIZqeYz5bS4PV1YsnA=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/safari-webextension-storage-change-listener/-/safari-webextension-storage-change-listener-0.4.0.tgz"
-  "version" "0.4.0"
+"@terra-dev/use-wallet@^2.2.0":
+  "integrity" "sha512-TgP6iomlfho/1V7Ad2eokaxif8KEojuHLfcd8FJxCpPRgg+u5t87jRSa49R7n65UiQcDENp7G0edzpvJzPJ3Cg=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/use-wallet/-/use-wallet-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
-    "fast-deep-equal" "^3.1.3"
-    "rxjs" "^7.0.0"
-    "webextension-polyfill-ts" "^0.25.0"
+    "@terra-dev/wallet-types" "^2.2.0"
+    "@terra-money/terra.js" "^2.0.0"
 
-"@terra-dev/wallet-types@^1.4.0-alpha.3":
-  "integrity" "sha512-BJzWRnz8aEXIX5hCjDDc1O0Xcl/9y90caCr0bpkO+nGacDj3Q4jnwIFVr+AIYYLSNGPhuEoUHsjZuK8Z9kkkTQ=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/wallet-types/-/wallet-types-1.4.0-alpha.3.tgz"
-  "version" "1.4.0-alpha.3"
+"@terra-dev/wallet-types@^2.2.0":
+  "integrity" "sha512-0QH+nNFTY5WOuHW70Lsvz/REWoAfGIXmTNF8kFSNgaIyZS+7nHLT77JSnwjACXa19RMsG8kNlP2Cjhtmausr/A=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/wallet-types/-/wallet-types-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
-    "@terra-money/terra.js" "^1.8.0"
+    "@terra-money/terra.js" "^2.0.0"
 
-"@terra-dev/wallet@^0.4.0":
-  "integrity" "sha512-R7N91yC5G/Rj1EvV+eccC+R4hL1BQyFCx9Bvuth5vBoEYWqx7VPlx1C56/zcCE78mpnKLowN2eN0o21Xii71kA=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/wallet/-/wallet-0.4.0.tgz"
-  "version" "0.4.0"
+"@terra-dev/walletconnect-qrcode-modal@^2.2.0":
+  "integrity" "sha512-8xCrrE/Bg9VBvG3XOv9pz/raAs2o687QK6Bf5U5ZAh0GQ44LJ49wMKLNMafLSCSW/v3H/a5ZK2hziRuwEujVKw=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/walletconnect-qrcode-modal/-/walletconnect-qrcode-modal-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
-    "@terra-money/key-utils" "^1.0.2"
-    "@terra-money/terra.js" "^1.7.0"
-
-"@terra-dev/walletconnect-qrcode-modal@^1.4.0-alpha.3":
-  "integrity" "sha512-4Oz+aTPhKBXLYaGra7P8XAChrimDWY9qS+VXtrMq6MAQk+Chh3y3NWxn2vnMCHr7ZbL+onu6ziI4zWcs6YGRKw=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/walletconnect-qrcode-modal/-/walletconnect-qrcode-modal-1.4.0-alpha.3.tgz"
-  "version" "1.4.0-alpha.3"
-  dependencies:
-    "@terra-dev/browser-check" "^1.4.0-alpha.3"
+    "@terra-dev/browser-check" "^2.2.0"
     "@walletconnect/types" "^1.6.1"
     "qrcode.react" "^1.0.1"
     "styled-components" "^5.0.0"
 
-"@terra-dev/walletconnect@^1.4.0-alpha.3":
-  "integrity" "sha512-Ot8GIqw0L+KY55Z3nV9Z1wJnsVL5kDkcnip0fSLJcw7a+Lp2N43drVAHN70KAS4xGYmQQeajPJdlwg8di+sKzw=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/walletconnect/-/walletconnect-1.4.0-alpha.3.tgz"
-  "version" "1.4.0-alpha.3"
+"@terra-dev/walletconnect@^2.2.0":
+  "integrity" "sha512-ekUoqOFJi//1+9gYpltUm0uTl+psB3JUXMgYS2qsFWOItaCXybh5ux/+xq/WIChXq6NSRYJqEc0AgKMO4fnI7A=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/walletconnect/-/walletconnect-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
-    "@terra-dev/browser-check" "^1.4.0-alpha.3"
-    "@terra-dev/walletconnect-qrcode-modal" "^1.4.0-alpha.3"
-    "@terra-money/terra.js" "^1.8.0"
+    "@terra-dev/browser-check" "^2.2.0"
+    "@terra-dev/walletconnect-qrcode-modal" "^2.2.0"
+    "@terra-money/terra.js" "^2.0.0"
     "@walletconnect/core" "^1.6.1"
     "@walletconnect/iso-crypto" "^1.6.1"
     "@walletconnect/types" "^1.6.1"
@@ -2680,30 +2671,19 @@
     "rxjs" "^7.3.0"
     "ws" "^7.5.3"
 
-"@terra-dev/web-extension@^0.4.0":
-  "integrity" "sha512-opk21n+MSM7awi4RvAv6IXYAzjfuMx4Ex/ZydWvFHHAdI1OBia8/PVvWuTzShNZRmZoO3Py/S3n1t6w5u8N5bA=="
-  "resolved" "https://registry.npmjs.org/@terra-dev/web-extension/-/web-extension-0.4.0.tgz"
-  "version" "0.4.0"
+"@terra-dev/web-extension@^0.6.0":
+  "integrity" "sha512-IyIWHLfweZCb5nHuMyzavnMYposnZMvpsA/89zZPIgIooxhxE//uZD+Ty+ptt4nvkbOgEFKdKIKe5rIHqgVLpA=="
+  "resolved" "https://registry.npmjs.org/@terra-dev/web-extension/-/web-extension-0.6.0.tgz"
+  "version" "0.6.0"
   dependencies:
-    "@terra-dev/safari-webextension-storage-change-listener" "^0.4.0"
-    "@terra-dev/wallet" "^0.4.0"
-    "@terra-money/key-utils" "^1.0.2"
-    "@terra-money/terra.js" "^1.7.0"
+    "@terra-money/terra.js" "^1.8.0 || ^2.0.0"
     "bowser" "^2.11.0"
-    "post-message-stream" "^3.0.0"
-    "react" "^17.0.2"
-    "rxjs" "^7.0.0"
-    "webextension-polyfill-ts" "^0.25.0"
+    "rxjs" "^7.3.0"
 
-"@terra-money/key-utils@^1.0.2":
-  "integrity" "sha512-M3F+yIwiRgQie93nm/0PZSoeYKgjfHmcoJKuew9tc1xiGuLEKA0BXYzAy6AGJbs2DMHwQKBHKyznQjwayPTItw=="
-  "resolved" "https://registry.npmjs.org/@terra-money/key-utils/-/key-utils-1.0.2.tgz"
-  "version" "1.0.2"
-
-"@terra-money/terra.js@^1.3.6", "@terra-money/terra.js@^1.7.0", "@terra-money/terra.js@^1.8.0":
-  "integrity" "sha512-5tXblDZvXYVxS/z64nPX45m49e0M28eoIaBIaKJjui0JJBEuNS7sFBDZrU572Pl4er1n2xaEAjrfzsNjTYORWg=="
-  "resolved" "https://registry.npmjs.org/@terra-money/terra.js/-/terra.js-1.8.10.tgz"
-  "version" "1.8.10"
+"@terra-money/terra.js@^1.8.0 || ^2.0.0", "@terra-money/terra.js@^2.0.0":
+  "integrity" "sha512-GeMadRIPaOedODa5a0pJ2+76l7MeFSIfSJZ2vvWPRco6MRIQLw/k0cZpPKMLm2Zo54li/oY1mrR+r3uxLM7q3Q=="
+  "resolved" "https://registry.npmjs.org/@terra-money/terra.js/-/terra.js-2.0.14.tgz"
+  "version" "2.0.14"
   dependencies:
     "axios" "^0.21.1"
     "bech32" "^2.0.0"
@@ -2718,19 +2698,20 @@
     "utf-8-validate" "^5.0.5"
     "ws" "^7.4.2"
 
-"@terra-money/wallet-provider@^1.4.0-alpha.1":
-  "integrity" "sha512-H6JzRDKPK3iZ/TwdE89FMS12dPqpUU6QCfdqawKi0iU1Ybc6syFV8yFo307LF7VCvXeRATE6gIOlOs79C3+dAQ=="
-  "resolved" "https://registry.npmjs.org/@terra-money/wallet-provider/-/wallet-provider-1.4.0-alpha.3.tgz"
-  "version" "1.4.0-alpha.3"
+"@terra-money/wallet-provider@^2.2.0":
+  "integrity" "sha512-K8NLpJ/yak8Pq6jQpjVr7yWDIbxjTp42OXaAS+xlTufqQwWbCR7coAGbm2FpYX43j4uymuSAICZvsOS1qrFeYA=="
+  "resolved" "https://registry.npmjs.org/@terra-money/wallet-provider/-/wallet-provider-2.2.0.tgz"
+  "version" "2.2.0"
   dependencies:
-    "@terra-dev/browser-check" "^1.4.0-alpha.3"
-    "@terra-dev/chrome-extension" "^1.4.0-alpha.3"
-    "@terra-dev/readonly-wallet" "^1.4.0-alpha.3"
-    "@terra-dev/readonly-wallet-modal" "^1.4.0-alpha.3"
-    "@terra-dev/wallet-types" "^1.4.0-alpha.3"
-    "@terra-dev/walletconnect" "^1.4.0-alpha.3"
-    "@terra-dev/web-extension" "^0.4.0"
-    "@terra-money/terra.js" "^1.8.0"
+    "@terra-dev/browser-check" "^2.2.0"
+    "@terra-dev/chrome-extension" "^2.2.0"
+    "@terra-dev/readonly-wallet" "^2.2.0"
+    "@terra-dev/readonly-wallet-modal" "^2.2.0"
+    "@terra-dev/use-wallet" "^2.2.0"
+    "@terra-dev/wallet-types" "^2.2.0"
+    "@terra-dev/walletconnect" "^2.2.0"
+    "@terra-dev/web-extension" "^0.6.0"
+    "@terra-money/terra.js" "^2.0.0"
     "fast-deep-equal" "^3.1.3"
     "rxjs" "^7.3.0"
 
@@ -3366,25 +3347,25 @@
     "@typescript-eslint/types" "4.32.0"
     "eslint-visitor-keys" "^2.0.0"
 
-"@walletconnect/browser-utils@^1.6.5":
-  "integrity" "sha512-HLTysmlCkc2HN2OS6ewMG0v8E9oY2h9zNaDHe0BLN3ZxnsoMCVzkJxy7ryaXCemVdapmr6HgHFexGJoMbWaC4w=="
-  "resolved" "https://registry.npmjs.org/@walletconnect/browser-utils/-/browser-utils-1.6.5.tgz"
-  "version" "1.6.5"
+"@walletconnect/browser-utils@^1.6.6":
+  "integrity" "sha512-E29xSHU7Akd4jaPehWVGx7ct+SsUzZbxcGc0fz+Pw6/j4Gh5tlfYZ9XuVixuYI4WPdQ2CmOraj8RrVOu5vba4w=="
+  "resolved" "https://registry.npmjs.org/@walletconnect/browser-utils/-/browser-utils-1.6.6.tgz"
+  "version" "1.6.6"
   dependencies:
     "@walletconnect/safe-json" "1.0.0"
-    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/types" "^1.6.6"
     "@walletconnect/window-getters" "1.0.0"
     "@walletconnect/window-metadata" "1.0.0"
     "detect-browser" "5.2.0"
 
 "@walletconnect/core@^1.6.1":
-  "integrity" "sha512-mmMTP8nZunjSCAy0ckafvt/JcdzcuSZPaAybqgKwx2rC9cc/3XWrdNsfiKMt8AFoQF87jGHem3905eFZYTqLXw=="
-  "resolved" "https://registry.npmjs.org/@walletconnect/core/-/core-1.6.5.tgz"
-  "version" "1.6.5"
+  "integrity" "sha512-pSftIVPY6mYz2koZPBEYmeFeAjVf2MSnRHOM6+vx+iAsUEcfMZHkgeXX6GtM6Fjza+zSZu1qnmdgURVXpmKwtQ=="
+  "resolved" "https://registry.npmjs.org/@walletconnect/core/-/core-1.6.6.tgz"
+  "version" "1.6.6"
   dependencies:
-    "@walletconnect/socket-transport" "^1.6.5"
-    "@walletconnect/types" "^1.6.5"
-    "@walletconnect/utils" "^1.6.5"
+    "@walletconnect/socket-transport" "^1.6.6"
+    "@walletconnect/types" "^1.6.6"
+    "@walletconnect/utils" "^1.6.6"
 
 "@walletconnect/crypto@^1.0.1":
   "integrity" "sha512-IgUReNrycIFxkGgq8YT9HsosCkhutakWD9Q411PR0aJfxpEa/VKJeaLRtoz6DvJpztWStwhIHnAbBoOVR72a6g=="
@@ -3411,13 +3392,13 @@
   "version" "1.0.0"
 
 "@walletconnect/iso-crypto@^1.6.1":
-  "integrity" "sha512-145VRX1+gudhHrnT2s81lLW/BEu3QgFMMRCrkxx9Tsl5JiLGcGbWkMxAl8zjGTMqnHeuQngyjvY1mO+3z27a7A=="
-  "resolved" "https://registry.npmjs.org/@walletconnect/iso-crypto/-/iso-crypto-1.6.5.tgz"
-  "version" "1.6.5"
+  "integrity" "sha512-wRYgKvd8K3A9FVLn2c0cDh4+9OUHkqibKtwQJTJsz+ibPGgd+n5j1/FjnzDDRGb9T1+TtlwYF3ZswKyys3diVQ=="
+  "resolved" "https://registry.npmjs.org/@walletconnect/iso-crypto/-/iso-crypto-1.6.6.tgz"
+  "version" "1.6.6"
   dependencies:
     "@walletconnect/crypto" "^1.0.1"
-    "@walletconnect/types" "^1.6.5"
-    "@walletconnect/utils" "^1.6.5"
+    "@walletconnect/types" "^1.6.6"
+    "@walletconnect/utils" "^1.6.6"
 
 "@walletconnect/jsonrpc-types@^1.0.0":
   "integrity" "sha512-11QXNq5H1PKZk7bP8SxgmCw3HRaDuPOVE+wObqEvmhc7OWYUZqfuaaMb+OXGRSOHL3sbC+XHfdeCxFTMXSFyng=="
@@ -3448,29 +3429,29 @@
   "resolved" "https://registry.npmjs.org/@walletconnect/safe-json/-/safe-json-1.0.0.tgz"
   "version" "1.0.0"
 
-"@walletconnect/socket-transport@^1.6.5":
-  "integrity" "sha512-FRlgBr3EIxD3du5l/tuK6jdiva85YeRG+iZmo/RPnlVw4opy74WXb5JdCK9jXLcBEoDiY9Hz4j69aqnht6gIDQ=="
-  "resolved" "https://registry.npmjs.org/@walletconnect/socket-transport/-/socket-transport-1.6.5.tgz"
-  "version" "1.6.5"
+"@walletconnect/socket-transport@^1.6.6":
+  "integrity" "sha512-mugCEoeKTx75ogb5ROg/+LA3yGTsuRNcrYgrApceo7WNU9Z4dG8l6ycMPqrrFcODcrasq3NmXVWUYDv/CvrzSw=="
+  "resolved" "https://registry.npmjs.org/@walletconnect/socket-transport/-/socket-transport-1.6.6.tgz"
+  "version" "1.6.6"
   dependencies:
-    "@walletconnect/types" "^1.6.5"
-    "@walletconnect/utils" "^1.6.5"
+    "@walletconnect/types" "^1.6.6"
+    "@walletconnect/utils" "^1.6.6"
     "ws" "7.5.3"
 
-"@walletconnect/types@^1.6.1", "@walletconnect/types@^1.6.5":
-  "integrity" "sha512-S9DsODI35PbIDuOSkIiF8SzTstqCqX/4+kV7n18vyukEFPlpSSHwZMwJUfzo9yJ0pqsqLNZta+jvb88gJRuAaA=="
-  "resolved" "https://registry.npmjs.org/@walletconnect/types/-/types-1.6.5.tgz"
-  "version" "1.6.5"
+"@walletconnect/types@^1.6.1", "@walletconnect/types@^1.6.6":
+  "integrity" "sha512-op77cxexOmQQN36XB1sYouNTlBRV0Rup/2NYK8A1ffdwXa3a6HLHHdhBM7I/I9BVmRXoZ4+XoOnPKGGrYtlS3g=="
+  "resolved" "https://registry.npmjs.org/@walletconnect/types/-/types-1.6.6.tgz"
+  "version" "1.6.6"
 
-"@walletconnect/utils@^1.6.1", "@walletconnect/utils@^1.6.5":
-  "integrity" "sha512-QB5rn/1s0PKVitAQ2/mgWbay2XfN21y3ob+5g6IhxtJRW31bbMoZw5YfO6s4ixLaZZez5LNQXstvQAclRzB7jQ=="
-  "resolved" "https://registry.npmjs.org/@walletconnect/utils/-/utils-1.6.5.tgz"
-  "version" "1.6.5"
+"@walletconnect/utils@^1.6.1", "@walletconnect/utils@^1.6.6":
+  "integrity" "sha512-s2X/cVXiMDSEoWV6i7HPMbP1obXlzP7KLMrBo9OMabiJKnQEh6HSZ39WLswB2PHnl8Hp1Sr4BdRvhM5kCcYWRw=="
+  "resolved" "https://registry.npmjs.org/@walletconnect/utils/-/utils-1.6.6.tgz"
+  "version" "1.6.6"
   dependencies:
-    "@walletconnect/browser-utils" "^1.6.5"
+    "@walletconnect/browser-utils" "^1.6.6"
     "@walletconnect/encoding" "^1.0.0"
     "@walletconnect/jsonrpc-utils" "^1.0.0"
-    "@walletconnect/types" "^1.6.5"
+    "@walletconnect/types" "^1.6.6"
     "bn.js" "4.11.8"
     "js-sha3" "0.8.0"
     "query-string" "6.13.5"
@@ -5608,11 +5589,6 @@
   "integrity" "sha512-lyAZ0EMyjDkVvz8WOeVnuCPvKVBXcMv1l5SVqO1yC7PzTwrD/pPje/BIRbWhMoPe436U+Y2nD7f5bFx0kt+Sbg=="
   "resolved" "https://registry.npmjs.org/crypto-hash/-/crypto-hash-1.3.0.tgz"
   "version" "1.3.0"
-
-"crypto-js@^3.3.0":
-  "integrity" "sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q=="
-  "resolved" "https://registry.npmjs.org/crypto-js/-/crypto-js-3.3.0.tgz"
-  "version" "3.3.0"
 
 "crypto-random-string@^1.0.0":
   "integrity" "sha1-ojD2T1aDEOFJgAmUB5DsmVRbyn4="
@@ -11050,13 +11026,6 @@
   "resolved" "https://registry.npmjs.org/posix-character-classes/-/posix-character-classes-0.1.1.tgz"
   "version" "0.1.1"
 
-"post-message-stream@^3.0.0":
-  "integrity" "sha1-kNn1S9IJ5rb110eVuHWIIFtUcEg="
-  "resolved" "https://registry.npmjs.org/post-message-stream/-/post-message-stream-3.0.0.tgz"
-  "version" "3.0.0"
-  dependencies:
-    "readable-stream" "^2.1.4"
-
 "postcss-attribute-case-insensitive@^4.0.1":
   "integrity" "sha512-clkFxk/9pcdb4Vkn0hAHq3YnxBQ2p0CGD1dy24jN+reBck+EWxMbxSUqN4Yj7t0w8csl87K6p0gxBe1utkJsYA=="
   "resolved" "https://registry.npmjs.org/postcss-attribute-case-insensitive/-/postcss-attribute-case-insensitive-4.0.2.tgz"
@@ -12678,19 +12647,6 @@
     "string_decoder" "~1.1.1"
     "util-deprecate" "~1.0.1"
 
-"readable-stream@^2.1.4":
-  "integrity" "sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw=="
-  "resolved" "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.7.tgz"
-  "version" "2.3.7"
-  dependencies:
-    "core-util-is" "~1.0.0"
-    "inherits" "~2.0.3"
-    "isarray" "~1.0.0"
-    "process-nextick-args" "~2.0.0"
-    "safe-buffer" "~5.1.1"
-    "string_decoder" "~1.1.1"
-    "util-deprecate" "~1.0.1"
-
 "readable-stream@^2.1.5":
   "integrity" "sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw=="
   "resolved" "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.7.tgz"
@@ -13243,17 +13199,10 @@
   dependencies:
     "aproba" "^1.1.1"
 
-"rxjs@^7.0.0":
-  "integrity" "sha512-p2yuGIg9S1epc3vrjKf6iVb3RCaAYjYskkO+jHIaV0IjOPlJop4UnodOoFb2xeNwlguqLYvGw1b1McillYb5Gw=="
-  "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-7.3.0.tgz"
-  "version" "7.3.0"
-  dependencies:
-    "tslib" "~2.1.0"
-
 "rxjs@^7.3.0":
-  "integrity" "sha512-p2yuGIg9S1epc3vrjKf6iVb3RCaAYjYskkO+jHIaV0IjOPlJop4UnodOoFb2xeNwlguqLYvGw1b1McillYb5Gw=="
-  "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-7.3.0.tgz"
-  "version" "7.3.0"
+  "integrity" "sha512-7SQDi7xeTMCJpqViXh8gL/lebcwlp3d831F05+9B44A4B0WfsEwUQHR64gsH1kvJ+Ep/J9K2+n1hVl1CsGN23w=="
+  "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-7.4.0.tgz"
+  "version" "7.4.0"
   dependencies:
     "tslib" "~2.1.0"
 
@@ -14986,18 +14935,6 @@
   "version" "1.7.3"
   dependencies:
     "minimalistic-assert" "^1.0.0"
-
-"webextension-polyfill-ts@^0.25.0":
-  "integrity" "sha512-ikQhwwHYkpBu00pFaUzIKY26I6L87DeRI+Q6jBT1daZUNuu8dSrg5U9l/ZbqdaQ1M/TTSPKeAa3kolP5liuedw=="
-  "resolved" "https://registry.npmjs.org/webextension-polyfill-ts/-/webextension-polyfill-ts-0.25.0.tgz"
-  "version" "0.25.0"
-  dependencies:
-    "webextension-polyfill" "^0.7.0"
-
-"webextension-polyfill@^0.7.0":
-  "integrity" "sha512-su48BkMLxqzTTvPSE1eWxKToPS2Tv5DLGxKexLEVpwFd6Po6N8hhSLIvG6acPAg7qERoEaDL+Y5HQJeJeml5Aw=="
-  "resolved" "https://registry.npmjs.org/webextension-polyfill/-/webextension-polyfill-0.7.0.tgz"
-  "version" "0.7.0"
 
 "webidl-conversions@^5.0.0":
   "integrity" "sha512-VlZwKPCkYKxQgeSbH5EyngOmRp7Ww7I9rQLERETtf5ofd9pGeswWiOtogpEO850jziPRarreGxn5QIiTqpb2wA=="

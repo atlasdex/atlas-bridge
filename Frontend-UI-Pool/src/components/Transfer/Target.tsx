@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  CHAIN_ID_SOLANA,
-  CHAIN_ID_ETH,
-  hexToNativeString,
-} from "@certusone/wormhole-sdk";
+import { CHAIN_ID_SOLANA, hexToNativeString } from "@certusone/wormhole-sdk";
 import { makeStyles, MenuItem, TextField, Typography } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { useCallback, useMemo } from "react";
@@ -13,6 +9,7 @@ import useMetadata from "../../hooks/useMetadata";
 import useSyncTargetAddress from "../../hooks/useSyncTargetAddress";
 import { EthGasEstimateSummary } from "../../hooks/useTransactionFees";
 import {
+  selectTransferAmount,
   selectTransferIsTargetComplete,
   selectTransferShouldLockFields,
   selectTransferSourceChain,
@@ -22,10 +19,10 @@ import {
   selectTransferTargetChain,
   selectTransferTargetError,
   UNREGISTERED_ERROR_MESSAGE,
-  selectTransferAmount,
 } from "../../store/selectors";
 import { incrementStep, setTargetChain } from "../../store/transferSlice";
 import { CHAINS, CHAINS_BY_ID } from "../../utils/consts";
+import { isEVMChain } from "../../utils/ethereum";
 import ButtonWithLoader from "../ButtonWithLoader";
 import KeyAndBalance from "../KeyAndBalance";
 import LowBalanceWarning from "../LowBalanceWarning";
@@ -92,8 +89,6 @@ function Target() {
   const handleNextClick = useCallback(() => {
     dispatch(incrementStep());
   }, [dispatch]);
-  console.log('isTargetComplete', isTargetComplete)
-  console.log('associatedAccountExists', associatedAccountExists)
   return (
     <>
       <StepDescription>Select a recipient chain and address.</StepDescription>
@@ -150,14 +145,13 @@ function Target() {
           setAssociatedAccountExists={setAssociatedAccountExists}
         />
       ) : null}
-
       <Alert severity="info" className={classes.alert}>
         <Typography>
           You will have to pay transaction fees on{" "}
           {CHAINS_BY_ID[targetChain].name} to redeem your tokens.
         </Typography>
-        {targetChain === CHAIN_ID_ETH && (
-          <EthGasEstimateSummary methodType="transfer" />
+        {isEVMChain(targetChain) && (
+          <EthGasEstimateSummary methodType="transfer" chainId={targetChain} />
         )}
       </Alert>
       <LowBalanceWarning chainId={targetChain} />

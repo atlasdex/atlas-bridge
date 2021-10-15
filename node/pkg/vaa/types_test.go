@@ -92,8 +92,7 @@ func TestBodyRegisterChain_Serialize(t *testing.T) {
 
 	var headerB [32]byte
 	copy(headerB[:], header)
-	msg := &BodyRegisterChain{
-		Header:         headerB,
+	msg := &BodyTokenBridgeRegisterChain{
 		ChainID:        8,
 		EmitterAddress: Address{1, 2, 3, 4},
 	}
@@ -101,7 +100,6 @@ func TestBodyRegisterChain_Serialize(t *testing.T) {
 	data := msg.Serialize()
 	require.Equal(t, "000000000000000000000000000000000000000000546f6b656e42726964676501000000080102030400000000000000000000000000000000000000000000000000000000", hex.EncodeToString(data))
 }
-
 
 func TestBodyRegisterChain_Serializee(t *testing.T) {
 	payload, _ := hex.DecodeString("000000000000000000000000000000000000000000546f6b656e42726964676501000000080102030400000000000000000000000000000000000000000000000000000000")

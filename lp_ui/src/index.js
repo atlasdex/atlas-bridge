@@ -13,7 +13,7 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <SolanaWalletProvider>
-      <EthereumProviderProvider>
+        <EthereumProviderProvider>
           <SnackbarProvider maxSnack={3}>
             <LoggerProvider>
               <App />

@@ -7,26 +7,26 @@
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "844:50:42:-:0;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "844:50:42:-:0;;;;;",
+  "sourceMap": "844:50:43:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "844:50:43:-:0;;;;;",
   "source": "// contracts/State.sol\n// SPDX-License-Identifier: Apache 2\n\npragma solidity ^0.8.0;\n\ncontract NFTStorage {\n    struct State {\n\n        // Token name\n        string name;\n\n        // Token symbol\n        string symbol;\n\n        // Mapping from token ID to owner address\n        mapping(uint256 => address) owners;\n\n        // Mapping owner address to token count\n        mapping(address => uint256) balances;\n\n        // Mapping from token ID to approved address\n        mapping(uint256 => address) tokenApprovals;\n\n        // Mapping from token ID to URI\n        mapping(uint256 => string) tokenURIs;\n\n        // Mapping from owner to operator approvals\n        mapping(address => mapping(address => bool)) operatorApprovals;\n\n        address owner;\n\n        bool initialized;\n\n        uint16 chainId;\n        bytes32 nativeContract;\n    }\n}\n\ncontract NFTState {\n    NFTStorage.State _state;\n}",
   "sourcePath": "/home/atlas-bridge/ethereum/contracts/nft/token/NFTState.sol",
   "ast": {
     "absolutePath": "/home/atlas-bridge/ethereum/contracts/nft/token/NFTState.sol",
     "exportedSymbols": {
       "NFTState": [
-        8944
+        9147
       ],
       "NFTStorage": [
-        8940
+        9143
       ]
     },
-    "id": 8945,
+    "id": 9148,
     "license": "Apache 2",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 8904,
+        "id": 9107,
         "literals": [
           "solidity",
           "^",
@@ -34,7 +34,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "61:23:42"
+        "src": "61:23:43"
       },
       {
         "abstract": false,
@@ -42,27 +42,27 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 8940,
+        "id": 9143,
         "linearizedBaseContracts": [
-          8940
+          9143
         ],
         "name": "NFTStorage",
-        "nameLocation": "95:10:42",
+        "nameLocation": "95:10:43",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "NFTStorage.State",
-            "id": 8939,
+            "id": 9142,
             "members": [
               {
                 "constant": false,
-                "id": 8906,
+                "id": 9109,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "165:4:42",
+                "nameLocation": "165:4:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "158:11:42",
+                "scope": 9142,
+                "src": "158:11:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -70,10 +70,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 8905,
+                  "id": 9108,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "158:6:42",
+                  "src": "158:6:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -83,13 +83,13 @@
               },
               {
                 "constant": false,
-                "id": 8908,
+                "id": 9111,
                 "mutability": "mutable",
                 "name": "symbol",
-                "nameLocation": "211:6:42",
+                "nameLocation": "211:6:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "204:13:42",
+                "scope": 9142,
+                "src": "204:13:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -97,10 +97,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 8907,
+                  "id": 9110,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "204:6:42",
+                  "src": "204:6:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -110,13 +110,13 @@
               },
               {
                 "constant": false,
-                "id": 8912,
+                "id": 9115,
                 "mutability": "mutable",
                 "name": "owners",
-                "nameLocation": "306:6:42",
+                "nameLocation": "306:6:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "278:34:42",
+                "scope": 9142,
+                "src": "278:34:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -124,28 +124,28 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "typeName": {
-                  "id": 8911,
+                  "id": 9114,
                   "keyType": {
-                    "id": 8909,
+                    "id": 9112,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "286:7:42",
+                    "src": "286:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "278:27:42",
+                  "src": "278:27:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                     "typeString": "mapping(uint256 => address)"
                   },
                   "valueType": {
-                    "id": 8910,
+                    "id": 9113,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "297:7:42",
+                    "src": "297:7:43",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -157,13 +157,13 @@
               },
               {
                 "constant": false,
-                "id": 8916,
+                "id": 9119,
                 "mutability": "mutable",
                 "name": "balances",
-                "nameLocation": "399:8:42",
+                "nameLocation": "399:8:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "371:36:42",
+                "scope": 9142,
+                "src": "371:36:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -171,28 +171,28 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "typeName": {
-                  "id": 8915,
+                  "id": 9118,
                   "keyType": {
-                    "id": 8913,
+                    "id": 9116,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "379:7:42",
+                    "src": "379:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "371:27:42",
+                  "src": "371:27:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                     "typeString": "mapping(address => uint256)"
                   },
                   "valueType": {
-                    "id": 8914,
+                    "id": 9117,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "390:7:42",
+                    "src": "390:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -203,13 +203,13 @@
               },
               {
                 "constant": false,
-                "id": 8920,
+                "id": 9123,
                 "mutability": "mutable",
                 "name": "tokenApprovals",
-                "nameLocation": "499:14:42",
+                "nameLocation": "499:14:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "471:42:42",
+                "scope": 9142,
+                "src": "471:42:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -217,28 +217,28 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "typeName": {
-                  "id": 8919,
+                  "id": 9122,
                   "keyType": {
-                    "id": 8917,
+                    "id": 9120,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "479:7:42",
+                    "src": "479:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "471:27:42",
+                  "src": "471:27:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                     "typeString": "mapping(uint256 => address)"
                   },
                   "valueType": {
-                    "id": 8918,
+                    "id": 9121,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "490:7:42",
+                    "src": "490:7:43",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -250,13 +250,13 @@
               },
               {
                 "constant": false,
-                "id": 8924,
+                "id": 9127,
                 "mutability": "mutable",
                 "name": "tokenURIs",
-                "nameLocation": "591:9:42",
+                "nameLocation": "591:9:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "564:36:42",
+                "scope": 9142,
+                "src": "564:36:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -264,28 +264,28 @@
                   "typeString": "mapping(uint256 => string)"
                 },
                 "typeName": {
-                  "id": 8923,
+                  "id": 9126,
                   "keyType": {
-                    "id": 8921,
+                    "id": 9124,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "572:7:42",
+                    "src": "572:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "564:26:42",
+                  "src": "564:26:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_string_storage_$",
                     "typeString": "mapping(uint256 => string)"
                   },
                   "valueType": {
-                    "id": 8922,
+                    "id": 9125,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "583:6:42",
+                    "src": "583:6:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -296,13 +296,13 @@
               },
               {
                 "constant": false,
-                "id": 8930,
+                "id": 9133,
                 "mutability": "mutable",
                 "name": "operatorApprovals",
-                "nameLocation": "708:17:42",
+                "nameLocation": "708:17:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "663:62:42",
+                "scope": 9142,
+                "src": "663:62:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -310,46 +310,46 @@
                   "typeString": "mapping(address => mapping(address => bool))"
                 },
                 "typeName": {
-                  "id": 8929,
+                  "id": 9132,
                   "keyType": {
-                    "id": 8925,
+                    "id": 9128,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "671:7:42",
+                    "src": "671:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "663:44:42",
+                  "src": "663:44:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
                     "typeString": "mapping(address => mapping(address => bool))"
                   },
                   "valueType": {
-                    "id": 8928,
+                    "id": 9131,
                     "keyType": {
-                      "id": 8926,
+                      "id": 9129,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "690:7:42",
+                      "src": "690:7:43",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
                     "nodeType": "Mapping",
-                    "src": "682:24:42",
+                    "src": "682:24:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                       "typeString": "mapping(address => bool)"
                     },
                     "valueType": {
-                      "id": 8927,
+                      "id": 9130,
                       "name": "bool",
                       "nodeType": "ElementaryTypeName",
-                      "src": "701:4:42",
+                      "src": "701:4:43",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -361,13 +361,13 @@
               },
               {
                 "constant": false,
-                "id": 8932,
+                "id": 9135,
                 "mutability": "mutable",
                 "name": "owner",
-                "nameLocation": "744:5:42",
+                "nameLocation": "744:5:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "736:13:42",
+                "scope": 9142,
+                "src": "736:13:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -375,10 +375,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 8931,
+                  "id": 9134,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "736:7:42",
+                  "src": "736:7:43",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -389,13 +389,13 @@
               },
               {
                 "constant": false,
-                "id": 8934,
+                "id": 9137,
                 "mutability": "mutable",
                 "name": "initialized",
-                "nameLocation": "765:11:42",
+                "nameLocation": "765:11:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "760:16:42",
+                "scope": 9142,
+                "src": "760:16:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -403,10 +403,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 8933,
+                  "id": 9136,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "760:4:42",
+                  "src": "760:4:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -416,13 +416,13 @@
               },
               {
                 "constant": false,
-                "id": 8936,
+                "id": 9139,
                 "mutability": "mutable",
                 "name": "chainId",
-                "nameLocation": "794:7:42",
+                "nameLocation": "794:7:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "787:14:42",
+                "scope": 9142,
+                "src": "787:14:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -430,10 +430,10 @@
                   "typeString": "uint16"
                 },
                 "typeName": {
-                  "id": 8935,
+                  "id": 9138,
                   "name": "uint16",
                   "nodeType": "ElementaryTypeName",
-                  "src": "787:6:42",
+                  "src": "787:6:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint16",
                     "typeString": "uint16"
@@ -443,13 +443,13 @@
               },
               {
                 "constant": false,
-                "id": 8938,
+                "id": 9141,
                 "mutability": "mutable",
                 "name": "nativeContract",
-                "nameLocation": "819:14:42",
+                "nameLocation": "819:14:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "811:22:42",
+                "scope": 9142,
+                "src": "811:22:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -457,10 +457,10 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 8937,
+                  "id": 9140,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
-                  "src": "811:7:42",
+                  "src": "811:7:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes32",
                     "typeString": "bytes32"
@@ -470,15 +470,15 @@
               }
             ],
             "name": "State",
-            "nameLocation": "119:5:42",
+            "nameLocation": "119:5:43",
             "nodeType": "StructDefinition",
-            "scope": 8940,
-            "src": "112:728:42",
+            "scope": 9143,
+            "src": "112:728:43",
             "visibility": "public"
           }
         ],
-        "scope": 8945,
-        "src": "86:756:42",
+        "scope": 9148,
+        "src": "86:756:43",
         "usedErrors": []
       },
       {
@@ -487,72 +487,72 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 8944,
+        "id": 9147,
         "linearizedBaseContracts": [
-          8944
+          9147
         ],
         "name": "NFTState",
-        "nameLocation": "853:8:42",
+        "nameLocation": "853:8:43",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 8943,
+            "id": 9146,
             "mutability": "mutable",
             "name": "_state",
-            "nameLocation": "885:6:42",
+            "nameLocation": "885:6:43",
             "nodeType": "VariableDeclaration",
-            "scope": 8944,
-            "src": "868:23:42",
+            "scope": 9147,
+            "src": "868:23:43",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_struct$_State_$8939_storage",
+              "typeIdentifier": "t_struct$_State_$9142_storage",
               "typeString": "struct NFTStorage.State"
             },
             "typeName": {
-              "id": 8942,
+              "id": 9145,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 8941,
+                "id": 9144,
                 "name": "NFTStorage.State",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 8939,
-                "src": "868:16:42"
+                "referencedDeclaration": 9142,
+                "src": "868:16:43"
               },
-              "referencedDeclaration": 8939,
-              "src": "868:16:42",
+              "referencedDeclaration": 9142,
+              "src": "868:16:43",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_State_$8939_storage_ptr",
+                "typeIdentifier": "t_struct$_State_$9142_storage_ptr",
                 "typeString": "struct NFTStorage.State"
               }
             },
             "visibility": "internal"
           }
         ],
-        "scope": 8945,
-        "src": "844:50:42",
+        "scope": 9148,
+        "src": "844:50:43",
         "usedErrors": []
       }
     ],
-    "src": "61:833:42"
+    "src": "61:833:43"
   },
   "legacyAST": {
     "absolutePath": "/home/atlas-bridge/ethereum/contracts/nft/token/NFTState.sol",
     "exportedSymbols": {
       "NFTState": [
-        8944
+        9147
       ],
       "NFTStorage": [
-        8940
+        9143
       ]
     },
-    "id": 8945,
+    "id": 9148,
     "license": "Apache 2",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 8904,
+        "id": 9107,
         "literals": [
           "solidity",
           "^",
@@ -560,7 +560,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "61:23:42"
+        "src": "61:23:43"
       },
       {
         "abstract": false,
@@ -568,27 +568,27 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 8940,
+        "id": 9143,
         "linearizedBaseContracts": [
-          8940
+          9143
         ],
         "name": "NFTStorage",
-        "nameLocation": "95:10:42",
+        "nameLocation": "95:10:43",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "NFTStorage.State",
-            "id": 8939,
+            "id": 9142,
             "members": [
               {
                 "constant": false,
-                "id": 8906,
+                "id": 9109,
                 "mutability": "mutable",
                 "name": "name",
-                "nameLocation": "165:4:42",
+                "nameLocation": "165:4:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "158:11:42",
+                "scope": 9142,
+                "src": "158:11:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -596,10 +596,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 8905,
+                  "id": 9108,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "158:6:42",
+                  "src": "158:6:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -609,13 +609,13 @@
               },
               {
                 "constant": false,
-                "id": 8908,
+                "id": 9111,
                 "mutability": "mutable",
                 "name": "symbol",
-                "nameLocation": "211:6:42",
+                "nameLocation": "211:6:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "204:13:42",
+                "scope": 9142,
+                "src": "204:13:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -623,10 +623,10 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 8907,
+                  "id": 9110,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "204:6:42",
+                  "src": "204:6:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -636,13 +636,13 @@
               },
               {
                 "constant": false,
-                "id": 8912,
+                "id": 9115,
                 "mutability": "mutable",
                 "name": "owners",
-                "nameLocation": "306:6:42",
+                "nameLocation": "306:6:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "278:34:42",
+                "scope": 9142,
+                "src": "278:34:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -650,28 +650,28 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "typeName": {
-                  "id": 8911,
+                  "id": 9114,
                   "keyType": {
-                    "id": 8909,
+                    "id": 9112,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "286:7:42",
+                    "src": "286:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "278:27:42",
+                  "src": "278:27:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                     "typeString": "mapping(uint256 => address)"
                   },
                   "valueType": {
-                    "id": 8910,
+                    "id": 9113,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "297:7:42",
+                    "src": "297:7:43",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -683,13 +683,13 @@
               },
               {
                 "constant": false,
-                "id": 8916,
+                "id": 9119,
                 "mutability": "mutable",
                 "name": "balances",
-                "nameLocation": "399:8:42",
+                "nameLocation": "399:8:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "371:36:42",
+                "scope": 9142,
+                "src": "371:36:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -697,28 +697,28 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "typeName": {
-                  "id": 8915,
+                  "id": 9118,
                   "keyType": {
-                    "id": 8913,
+                    "id": 9116,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "379:7:42",
+                    "src": "379:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "371:27:42",
+                  "src": "371:27:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
                     "typeString": "mapping(address => uint256)"
                   },
                   "valueType": {
-                    "id": 8914,
+                    "id": 9117,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "390:7:42",
+                    "src": "390:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -729,13 +729,13 @@
               },
               {
                 "constant": false,
-                "id": 8920,
+                "id": 9123,
                 "mutability": "mutable",
                 "name": "tokenApprovals",
-                "nameLocation": "499:14:42",
+                "nameLocation": "499:14:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "471:42:42",
+                "scope": 9142,
+                "src": "471:42:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -743,28 +743,28 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "typeName": {
-                  "id": 8919,
+                  "id": 9122,
                   "keyType": {
-                    "id": 8917,
+                    "id": 9120,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "479:7:42",
+                    "src": "479:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "471:27:42",
+                  "src": "471:27:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
                     "typeString": "mapping(uint256 => address)"
                   },
                   "valueType": {
-                    "id": 8918,
+                    "id": 9121,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "490:7:42",
+                    "src": "490:7:43",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -776,13 +776,13 @@
               },
               {
                 "constant": false,
-                "id": 8924,
+                "id": 9127,
                 "mutability": "mutable",
                 "name": "tokenURIs",
-                "nameLocation": "591:9:42",
+                "nameLocation": "591:9:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "564:36:42",
+                "scope": 9142,
+                "src": "564:36:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -790,28 +790,28 @@
                   "typeString": "mapping(uint256 => string)"
                 },
                 "typeName": {
-                  "id": 8923,
+                  "id": 9126,
                   "keyType": {
-                    "id": 8921,
+                    "id": 9124,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "572:7:42",
+                    "src": "572:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "564:26:42",
+                  "src": "564:26:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_uint256_$_t_string_storage_$",
                     "typeString": "mapping(uint256 => string)"
                   },
                   "valueType": {
-                    "id": 8922,
+                    "id": 9125,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "583:6:42",
+                    "src": "583:6:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -822,13 +822,13 @@
               },
               {
                 "constant": false,
-                "id": 8930,
+                "id": 9133,
                 "mutability": "mutable",
                 "name": "operatorApprovals",
-                "nameLocation": "708:17:42",
+                "nameLocation": "708:17:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "663:62:42",
+                "scope": 9142,
+                "src": "663:62:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -836,46 +836,46 @@
                   "typeString": "mapping(address => mapping(address => bool))"
                 },
                 "typeName": {
-                  "id": 8929,
+                  "id": 9132,
                   "keyType": {
-                    "id": 8925,
+                    "id": 9128,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "671:7:42",
+                    "src": "671:7:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
                   "nodeType": "Mapping",
-                  "src": "663:44:42",
+                  "src": "663:44:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
                     "typeString": "mapping(address => mapping(address => bool))"
                   },
                   "valueType": {
-                    "id": 8928,
+                    "id": 9131,
                     "keyType": {
-                      "id": 8926,
+                      "id": 9129,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "690:7:42",
+                      "src": "690:7:43",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
                     "nodeType": "Mapping",
-                    "src": "682:24:42",
+                    "src": "682:24:43",
                     "typeDescriptions": {
                       "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                       "typeString": "mapping(address => bool)"
                     },
                     "valueType": {
-                      "id": 8927,
+                      "id": 9130,
                       "name": "bool",
                       "nodeType": "ElementaryTypeName",
-                      "src": "701:4:42",
+                      "src": "701:4:43",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
                         "typeString": "bool"
@@ -887,13 +887,13 @@
               },
               {
                 "constant": false,
-                "id": 8932,
+                "id": 9135,
                 "mutability": "mutable",
                 "name": "owner",
-                "nameLocation": "744:5:42",
+                "nameLocation": "744:5:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "736:13:42",
+                "scope": 9142,
+                "src": "736:13:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -901,10 +901,10 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 8931,
+                  "id": 9134,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "736:7:42",
+                  "src": "736:7:43",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -915,13 +915,13 @@
               },
               {
                 "constant": false,
-                "id": 8934,
+                "id": 9137,
                 "mutability": "mutable",
                 "name": "initialized",
-                "nameLocation": "765:11:42",
+                "nameLocation": "765:11:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "760:16:42",
+                "scope": 9142,
+                "src": "760:16:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -929,10 +929,10 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 8933,
+                  "id": 9136,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
-                  "src": "760:4:42",
+                  "src": "760:4:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bool",
                     "typeString": "bool"
@@ -942,13 +942,13 @@
               },
               {
                 "constant": false,
-                "id": 8936,
+                "id": 9139,
                 "mutability": "mutable",
                 "name": "chainId",
-                "nameLocation": "794:7:42",
+                "nameLocation": "794:7:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "787:14:42",
+                "scope": 9142,
+                "src": "787:14:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -956,10 +956,10 @@
                   "typeString": "uint16"
                 },
                 "typeName": {
-                  "id": 8935,
+                  "id": 9138,
                   "name": "uint16",
                   "nodeType": "ElementaryTypeName",
-                  "src": "787:6:42",
+                  "src": "787:6:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint16",
                     "typeString": "uint16"
@@ -969,13 +969,13 @@
               },
               {
                 "constant": false,
-                "id": 8938,
+                "id": 9141,
                 "mutability": "mutable",
                 "name": "nativeContract",
-                "nameLocation": "819:14:42",
+                "nameLocation": "819:14:43",
                 "nodeType": "VariableDeclaration",
-                "scope": 8939,
-                "src": "811:22:42",
+                "scope": 9142,
+                "src": "811:22:43",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -983,10 +983,10 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 8937,
+                  "id": 9140,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
-                  "src": "811:7:42",
+                  "src": "811:7:43",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes32",
                     "typeString": "bytes32"
@@ -996,15 +996,15 @@
               }
             ],
             "name": "State",
-            "nameLocation": "119:5:42",
+            "nameLocation": "119:5:43",
             "nodeType": "StructDefinition",
-            "scope": 8940,
-            "src": "112:728:42",
+            "scope": 9143,
+            "src": "112:728:43",
             "visibility": "public"
           }
         ],
-        "scope": 8945,
-        "src": "86:756:42",
+        "scope": 9148,
+        "src": "86:756:43",
         "usedErrors": []
       },
       {
@@ -1013,55 +1013,55 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 8944,
+        "id": 9147,
         "linearizedBaseContracts": [
-          8944
+          9147
         ],
         "name": "NFTState",
-        "nameLocation": "853:8:42",
+        "nameLocation": "853:8:43",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 8943,
+            "id": 9146,
             "mutability": "mutable",
             "name": "_state",
-            "nameLocation": "885:6:42",
+            "nameLocation": "885:6:43",
             "nodeType": "VariableDeclaration",
-            "scope": 8944,
-            "src": "868:23:42",
+            "scope": 9147,
+            "src": "868:23:43",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_struct$_State_$8939_storage",
+              "typeIdentifier": "t_struct$_State_$9142_storage",
               "typeString": "struct NFTStorage.State"
             },
             "typeName": {
-              "id": 8942,
+              "id": 9145,
               "nodeType": "UserDefinedTypeName",
               "pathNode": {
-                "id": 8941,
+                "id": 9144,
                 "name": "NFTStorage.State",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 8939,
-                "src": "868:16:42"
+                "referencedDeclaration": 9142,
+                "src": "868:16:43"
               },
-              "referencedDeclaration": 8939,
-              "src": "868:16:42",
+              "referencedDeclaration": 9142,
+              "src": "868:16:43",
               "typeDescriptions": {
-                "typeIdentifier": "t_struct$_State_$8939_storage_ptr",
+                "typeIdentifier": "t_struct$_State_$9142_storage_ptr",
                 "typeString": "struct NFTStorage.State"
               }
             },
             "visibility": "internal"
           }
         ],
-        "scope": 8945,
-        "src": "844:50:42",
+        "scope": 9148,
+        "src": "844:50:43",
         "usedErrors": []
       }
     ],
-    "src": "61:833:42"
+    "src": "61:833:43"
   },
   "compiler": {
     "name": "solc",
@@ -1069,7 +1069,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-09-27T21:46:19.404Z",
+  "updatedAt": "2021-10-15T20:01:15.056Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
